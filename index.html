@@ -52,7 +52,7 @@
 
   /* Abertura */
   .abertura{display:grid; grid-template-columns:1.25fr .75fr; gap:2rem; align-items:end; padding:clamp(2rem,5vw,3.5rem) 0 1.75rem}
-  h1{font-family:var(--poster); font-weight:900; text-transform:uppercase; font-size:clamp(4rem,12vw,10rem); line-height:.84; letter-spacing:-.005em; margin:.5rem 0 0}
+  h1{font-family:var(--poster); font-weight:900; text-transform:uppercase; font-size:clamp(4rem,12vw,10rem); line-height:.84; letter-spacing:-.005em; margin:1.1rem 0 0; padding-top:.12em}
   h1 .contorno{color:transparent; -webkit-text-stroke:2px var(--giz); paint-order:stroke}
   .abertura p{margin:0; color:var(--giz-2); font-size:1.12rem; line-height:1.5; max-width:30rem}
   .abertura p strong{color:var(--giz); font-weight:600}
@@ -154,6 +154,23 @@
     .ingresso{grid-template-columns:6px 1fr; row-gap:.8rem}
     .ingresso .preco,.ingresso .comprar{grid-column:2}
     .ingresso .comprar{justify-self:start}
+  }
+  @media (max-width:640px){
+    .fita,.cartao{min-width:0}
+    .fita{grid-template-columns:5.6rem repeat(3,minmax(0,1fr))}
+    .fita > div{padding:.6rem .4rem}
+    .fita .lutador{font-size:1.05rem}
+    .fita .lutador small{display:none}
+    .fita .rot{font-size:.74rem}
+    .fita .val{font-size:.74rem; overflow-wrap:anywhere}
+    .cartao .linha{grid-template-columns:5.6rem repeat(3,minmax(0,1fr))}
+    .cartao .linha > div{padding:.6rem .45rem}
+    .cartao .round span{font-size:.8rem; line-height:1.25; display:block}
+    .cartao .ponto{flex-direction:column; align-items:flex-start; gap:.15rem}
+    .cartao .ponto em{font-size:1.9rem}
+    .cartao .ponto small{font-size:.66rem; overflow-wrap:anywhere}
+    .cartao .cab .ponto{font-size:.95rem; line-height:1.05}
+    .cartao .total .ponto em{font-size:2.4rem}
   }
   @media (max-width:560px){
     .marca small{display:none}
