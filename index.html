@@ -161,6 +161,7 @@
   .v.ganha .barra{background:var(--c); box-shadow:0 0 10px color-mix(in srgb, var(--c) 45%, transparent)}
   .v.sem .val{color:var(--fumaca)}
   .tl.grande .val{font-family:var(--poster); font-weight:800; font-size:2.2rem; line-height:1; letter-spacing:0}
+  .tl.grande .v.sem .val{font-family:var(--dado); font-weight:400; font-size:.9375rem; line-height:1.4}
 
   /* ---------- Bilheteria ---------- */
   .bilheteria{border-top:var(--hairline) solid var(--giz)}
@@ -252,7 +253,7 @@
 
           <!-- Galaxy S25 Edge -->
           <g class="corpo edge">
-            <text class="cota" x="193.2" y="60" text-anchor="middle" font-size="13">158,2 mm · 163 g</text>
+            <text class="cota" x="193.2" y="54" text-anchor="middle" font-size="13">158,2 mm · 163 g</text>
             <rect class="contorno" x="110" y="72" width="166.3" height="348" rx="20"/>
             <rect class="miolo" x="116" y="78" width="154.3" height="336" rx="15"/>
             <circle class="furo" cx="193.2" cy="96" r="4.5"/>
@@ -261,7 +262,7 @@
           </g>
           <!-- Huawei Pura 80 Pro -->
           <g class="corpo pura">
-            <text class="cota" x="423.7" y="49.4" text-anchor="middle" font-size="13">163,0 mm · 219 g</text>
+            <text class="cota" x="423.7" y="43.4" text-anchor="middle" font-size="13">163,0 mm · 219 g</text>
             <rect class="contorno" x="340" y="61.4" width="167.4" height="358.6" rx="20"/>
             <rect class="miolo" x="346" y="67.4" width="155.4" height="346.6" rx="15"/>
             <circle class="furo" cx="423.7" cy="85.4" r="4.5"/>
@@ -270,7 +271,7 @@
           </g>
           <!-- Galaxy S26 Ultra -->
           <g class="corpo ultra">
-            <text class="cota" x="655.9" y="48.1" text-anchor="middle" font-size="13">163,6 mm · 214 g</text>
+            <text class="cota" x="655.9" y="42.1" text-anchor="middle" font-size="13">163,6 mm · 214 g</text>
             <rect class="contorno" x="570" y="60.1" width="171.8" height="359.9" rx="20"/>
             <rect class="miolo" x="576" y="66.1" width="159.8" height="347.9" rx="15"/>
             <circle class="furo" cx="655.9" cy="84.1" r="4.5"/>
@@ -291,8 +292,8 @@
           <!-- plano de leitura: 1 px na cor do aparelho em foco, na altura dele -->
           <g class="leitura" id="leitura">
             <line x1="70" y1="420" x2="806" y2="420"/>
-            <rect x="74" y="405" width="64" height="15" rx="1"/>
-            <text id="leitura-txt" x="106" y="416" text-anchor="middle" font-size="10.5">158,2 mm</text>
+            <rect x="74" y="405" width="56" height="15" rx="1"/>
+            <text id="leitura-txt" x="102" y="416" text-anchor="middle" font-size="10.5">158,2 mm</text>
           </g>
         </svg>
       </div>
@@ -396,7 +397,7 @@
   <section id="replay" aria-labelledby="t-replay">
     <div class="sec-topo">
       <h2 id="t-replay">O que a ficha não mostra</h2>
-      <p>Três fatos de fora da ficha, no mesmo grid. Travessão = sem dado comparável nesta pesagem.</p>
+      <p>Três fatos de fora da ficha, no mesmo grid. "Sem dado" = nada comparável nesta pesagem.</p>
     </div>
     <div class="telemetria" role="table" aria-label="Fatos fora da ficha">
       <div class="tl cab" role="row">
@@ -408,19 +409,19 @@
       <div class="tl grande" role="row">
         <div class="rot" role="rowheader">Bateria medida<small>Tom's Guide · navegação web</small></div>
         <div class="v edge" role="cell"><span class="val">12h38</span><span class="nota">o S25 Ultra fez 17h14 no mesmo teste</span></div>
-        <div class="v pura sem" role="cell"><span class="val">—</span><span class="nota">teste não conferido</span></div>
-        <div class="v ultra sem" role="cell"><span class="val">—</span><span class="nota">teste não conferido</span></div>
+        <div class="v pura sem" role="cell"><span class="val">sem dado</span><span class="nota">teste não conferido</span></div>
+        <div class="v ultra sem" role="cell"><span class="val">sem dado</span><span class="nota">teste não conferido</span></div>
       </div>
       <div class="tl grande" role="row">
         <div class="rot" role="rowheader">Sensor principal<small>ficha da Huawei</small></div>
-        <div class="v edge sem" role="cell"><span class="val">—</span></div>
+        <div class="v edge sem" role="cell"><span class="val">sem dado</span></div>
         <div class="v pura" role="cell"><span class="val">1"</span><span class="nota">abertura variável, f/1.6 a f/4.0</span></div>
-        <div class="v ultra sem" role="cell"><span class="val">—</span></div>
+        <div class="v ultra sem" role="cell"><span class="val">sem dado</span></div>
       </div>
       <div class="tl grande" role="row">
         <div class="rot" role="rowheader">Segurança garantida até<small>ficha da Samsung</small></div>
-        <div class="v edge sem" role="cell"><span class="val">—</span><span class="nota">não achei na ficha oficial</span></div>
-        <div class="v pura sem" role="cell"><span class="val">—</span><span class="nota">não conferido</span></div>
+        <div class="v edge sem" role="cell"><span class="val">sem dado</span><span class="nota">não achei na ficha oficial</span></div>
+        <div class="v pura sem" role="cell"><span class="val">sem dado</span><span class="nota">não conferido</span></div>
         <div class="v ultra" role="cell"><span class="val">02/2033</span><span class="nota">28/02/2033 · tem S Pen</span></div>
       </div>
     </div>
