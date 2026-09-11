@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>S25 Edge × Pura 80 Pro × S26 Ultra | Nocautecel</title>
+<meta name="description" content="Comparativo de compra no Brasil: ficha oficial, preço do dia e veredito por uso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tektur:wght@500;700&family=Onest:wght@400;500;600&family=Martian+Mono:wght@400;500&display=swap">
+<style>
+  /* Mundo único e escuro por decisão: bancada de medição. Cores explícitas, sem blocos de tema. */
+  :root{
+    --vacuo:#0A0C13;
+    --painel:#11141F;
+    --painel-2:#161A28;
+    --linha:#252A3D;
+    --texto:#E7E9F3;
+    --apagado:#8C92AB;
+    --edge:#86D9FF;   /* Titânio Prata gelo */
+    --pura:#FF6F8E;   /* Esmaltado Vermelho */
+    --ultra:#C3A6FF;  /* Violeta */
+    --ok:#7BE3B0;
+    --falta:#FFB86B;
+    --f-display:"Tektur","Chakra Petch","Segoe UI",system-ui,sans-serif;
+    --f-corpo:"Onest","Segoe UI",system-ui,-apple-system,sans-serif;
+    --f-dado:"Martian Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+    --s-1:.75rem; --s0:.875rem; --s1:1rem; --s2:1.25rem; --s3:1.75rem; --s4:2.6rem; --s5:clamp(2.4rem,6vw,4.4rem);
+  }
+  *{box-sizing:border-box}
+  html{background:var(--vacuo)}
+  body{
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(195,166,255,.10), transparent 60%),
+      radial-gradient(900px 420px at -10% 10%, rgba(134,217,255,.08), transparent 60%),
+      var(--vacuo);
+    color:var(--texto); font-family:var(--f-corpo); font-size:var(--s1); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--edge); outline-offset:3px; border-radius:4px}
+  .moldura{max-width:1120px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem)}
+  .rotulo{font-family:var(--f-dado); font-size:var(--s-1); letter-spacing:.14em; text-transform:uppercase; color:var(--apagado)}
+  .num{font-family:var(--f-dado); font-variant-numeric:tabular-nums}
+
+  /* Topo */
+  header.topo{display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.25rem 0; border-bottom:1px solid var(--linha)}
+  .marca{font-family:var(--f-display); font-weight:700; font-size:var(--s2); letter-spacing:.06em}
+  .marca span{color:var(--edge)}
+  .carimbo{display:flex; gap:.5rem; align-items:center}
+  .ponto{width:8px; height:8px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 4px rgba(123,227,176,.15)}
+
+  /* Abertura */
+  .abertura{display:grid; grid-template-columns:1.05fr 1fr; gap:clamp(1.5rem,4vw,3.5rem); align-items:center; padding:clamp(2rem,6vw,4rem) 0 2.5rem}
+  h1{font-family:var(--f-display); font-weight:700; font-size:var(--s5); line-height:1.02; letter-spacing:-.01em; margin:.6rem 0 1rem; text-wrap:balance}
+  h1 em{font-style:normal; background:linear-gradient(90deg,var(--edge),var(--ultra) 55%,var(--pura)); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .lead{max-width:34rem; color:#C9CDDD; font-size:var(--s2); line-height:1.5; margin:0}
+  .trio{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:1.4rem}
+  .chip-modelo{display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .75rem; border:1px solid var(--linha); border-radius:999px; font-size:var(--s0); background:var(--painel)}
+  .chip-modelo i{width:10px; height:10px; border-radius:3px; display:block}
+
+  /* Bancada de escala */
+  .bancada{background:linear-gradient(180deg,var(--painel),var(--painel-2)); border:1px solid var(--linha); border-radius:18px; padding:1.1rem 1.1rem .8rem; position:relative; overflow:hidden}
+  .bancada::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 0%,rgba(134,217,255,.07) 50%,transparent 100%); height:40%; animation:varre 5.5s ease-in-out infinite; pointer-events:none}
+  @keyframes varre{0%{transform:translateY(-100%)}100%{transform:translateY(260%)}}
+  .bancada-topo{display:flex; justify-content:space-between; gap:1rem; margin-bottom:.4rem}
+  .bancada svg{width:100%; height:auto; display:block}
+
+  /* Seções */
+  section{padding:2.6rem 0; border-top:1px solid var(--linha)}
+  h2{font-family:var(--f-display); font-weight:500; font-size:var(--s4); line-height:1.1; margin:.35rem 0 1.4rem; text-wrap:balance}
+  .intro{max-width:62ch; color:#C9CDDD; margin:-.6rem 0 1.6rem}
+
+  /* Placar */
+  .placar{display:grid; gap:.25rem}
+  .linha-placar{display:grid; grid-template-columns:minmax(9rem,13rem) 1fr; gap:1.25rem; padding:1rem 0; border-bottom:1px dashed var(--linha)}
+  .linha-placar:last-child{border-bottom:0}
+  .criterio strong{display:block; font-weight:600}
+  .criterio small{color:var(--apagado); font-size:var(--s0)}
+  .barras{display:grid; gap:.45rem}
+  .barra{display:grid; grid-template-columns:6.5rem 1fr 7.5rem; gap:.75rem; align-items:center; font-size:var(--s0)}
+  .barra .nome{color:var(--apagado)}
+  .trilho{height:10px; background:#1B2032; border-radius:999px; overflow:hidden}
+  .trilho b{display:block; height:100%; border-radius:999px; width:var(--w); animation:enche 1.1s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes enche{from{width:calc(var(--w) * .92)}to{width:var(--w)}}
+  .barra .valor{text-align:right; font-family:var(--f-dado); font-variant-numeric:tabular-nums}
+  .barra.vence .valor::after{content:" ◆"; color:var(--ok)}
+  .c-edge b{background:var(--edge)} .c-pura b{background:var(--pura)} .c-ultra b{background:var(--ultra)}
+  .sim-nao{display:grid; grid-template-columns:repeat(3,1fr); gap:.6rem}
+  .sn{border:1px solid var(--linha); border-radius:10px; padding:.55rem .7rem; font-size:var(--s0); display:flex; justify-content:space-between; gap:.5rem; background:var(--painel)}
+  .sn .t{color:var(--apagado)}
+  .sn .sim{color:var(--ok)} .sn .nao{color:var(--falta)}
+
+  /* Ficha não conta */
+  .notas{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+  .nota{padding:1.1rem 1.2rem; border-left:2px solid var(--linha)}
+  .nota .grande{font-family:var(--f-display); font-size:var(--s4); line-height:1; margin:.4rem 0 .5rem}
+  .nota p{margin:0; color:#C9CDDD; font-size:var(--s0)}
+  .nota.edge{border-color:var(--edge)} .nota.pura{border-color:var(--pura)} .nota.ultra{border-color:var(--ultra)}
+
+  /* Veredito */
+  .usos{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.3rem}
+  .usos button{font:inherit; font-size:var(--s0); color:var(--texto); background:var(--painel); border:1px solid var(--linha); border-radius:999px; padding:.5rem 1rem; cursor:pointer; transition:border-color .2s, background .2s}
+  .usos button:hover{border-color:#3A4160}
+  .usos button[aria-pressed="true"]{background:var(--texto); color:var(--vacuo); border-color:var(--texto)}
+  .veredito{display:grid; grid-template-columns:auto 1fr; gap:1.5rem; align-items:center; background:linear-gradient(135deg,var(--painel-2),var(--painel)); border:1px solid var(--linha); border-radius:18px; padding:1.4rem 1.6rem}
+  .veredito .quem{font-family:var(--f-display); font-weight:700; font-size:var(--s3); line-height:1.1; min-width:11rem}
+  .veredito p{margin:0; max-width:60ch; color:#D3D6E4}
+
+  /* Preço */
+  .precos{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+  .preco{border:1px solid var(--linha); border-radius:16px; padding:1.2rem; background:var(--painel); display:flex; flex-direction:column; gap:.6rem}
+  .preco header{display:flex; align-items:center; gap:.5rem}
+  .preco header i{width:10px; height:10px; border-radius:3px}
+  .preco .valor{font-family:var(--f-display); font-size:var(--s4); line-height:1; font-variant-numeric:tabular-nums}
+  .preco .valor small{font-family:var(--f-corpo); font-size:var(--s0); color:var(--apagado); margin-left:.3rem}
+  .preco .obs{font-size:var(--s0); color:var(--apagado); margin:0}
+  .comprar{margin-top:auto; display:inline-flex; justify-content:center; padding:.7rem 1rem; border-radius:10px; text-decoration:none; font-weight:600; color:var(--vacuo)}
+  .preco.edge .comprar{background:var(--edge)} .preco.pura .comprar{background:var(--pura)} .preco.ultra .comprar{background:var(--ultra)}
+  .comprar:hover{filter:brightness(1.08)}
+
+  footer.fontes{border-top:1px solid var(--linha); padding:2rem 0 3rem; font-size:var(--s0); color:var(--apagado)}
+  footer.fontes ul{padding-left:1.1rem; margin:.6rem 0 1.2rem}
+  footer.fontes li{margin:.25rem 0; overflow-wrap:anywhere}
+  .aviso{display:inline-block; border:1px dashed var(--falta); color:var(--falta); border-radius:8px; padding:.4rem .7rem; font-family:var(--f-dado); font-size:var(--s-1); letter-spacing:.08em}
+
+  @media (max-width:880px){
+    .abertura{grid-template-columns:1fr}
+    .notas,.precos{grid-template-columns:1fr}
+    .linha-placar{grid-template-columns:1fr; gap:.6rem}
+    .veredito{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){
+    .barra{grid-template-columns:5rem 1fr 5.6rem}
+    .sim-nao{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .bancada::after,.trilho b{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="moldura">
+  <header class="topo">
+    <div class="marca">NOCAUTE<span>CEL</span></div>
+    <div class="carimbo rotulo"><span class="ponto" aria-hidden="true"></span>Preços conferidos em 11/09/2026 · 14h45</div>
+  </header>
+
+  <div class="abertura">
+    <div>
+      <div class="rotulo">Comparativo de compra · Brasil</div>
+      <h1>Fino, barato ou <em>completo?</em></h1>
+      <p class="lead">Três topos de linha, ficha oficial do fabricante, preço do Pix de hoje e o que a ficha técnica não conta. No fim, um veredito por uso.</p>
+      <div class="trio">
+        <span class="chip-modelo"><i style="background:var(--edge)"></i>Galaxy S25 Edge</span>
+        <span class="chip-modelo"><i style="background:var(--pura)"></i>Huawei Pura 80 Pro</span>
+        <span class="chip-modelo"><i style="background:var(--ultra)"></i>Galaxy S26 Ultra</span>
+      </div>
+    </div>
+
+    <figure class="bancada" style="margin:0">
+      <div class="bancada-topo">
+        <span class="rotulo">Em escala entre si · frente e perfil</span>
+        <span class="rotulo num">1 mm = 1,5 px</span>
+      </div>
+      <!-- Medidas oficiais: Edge 158,2×75,6×5,8 · Pura 163×76,1×8,3 · Ultra 163,6×78,1×7,9 (mm) -->
+      <svg viewBox="0 0 520 300" role="img" aria-label="Silhuetas dos três celulares em escala: o S25 Edge tem 5,8 mm de espessura, o Pura 80 Pro 8,3 mm e o S26 Ultra 7,9 mm.">
+        <defs>
+          <pattern id="grade" width="15" height="15" patternUnits="userSpaceOnUse">
+            <path d="M15 0H0V15" fill="none" stroke="#1D2233" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect x="0" y="0" width="520" height="300" fill="url(#grade)"/>
+        <!-- linha de base -->
+        <line x1="10" y1="268" x2="510" y2="268" stroke="#3A4160" stroke-width="1"/>
+        <!-- Edge -->
+        <rect x="22" y="30.7" width="113.4" height="237.3" rx="16" fill="#0E1826" stroke="#86D9FF" stroke-width="1.5"/>
+        <rect x="143" y="30.7" width="8.7" height="237.3" rx="3" fill="#86D9FF"/>
+        <text x="22" y="288" fill="#86D9FF" font-family="Martian Mono, monospace" font-size="10">5,8 mm · 163 g</text>
+        <!-- Pura -->
+        <rect x="186" y="23.5" width="114.2" height="244.5" rx="18" fill="#1E0F16" stroke="#FF6F8E" stroke-width="1.5"/>
+        <rect x="308" y="23.5" width="12.5" height="244.5" rx="4" fill="#FF6F8E"/>
+        <text x="186" y="288" fill="#FF6F8E" font-family="Martian Mono, monospace" font-size="10">8,3 mm · 219 g</text>
+        <!-- Ultra -->
+        <rect x="352" y="22.6" width="117.2" height="245.4" rx="8" fill="#17122A" stroke="#C3A6FF" stroke-width="1.5"/>
+        <rect x="477" y="22.6" width="11.9" height="245.4" rx="3" fill="#C3A6FF"/>
+        <text x="352" y="288" fill="#C3A6FF" font-family="Martian Mono, monospace" font-size="10">7,9 mm · 214 g</text>
+        <!-- cotas de altura -->
+        <text x="78.7" y="20" text-anchor="middle" fill="#8C92AB" font-family="Martian Mono, monospace" font-size="9">158,2</text>
+        <text x="243.1" y="14" text-anchor="middle" fill="#8C92AB" font-family="Martian Mono, monospace" font-size="9">163,0</text>
+        <text x="410.6" y="14" text-anchor="middle" fill="#8C92AB" font-family="Martian Mono, monospace" font-size="9">163,6</text>
+      </svg>
+    </figure>
+  </div>
+</div>
+
+<div class="moldura">
+  <section id="placar">
+    <div class="rotulo">Placar da ficha oficial</div>
+    <h2>Número por número</h2>
+    <div class="placar">
+      <div class="linha-placar">
+        <div class="criterio"><strong>Preço hoje</strong><small>Amazon, à vista no Pix</small></div>
+        <div class="barras">
+          <div class="barra c-edge vence"><span class="nome">S25 Edge</span><span class="trilho"><b style="--w:56%"></b></span><span class="valor">R$ 3.799</span></div>
+          <div class="barra c-pura"><span class="nome">Pura 80 Pro</span><span class="trilho"><b style="--w:59%"></b></span><span class="valor">R$ 3.999</span></div>
+          <div class="barra c-ultra"><span class="nome">S26 Ultra</span><span class="trilho"><b style="--w:100%"></b></span><span class="valor">R$ 6.749</span></div>
+        </div>
+      </div>
+      <div class="linha-placar">
+        <div class="criterio"><strong>Bateria</strong><small>capacidade declarada, mAh</small></div>
+        <div class="barras">
+          <div class="barra c-edge"><span class="nome">S25 Edge</span><span class="trilho"><b style="--w:75%"></b></span><span class="valor">3.900</span></div>
+          <div class="barra c-pura vence"><span class="nome">Pura 80 Pro</span><span class="trilho"><b style="--w:100%"></b></span><span class="valor">5.170</span></div>
+          <div class="barra c-ultra"><span class="nome">S26 Ultra</span><span class="trilho"><b style="--w:97%"></b></span><span class="valor">5.000*</span></div>
+        </div>
+      </div>
+      <div class="linha-placar">
+        <div class="criterio"><strong>Peso</strong><small>gramas, menos é melhor</small></div>
+        <div class="barras">
+          <div class="barra c-edge vence"><span class="nome">S25 Edge</span><span class="trilho"><b style="--w:74%"></b></span><span class="valor">163 g</span></div>
+          <div class="barra c-pura"><span class="nome">Pura 80 Pro</span><span class="trilho"><b style="--w:100%"></b></span><span class="valor">219 g</span></div>
+          <div class="barra c-ultra"><span class="nome">S26 Ultra</span><span class="trilho"><b style="--w:98%"></b></span><span class="valor">214 g</span></div>
+        </div>
+      </div>
+      <div class="linha-placar">
+        <div class="criterio"><strong>Zoom óptico</strong><small>teleobjetiva de verdade</small></div>
+        <div class="barras">
+          <div class="barra c-edge"><span class="nome">S25 Edge</span><span class="trilho"><b style="--w:0%"></b></span><span class="valor">não tem</span></div>
+          <div class="barra c-pura"><span class="nome">Pura 80 Pro</span><span class="trilho"><b style="--w:80%"></b></span><span class="valor">4x</span></div>
+          <div class="barra c-ultra vence"><span class="nome">S26 Ultra</span><span class="trilho"><b style="--w:100%"></b></span><span class="valor">3x e 5x</span></div>
+        </div>
+      </div>
+      <div class="linha-placar">
+        <div class="criterio"><strong>Rede e apps</strong><small>o que pesa no Brasil</small></div>
+        <div class="sim-nao">
+          <div class="sn"><span class="t">Edge · 5G</span><span class="sim">sim</span></div>
+          <div class="sn"><span class="t">Pura · 5G</span><span class="nao">não, só 4G</span></div>
+          <div class="sn"><span class="t">Ultra · 5G</span><span class="sim">sim</span></div>
+          <div class="sn"><span class="t">Edge · Google</span><span class="sim">sim</span></div>
+          <div class="sn"><span class="t">Pura · Google</span><span class="nao">não, EMUI 15</span></div>
+          <div class="sn"><span class="t">Ultra · Google</span><span class="sim">sim</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ficha-nao-conta">
+    <div class="rotulo">O que a ficha não conta</div>
+    <h2>Três letras miúdas</h2>
+    <div class="notas">
+      <div class="nota edge">
+        <span class="rotulo">S25 Edge · bateria medida</span>
+        <div class="grande num">12h38</div>
+        <p>No teste de navegação do Tom's Guide. O Galaxy S25 Ultra fez 17h14 no mesmo teste. O corpo de 5,8 mm cobra na tomada.</p>
+      </div>
+      <div class="nota pura">
+        <span class="rotulo">Pura 80 Pro · câmera</span>
+        <div class="grande num">1"</div>
+        <p>Sensor principal de 1 polegada com abertura variável (f/1.6 a f/4.0). É a câmera mais ambiciosa dos três, num aparelho sem 5G e sem apps do Google.</p>
+      </div>
+      <div class="nota ultra">
+        <span class="rotulo">S26 Ultra · atualizações</span>
+        <div class="grande num">02/2033</div>
+        <p>A Samsung garante atualização de segurança até 28/02/2033. Tem S Pen e quatro câmeras traseiras. É o mais caro, mas o que dura mais tempo em uso.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="veredito">
+    <div class="rotulo">Veredito</div>
+    <h2>Qual é o seu uso?</h2>
+    <div class="usos" role="group" aria-label="Escolha o uso principal">
+      <button type="button" data-uso="economia" aria-pressed="true">Gastar menos</button>
+      <button type="button" data-uso="leveza">Leve e fino no bolso</button>
+      <button type="button" data-uso="foto">Fotografar e dar zoom</button>
+      <button type="button" data-uso="bateria">Bateria o dia todo</button>
+      <button type="button" data-uso="anos">Usar por muitos anos</button>
+    </div>
+    <div class="veredito" aria-live="polite">
+      <div class="quem" id="v-quem" style="color:var(--edge)">Galaxy S25 Edge</div>
+      <p id="v-texto">O mais barato hoje, R$ 3.799 no Pix, com 5G e Google. Aceite a troca: é o que menos dura na bateria e não tem teleobjetiva.</p>
+    </div>
+  </section>
+
+  <section id="preco">
+    <div class="rotulo">Preço de hoje</div>
+    <h2>Onde comprar</h2>
+    <p class="intro">Preço da busca da Amazon em 11/09/2026 às 14h45, CEP padrão de São Paulo. Preço muda todo dia; confira na loja antes de pagar.</p>
+    <div class="precos">
+      <article class="preco edge">
+        <header><i style="background:var(--edge)"></i><strong>Galaxy S25 Edge</strong></header>
+        <div class="valor">R$ 3.799,05<small>Pix</small></div>
+        <p class="obs">512 GB · 12x R$ 333,25 sem juros · confira a reputação do vendedor antes de pagar</p>
+        <!-- AFILIADO: trocar pelo link gerado no painel Amazon Associados -->
+        <a class="comprar" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored">Ver na Amazon</a>
+      </article>
+      <article class="preco pura">
+        <header><i style="background:var(--pura)"></i><strong>Huawei Pura 80 Pro</strong></header>
+        <div class="valor">R$ 3.999,00</div>
+        <p class="obs">12 GB + 512 GB · a Amazon marca "menor preço em 365 dias"</p>
+        <!-- AFILIADO: trocar pelo link gerado no painel Amazon Associados -->
+        <a class="comprar" href="https://www.amazon.com.br/s?k=huawei+pura+80+pro" target="_blank" rel="noopener sponsored">Ver na Amazon</a>
+      </article>
+      <article class="preco ultra">
+        <header><i style="background:var(--ultra)"></i><strong>Galaxy S26 Ultra</strong></header>
+        <div class="valor">R$ 6.749,10<small>Pix</small></div>
+        <p class="obs">256 GB, cor branca · 12x R$ 624,91 · a versão preta estava a R$ 7.990</p>
+        <!-- AFILIADO: trocar pelo link gerado no painel Amazon Associados -->
+        <a class="comprar" href="https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb" target="_blank" rel="noopener sponsored">Ver na Amazon</a>
+      </article>
+    </div>
+  </section>
+</div>
+
+<div class="moldura">
+  <footer class="fontes">
+    <span class="aviso">PROTÓTIPO · links ainda sem tag de afiliado</span>
+    <p>Fontes, acessadas em 11/09/2026:</p>
+    <ul>
+      <li>Ficha oficial Galaxy S25 Edge: samsung.com/br/smartphones/galaxy-s25-edge/specs/</li>
+      <li>Ficha oficial Galaxy S26 Ultra: samsung.com/br/smartphones/galaxy-s26-ultra/specs/</li>
+      <li>Ficha oficial Huawei Pura 80 Pro: consumer.huawei.com/br/phones/pura80-pro/specs/</li>
+      <li>Teste de bateria: tomsguide.com, "Galaxy S25 Edge battery life tested"</li>
+      <li>Preços: busca da amazon.com.br, 14h45</li>
+    </ul>
+    <p>* A Samsung informa 5.000 mAh como capacidade típica do S26 Ultra; a nominal é 4.855 mAh. Para o Pura 80 Pro, a Huawei informa 5.170 mAh nominal. Não conferimos teste independente de bateria do S26 Ultra nem do Pura 80 Pro.</p>
+    <p>Como afiliado, podemos receber comissão pelas compras feitas nos links desta página, sem custo extra para você.</p>
+  </footer>
+</div>
+
+<script>
+  const vereditos = {
+    economia:{quem:"Galaxy S25 Edge", cor:"var(--edge)", texto:"O mais barato hoje, R$ 3.799 no Pix, com 5G e Google. Aceite a troca: é o que menos dura na bateria e não tem teleobjetiva."},
+    leveza:{quem:"Galaxy S25 Edge", cor:"var(--edge)", texto:"163 g e 5,8 mm. Pesa cerca de 50 g a menos que os outros dois e é o único que some no bolso. A conta chega na bateria."},
+    foto:{quem:"Galaxy S26 Ultra", cor:"var(--ultra)", texto:"Quatro câmeras traseiras, com zoom óptico de 3x e de 5x. O Pura 80 Pro tem o sensor principal maior (1 polegada), mas vem sem 5G e sem Google."},
+    bateria:{quem:"Galaxy S26 Ultra", cor:"var(--ultra)", texto:"No papel, o Pura 80 Pro leva (5.170 mAh). Como ele não tem 5G nem apps do Google, a escolha segura é o S26 Ultra, com 5.000 mAh. Evite o Edge se você fica longe da tomada."},
+    anos:{quem:"Galaxy S26 Ultra", cor:"var(--ultra)", texto:"Atualização de segurança garantida até 28/02/2033, 5G e Google. Custa quase o dobro do Edge, mas é o que envelhece melhor."}
+  };
+  const botoes = document.querySelectorAll(".usos button");
+  const quem = document.getElementById("v-quem");
+  const texto = document.getElementById("v-texto");
+  botoes.forEach(b => b.addEventListener("click", () => {
+    botoes.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    const v = vereditos[b.dataset.uso];
+    quem.textContent = v.quem; quem.style.color = v.cor; texto.textContent = v.texto;
+  }));
+</script>
+</body>
+</html>
