@@ -204,7 +204,47 @@
     .laudo dl{grid-template-columns:1fr}
     .laudo dt{border-bottom:0; padding-bottom:0}
   }
+  @media (max-width:47.99rem){
+    .nav{flex-wrap:nowrap; overflow-x:auto; justify-content:flex-start; gap:1.1rem; -webkit-overflow-scrolling:touch}
+    .versoes{display:none}
+    .topo{padding:.7rem 0}
+    .selo .caixa{display:none}
+    .selo{justify-items:start}
+    .selo .pesagem-hora{font-size:.75rem; letter-spacing:.08em; white-space:nowrap}
+  }
   @media (prefers-reduced-motion:reduce){ .corpo,.leitura,.placa.salta{animation:none} }
+  /* ---------- Bilhete: o palpite acima da dobra ---------- */
+  .slip{padding:1.25rem 0 .25rem; border-bottom:var(--hairline) solid var(--corda)}
+  .slip h2{font-size:clamp(1.9rem,7vw,3rem); line-height:.95}
+  .slip .sub{margin:.35rem 0 .9rem; font-family:var(--dado); font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--fumaca)}
+  .chips{display:flex; gap:.5rem; overflow-x:auto; overflow-y:hidden; padding-bottom:.5rem; scrollbar-width:thin; -webkit-overflow-scrolling:touch}
+  .chips button{flex:0 0 auto; min-height:44px; display:inline-flex; align-items:center; gap:.45rem; font:inherit; font-size:.9375rem; color:var(--giz-2); background:var(--lona); border:var(--hairline) solid var(--corda); border-radius:999px; padding:.55rem 1rem; cursor:pointer; white-space:nowrap; transition:color var(--t-criterio) var(--sai-rapido), border-color var(--t-criterio) var(--sai-rapido), background-color var(--t-criterio) var(--sai-rapido)}
+  .chips button:hover{color:var(--giz); border-color:var(--corda-forte)}
+  .chips button[aria-pressed="true"]{color:var(--arena); background:var(--ouro); border-color:var(--ouro); font-weight:600}
+  .chips .perna[aria-pressed="true"]{color:var(--giz); background:color-mix(in srgb, var(--ouro) 16%, transparent); border-color:var(--ouro)}
+  .bilhete{margin-top:.9rem; padding:1.1rem 1.1rem 1.25rem; background:var(--lona); border:var(--hairline) solid var(--c,var(--cor-ativa)); border-radius:var(--raio); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--c,var(--cor-ativa)) 22%, transparent)}
+  .bilhete .faixa{margin:0 0 .5rem; display:flex; flex-wrap:wrap; gap:.5rem .9rem; align-items:baseline; font-family:var(--dado); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ouro)}
+  .bilhete .estado{color:var(--incerteza)}
+  .bilhete .estado[data-t="ameacado"]{color:var(--ouro)}
+  .bilhete .campeao{display:block; font-family:var(--poster); font-weight:900; font-size:clamp(2rem,8vw,3rem); line-height:.95; text-transform:uppercase; color:var(--c,var(--cor-ativa))}
+  .bilhete .linha{margin:.3rem 0 0; font-family:var(--dado); font-size:1rem; color:var(--giz)}
+  .bilhete .frase{margin:.55rem 0 .9rem; color:var(--giz-2)}
+  .bilhete .comprar{display:flex; width:100%}
+  .distancias{list-style:none; margin:.9rem 0 0; padding:0; display:grid; gap:.4rem}
+  .distancias li{display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:.6rem .8rem; border:var(--hairline) solid var(--corda); border-radius:var(--raio); font-family:var(--dado); font-size:.9rem; color:var(--giz-2)}
+  .distancias .d{font-family:var(--poster); font-weight:800; font-size:1.25rem; color:var(--ouro); letter-spacing:.01em}
+  .distancias .d.vago{font-family:var(--dado); font-size:.82rem; font-weight:400; color:var(--incerteza); letter-spacing:.04em}
+  .mercado,.conta{margin:.8rem 0 0; font-family:var(--dado); font-size:.82rem; line-height:1.5; color:var(--incerteza)}
+  .conta{color:var(--giz-2)}
+  .acoes{display:grid; gap:.5rem; margin-top:.9rem}
+  .acoes button,.acoes a{min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font:inherit; font-size:.9375rem; color:var(--giz-2); background:transparent; border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio); padding:.6rem 1rem; cursor:pointer; text-decoration:none}
+  .acoes button:hover,.acoes a:hover{color:var(--giz); border-color:var(--giz-2)}
+  .mini{margin:.9rem 0 0; font-family:var(--dado); font-size:.75rem; line-height:1.55; color:var(--fumaca)}
+  @media (min-width:48rem){
+    .acoes{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .bilhete .comprar{width:auto; display:inline-flex}
+    .distancias li{font-size:.95rem}
+  }
 </style>
 </head>
 <body>
@@ -217,23 +257,53 @@
     </a>
     <nav class="nav" aria-label="Seções">
       <a href="#" aria-current="page">Início</a>
-      <a href="#comparar">Comparar</a>
+      <a href="#palpite">Palpite</a>
       <a href="#fita">Especificações</a>
       <a href="#replay">Testes</a>
       <a href="#laudo">Metodologia</a>
     </nav>
     <div class="selo">
-      <div class="caixa">Laboratório Nocautecel · medidas declaradas
+      <div class="caixa">Comparador Nocautecel · medidas declaradas
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="#B7C2CE" stroke-width="1.1"><path d="M8 1v10M3 5h10M4 5 2 10h4Zm8 0-2 5h4ZM5 14h6"/></svg>
       </div>
-      <div class="pesagem-hora">PESAGEM 11.09.2026 14:45</div>
+      <div class="pesagem-hora">ÚLTIMA COLETA 11.09.2026 14h45</div>
       <div class="versoes" aria-label="Versões do design">Versão <a href="./" aria-current="page">A</a><a href="b/">B</a><a href="c/">C</a></div>
     </div>
   </header>
 
+  <section class="slip" id="palpite" aria-labelledby="t-palpite">
+    <h2 id="t-palpite">O que mais pesa pra você?</h2>
+    <p class="sub">Escolha um critério. Some um requisito, se quiser. O cinturão muda.</p>
+    <div class="chips" role="group" aria-label="Critério do palpite">
+      <button type="button" data-uso="economia" aria-pressed="true">Gastar menos</button>
+      <button type="button" data-uso="leveza" aria-pressed="false">No bolso</button>
+      <button type="button" data-uso="foto" aria-pressed="false">Zoom</button>
+      <button type="button" data-uso="bateria" aria-pressed="false">Bateria</button>
+      <button type="button" data-uso="anos" aria-pressed="false">Durar anos</button>
+      <button type="button" class="perna" data-perna="googleg5" aria-pressed="false">+ Google e 5G</button>
+    </div>
+
+    <div class="bilhete" id="bilhete" aria-live="polite">
+      <p class="faixa"><span id="s-titulo">Cinturão · gastar menos</span><span class="estado" id="s-estado"></span></p>
+      <strong class="campeao" id="s-quem">Galaxy S25 Edge</strong>
+      <p class="linha" id="s-linha">R$ 3.799,05 no Pix · 512 GB</p>
+      <p class="frase" id="s-frase"></p>
+      <!-- AFILIADO: os href saem do objeto "aparelhos" no script. Falta a tag do Amazon Associados. -->
+      <a class="comprar" id="s-comprar" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon <span class="num" id="s-preco">R$ 3.799,05</span></a>
+      <ul class="distancias" id="s-distancias"></ul>
+      <p class="mercado" id="s-mercado"></p>
+      <p class="conta" id="s-conta"></p>
+      <div class="acoes">
+        <button type="button" id="s-copiar">Copiar placar</button>
+        <a href="#pesagem">Ver a pesagem</a>
+      </div>
+      <p class="mini">Coleta na Amazon em 11/09/2026 14h45, CEP padrão de São Paulo. Preço muda todo dia: confira vendedor, condição e capacidade antes de pagar. Como afiliado podemos ganhar comissão sem custo extra para você — os links desta demonstração ainda não têm a tag de afiliado.</p>
+    </div>
+  </section>
+
   <h1 class="sr">Três na balança: Galaxy S25 Edge, Huawei Pura 80 Pro e Galaxy S26 Ultra</h1>
 
-  <div class="palco">
+  <div class="palco" id="pesagem">
     <div class="palco-rolo">
       <div class="palco-trilho">
         <span class="ancora" style="left:25%"></span>
@@ -365,25 +435,6 @@
     <div class="lema"><p>Precisão não é opinião. É fonte. <span aria-hidden="true">✦</span></p></div>
   </div>
 
-  <section id="comparar" aria-labelledby="t-comparar">
-    <div class="sec-topo">
-      <h2 id="t-comparar">Quem leva o cinturão?</h2>
-      <p>Escolha o que mais pesa para você. O aparelho vencedor acende na pesagem e na bilheteria.</p>
-    </div>
-    <div class="segmentos" role="group" aria-label="O que mais pesa para você">
-      <button type="button" data-uso="economia" aria-pressed="true">Gastar menos</button>
-      <button type="button" data-uso="leveza" aria-pressed="false">Leve e fino no bolso</button>
-      <button type="button" data-uso="foto" aria-pressed="false">Fotografar e dar zoom</button>
-      <button type="button" data-uso="bateria" aria-pressed="false">Bateria o dia todo</button>
-      <button type="button" data-uso="anos" aria-pressed="false">Usar por muitos anos</button>
-    </div>
-    <div class="veredito" aria-live="polite">
-      <div class="placa" id="placa"><span>Cinturão</span><strong id="v-quem">Galaxy S25 Edge</strong></div>
-      <p id="v-texto">O mais barato hoje, R$ 3.799 no Pix, com 5G e Google. Aceite a troca: é o que menos dura na bateria e não tem teleobjetiva.</p>
-      <!-- AFILIADO: os links deste botão vêm do objeto "vereditos" no script -->
-      <a class="comprar" id="v-comprar" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored">Ver na Amazon <span class="num" id="v-preco">R$ 3.799,05</span></a>
-    </div>
-  </section>
 
   <section id="fita" aria-labelledby="t-fita">
     <div class="sec-topo">
@@ -528,28 +579,156 @@
     for (let gy = y + h - 22; gy > y; gy -= 22) g.appendChild(el("line", {x1: x, x2: x + w, y1: gy, y2: gy, class: "grade"}));
   });
 
-  const vereditos = {
-    economia:{foco:"edge", quem:"Galaxy S25 Edge", preco:"R$ 3.799,05", href:"https://www.amazon.com.br/dp/B0F8PHM63K", texto:"O mais barato hoje, R$ 3.799 no Pix, com 5G e Google. Aceite a troca: é o que menos dura na bateria e não tem teleobjetiva."},
-    leveza:{foco:"edge", quem:"Galaxy S25 Edge", preco:"R$ 3.799,05", href:"https://www.amazon.com.br/dp/B0F8PHM63K", texto:"163 g e 5,8 mm. Pesa cerca de 50 g a menos que os outros dois e é o único que some no bolso. A conta chega na bateria."},
-    foto:{foco:"ultra", quem:"Galaxy S26 Ultra", preco:"R$ 6.749,10", href:"https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb", texto:"Quatro câmeras traseiras, com zoom óptico de 3x e de 5x. O Pura 80 Pro tem o sensor principal maior (1 polegada), mas vem sem 5G e sem Google."},
-    bateria:{foco:"ultra", quem:"Galaxy S26 Ultra", preco:"R$ 6.749,10", href:"https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb", texto:"No papel, o Pura 80 Pro leva (5.170 mAh). Como ele não tem 5G nem apps do Google, a escolha segura é o S26 Ultra, com 5.000 mAh. Evite o Edge se você fica longe da tomada."},
-    anos:{foco:"ultra", quem:"Galaxy S26 Ultra", preco:"R$ 6.749,10", href:"https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb", texto:"Atualização de segurança garantida até 28/02/2033, 5G e Google. Custa quase o dobro do Edge, mas é o que envelhece melhor."}
+  // ---------- Bilhete: critério, distância do segundo e palpite salvo ----------
+  const COLETA = "2026-09-11 14:45";
+  const brl = n => "R$ " + n.toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+  const aparelhos = {
+    edge: {nome:"Galaxy S25 Edge", curto:"S25 Edge", preco:3799.05, cap:"512 GB", peso:163, esp:5.8, zoom:0, bateria:3900, g5:true, google:true, seg:null,
+      href:"https://www.amazon.com.br/dp/B0F8PHM63K"},
+    pura: {nome:"Huawei Pura 80 Pro", curto:"Pura 80 Pro", preco:3999.00, cap:"12 + 512 GB", peso:219, esp:8.3, zoom:4, bateria:5170, g5:false, google:false, seg:null,
+      href:"https://www.amazon.com.br/s?k=huawei+pura+80+pro+512gb"},
+    ultra:{nome:"Galaxy S26 Ultra", curto:"S26 Ultra", preco:6749.10, cap:"256 GB", peso:214, esp:7.9, zoom:5, bateria:5000, g5:true, google:true, seg:"28/02/2033",
+      href:"https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb"}
   };
+  const criterios = {
+    economia:{titulo:"gastar menos", ordem:["edge","pura","ultra"],
+      linha:k => brl(aparelhos[k].preco) + " no Pix · " + aparelhos[k].cap,
+      frase:{edge:"Barato. Sem teleobjetiva e com a bateria mais fraca dos três.", pura:"Preço de entrada. Sem 5G e sem apps do Google.", ultra:"O mais completo. Também o que mais custa."},
+      dist:(a,b) => "+" + brl(aparelhos[b].preco - aparelhos[a].preco),
+      relativo:(a,b) => (aparelhos[b].preco - aparelhos[a].preco) / aparelhos[a].preco},
+    leveza:{titulo:"no bolso", ordem:["edge","ultra","pura"],
+      linha:k => aparelhos[k].esp.toLocaleString("pt-BR") + " mm · " + aparelhos[k].peso + " g",
+      frase:{edge:"5,8 mm e 163 g. Some no bolso; a conta chega na bateria.", ultra:"Grande e pesado, mas entrega o resto todo.", pura:"O mais gordo dos três, com a maior bateria."},
+      dist:(a,b) => "+" + (aparelhos[b].peso - aparelhos[a].peso) + " g",
+      relativo:(a,b) => (aparelhos[b].peso - aparelhos[a].peso) / aparelhos[a].peso},
+    foto:{titulo:"zoom", ordem:["ultra","pura","edge"],
+      linha:k => aparelhos[k].zoom === 0 ? "sem teleobjetiva · 2x por recorte" : (k === "ultra" ? "3x e 5x ópticos" : aparelhos[k].zoom + "x óptico"),
+      frase:{ultra:"Tele de verdade, 3x e 5x. O preço não perdoa.", pura:"4x óptico e sensor de 1 polegada. Sem 5G e sem Google.", edge:"Não entrou neste round: não tem teleobjetiva."},
+      dist:(a,b) => aparelhos[b].zoom === 0 ? "sem tele" : "−" + (aparelhos[a].zoom - aparelhos[b].zoom) + "x",
+      relativo:(a,b) => aparelhos[b].zoom === 0 ? 1 : (aparelhos[a].zoom - aparelhos[b].zoom) / aparelhos[a].zoom},
+    bateria:{titulo:"bateria", ordem:["pura","ultra","edge"],
+      linha:k => aparelhos[k].bateria.toLocaleString("pt-BR") + " mAh" + (k === "ultra" ? " típica" : k === "pura" ? " nominal" : ""),
+      frase:{pura:"5.170 mAh aguentam o dia. Sem 5G e sem Play Store.", ultra:"5.000 mAh típica, com 5G e Google no pacote.", edge:"3.900 mAh: 12h38 no teste de navegação do Tom's Guide."},
+      dist:(a,b) => "−" + (aparelhos[a].bateria - aparelhos[b].bateria).toLocaleString("pt-BR") + " mAh",
+      relativo:(a,b) => (aparelhos[a].bateria - aparelhos[b].bateria) / aparelhos[a].bateria},
+    anos:{titulo:"durar anos", ordem:["ultra","edge","pura"],
+      linha:k => aparelhos[k].seg ? "segurança até " + aparelhos[k].seg : "prazo não verificado",
+      frase:{ultra:"Segurança garantida até 02/2033. Envelhece melhor, e cobra por isso.", edge:"Prazo de atualização não verificado nesta sessão.", pura:"Prazo de atualização não verificado nesta sessão."},
+      dist:() => "não verificado", relativo:() => null}
+  };
+  const PERNA = {rotulo:"Google e 5G", passa:k => aparelhos[k].g5 && aparelhos[k].google, motivo:"sem 5G e sem apps do Google"};
+
   const alturas = {edge:-348, pura:-358.6, ultra:-359.9};
-  const raiz = document.documentElement, botoes = document.querySelectorAll(".segmentos button"), placa = document.getElementById("placa"), leitura = document.getElementById("leitura");
-  function aplica(uso, animar){
-    const v = vereditos[uso];
-    raiz.dataset.foco = v.foco;
-    raiz.style.setProperty("--cor-ativa", "var(--" + v.foco + ")");
-    leitura.style.setProperty("--leitura-y", alturas[v.foco] + "px");
-    document.getElementById("v-quem").textContent = v.quem;
-    document.getElementById("v-texto").textContent = v.texto;
-    document.getElementById("v-preco").textContent = v.preco;
-    document.getElementById("v-comprar").href = v.href;
-    botoes.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.uso === uso)));
-    if (animar){ placa.classList.remove("salta"); void placa.offsetWidth; placa.classList.add("salta"); }
+  const raiz = document.documentElement;
+  const chips = document.querySelectorAll(".chips button[data-uso]");
+  const chipPerna = document.querySelector(".chips .perna");
+  const leitura = document.getElementById("leitura");
+  const bilhete = document.getElementById("bilhete");
+  let usoAtual = "economia", pernaAtiva = false, estadoAtual = null;
+
+  function calcula(uso, perna){
+    const c = criterios[uso];
+    const elegiveis = perna ? c.ordem.filter(PERNA.passa) : c.ordem.slice();
+    const campeao = elegiveis[0], segundo = elegiveis[1];
+    const cortado = perna ? c.ordem.find(k => !PERNA.passa(k)) : null;
+    const cortadoLiderava = Boolean(cortado) && c.ordem[0] === cortado;
+    const rel = segundo ? c.relativo(campeao, segundo) : null;
+    const estado = rel === null ? "sem disputa medida" : (rel <= 0.08 ? "ameaçado" : "firme");
+    return {c, campeao, segundo, cortado, cortadoLiderava, estado, rel, resto: c.ordem.filter(k => k !== campeao)};
   }
-  botoes.forEach(b => b.addEventListener("click", () => aplica(b.dataset.uso, true)));
+
+  function aplica(uso, perna, animar){
+    const r = calcula(uso, perna);
+    const a = aparelhos[r.campeao];
+    usoAtual = uso; pernaAtiva = perna; estadoAtual = r;
+
+    raiz.dataset.foco = r.campeao;
+    raiz.style.setProperty("--cor-ativa", "var(--" + r.campeao + ")");
+    bilhete.style.setProperty("--c", "var(--" + r.campeao + ")");
+    if (leitura) leitura.style.setProperty("--leitura-y", alturas[r.campeao] + "px");
+
+    document.getElementById("s-titulo").textContent = "Cinturão · " + r.c.titulo + (perna ? " + " + PERNA.rotulo : "");
+    const est = document.getElementById("s-estado");
+    est.textContent = r.estado === "ameaçado" ? "título ameaçado" : r.estado === "firme" ? "título firme" : r.estado;
+    est.dataset.t = r.estado === "ameaçado" ? "ameacado" : "firme";
+    document.getElementById("s-quem").textContent = a.nome;
+    document.getElementById("s-linha").textContent = r.c.linha(r.campeao);
+    document.getElementById("s-frase").textContent = r.c.frase[r.campeao];
+    document.getElementById("s-preco").textContent = brl(a.preco);
+    document.getElementById("s-comprar").href = a.href;
+
+    const lista = document.getElementById("s-distancias");
+    lista.textContent = "";
+    r.resto.forEach(k => {
+      const li = document.createElement("li");
+      const nome = document.createElement("span");
+      nome.textContent = aparelhos[k].curto + (k === r.cortado ? " · fora: " + PERNA.motivo : "");
+      const d = document.createElement("span");
+      const texto = k === r.cortado ? "perna 2" : r.c.dist(r.campeao, k);
+      d.className = "d" + (/[0-9]/.test(texto) ? "" : " vago");
+      d.textContent = texto;
+      li.append(nome, d);
+      lista.appendChild(li);
+    });
+
+    const mercado = document.getElementById("s-mercado");
+    let texto = uso === "economia"
+      ? "Movimento medido: na coleta de 10/09 o S26 Ultra 256 GB estava " + brl(10092.90) + " e caiu " + brl(3343.80) + " até a coleta de 11/09. Edge e Pura não mudaram entre as duas."
+      : "Uma coleta por rodada. A próxima entra quando os preços forem conferidos de novo: não há relógio automático nesta demonstração.";
+    if (r.cortadoLiderava) texto = aparelhos[r.cortado].curto + " ganhava a primeira perna e caiu na segunda, " + PERNA.motivo + ". " + texto;
+    mercado.textContent = texto;
+
+    chips.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.uso === uso)));
+    chipPerna.setAttribute("aria-pressed", String(perna));
+    if (animar && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+      bilhete.animate([{opacity:.55},{opacity:1}], {duration:180, easing:"cubic-bezier(.25,1,.5,1)"});
+    }
+    conta(r);
+    guarda(r);
+  }
+
+  const CHAVE = "nocautecel:palpite";
+  const anterior = (() => { try { return JSON.parse(localStorage.getItem(CHAVE) || "null"); } catch(e){ return null; } })();
+  function guarda(r){
+    try { localStorage.setItem(CHAVE, JSON.stringify({coleta:COLETA, uso:usoAtual, perna:pernaAtiva, campeao:r.campeao, em:new Date().toISOString()})); } catch(e){}
+  }
+  function conta(r){
+    const p = document.getElementById("s-conta");
+    if (!anterior || !aparelhos[anterior.campeao] || !criterios[anterior.uso]){
+      p.textContent = "Este palpite fica guardado neste navegador. Quando a coleta mudar, você vê se ele se sustentou.";
+      return;
+    }
+    const dia = new Date(anterior.em).toLocaleDateString("pt-BR");
+    const nomeAnterior = aparelhos[anterior.campeao].curto;
+    const mesmoCriterio = anterior.uso === usoAtual && anterior.perna === pernaAtiva;
+    if (anterior.coleta === COLETA){
+      p.textContent = "Seu palpite de " + dia + ": " + nomeAnterior + " em " + criterios[anterior.uso].titulo + ". A coleta ainda é a mesma, então continua aberto.";
+    } else if (mesmoCriterio && anterior.campeao === r.campeao){
+      p.textContent = "Seu palpite de " + dia + " era " + nomeAnterior + ". Depois da nova coleta, o cinturão continua nele.";
+    } else {
+      p.textContent = "Seu palpite de " + dia + " era " + nomeAnterior + " em " + criterios[anterior.uso].titulo + ". Nesta coleta, quem leva é " + aparelhos[r.campeao].curto + ".";
+    }
+  }
+
+  chips.forEach(b => b.addEventListener("click", () => aplica(b.dataset.uso, pernaAtiva, true)));
+  chipPerna.addEventListener("click", () => aplica(usoAtual, !pernaAtiva, true));
+
+  document.getElementById("s-copiar").addEventListener("click", async (ev) => {
+    const r = estadoAtual, botao = ev.currentTarget;
+    const linhas = [
+      "NOCAUTECEL · coleta " + COLETA,
+      "Critério: " + r.c.titulo + (pernaAtiva ? " + " + PERNA.rotulo : ""),
+      "Cinturão: " + aparelhos[r.campeao].nome + " — " + r.c.linha(r.campeao),
+      r.segundo ? "Segundo: " + aparelhos[r.segundo].curto + " " + r.c.dist(r.campeao, r.segundo) : "",
+      r.c.frase[r.campeao],
+      "nocautecel.com"
+    ].filter(Boolean);
+    try { await navigator.clipboard.writeText(linhas.join("\n")); botao.textContent = "Placar copiado"; }
+    catch(e){ botao.textContent = "Não consegui copiar"; }
+    setTimeout(() => { botao.textContent = "Copiar placar"; }, 2200);
+  });
+
+  aplica("economia", false, false);
 
   document.getElementById("baixar").addEventListener("click", () => {
     const linhas = [
