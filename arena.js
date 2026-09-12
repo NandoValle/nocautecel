@@ -2,6 +2,10 @@
 // Usa as globais do script principal (aparelhos, CHAVES, P, criterios, cor, fotoDe, brl, fmt, dataBR, link, el, K, CHAO).
 
 function htmlEsc(t){ return String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]); }
+// Campo que não consta na ficha (null) vira texto honesto, nunca "null g".
+function pesoTxt(a){ return a.peso == null ? "peso não consta" : a.peso + " g"; }
+function capTxt(it){ return it.gb == null ? null : it.gb >= 1024 ? fmt(it.gb / 1024) + " TB" : it.gb + " GB"; }
+const tiraAcento = t => String(t).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
 // Silhueta em escala para quem não tem foto livre: proporção das medidas oficiais.
 function silhueta(k){
@@ -22,10 +26,13 @@ function montaCatalogo(aoMudar){
     const f = fotoDe(k);
     li.innerHTML = '<label class="opcao"><input type="checkbox" value="' + k + '">' +
       (f ? '<img class="mini-foto" src="' + f + '" alt="" loading="lazy" decoding="async" width="60" height="80">' : '<span class="mini-foto">' + silhueta(k) + '</span>') +
-      '<span class="txt">' + htmlEsc(a.nome) + '<small>' + brl(it.preco) + ' · ' + (it.gb >= 1024 ? fmt(it.gb / 1024) + ' TB' : it.gb + ' GB') +
+      '<span class="txt">' + htmlEsc(a.nome) + '<small>' + brl(it.preco) + (capTxt(it) ? ' · ' + capTxt(it) : '') +
       (it.suspeito ? ' · <em>preço suspeito</em>' : '') + '</small></span></label>';
+    li.dataset.marca = a.marca;
+    li.dataset.busca = tiraAcento(a.nome + " " + a.curto + " " + a.marca);
     lista.appendChild(li);
   });
+  montaFiltro(lista, chaves);
   lista.addEventListener("change", ev => {
     const caixa = ev.target;
     if (!caixa.matches("input")) return;
@@ -42,6 +49,43 @@ function montaCatalogo(aoMudar){
   });
 }
 
+// Com dezenas de aparelhos, a lista precisa de marca e busca. Os já escolhidos nunca somem.
+let filtroMarca = "", filtroTexto = "";
+function montaFiltro(lista, chaves){
+  if (document.getElementById("catalogo-filtro")) return;
+  const marcas = [...new Set(chaves.map(k => aparelhos[k].marca))].sort((a, b) => a.localeCompare(b, "pt-BR"));
+  const box = document.createElement("div");
+  box.id = "catalogo-filtro"; box.className = "filtro-cat";
+  box.innerHTML = '<input type="search" placeholder="Buscar modelo (ex.: S25, g86, 17 Pro)" aria-label="Buscar modelo no catálogo" enterkeyhint="search">' +
+    '<div class="marcas" role="group" aria-label="Filtrar por marca">' +
+    [["", "Todas", chaves.length]].concat(marcas.map(m => [m, m, chaves.filter(k => aparelhos[k].marca === m).length]))
+      .map(m => '<button type="button" data-marca="' + htmlEsc(m[0]) + '" aria-pressed="' + (m[0] === "" ? "true" : "false") + '">' + htmlEsc(m[1]) + ' <small>' + m[2] + '</small></button>').join("") +
+    '</div><p class="conta" aria-live="polite"></p>';
+  lista.parentNode.insertBefore(box, lista);
+  box.querySelector("input").addEventListener("input", ev => { filtroTexto = tiraAcento(ev.target.value.trim()); aplicaFiltro(); });
+  box.querySelector(".marcas").addEventListener("click", ev => {
+    const b = ev.target.closest("button"); if (!b) return;
+    filtroMarca = b.dataset.marca;
+    box.querySelectorAll(".marcas button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    aplicaFiltro();
+  });
+  aplicaFiltro();
+}
+function aplicaFiltro(){
+  const lista = document.getElementById("catalogo"), box = document.getElementById("catalogo-filtro");
+  if (!lista || !box) return;
+  const termos = filtroTexto.split(/\s+/).filter(Boolean);
+  let vistos = 0;
+  lista.querySelectorAll("li").forEach(li => {
+    const escolhido = li.querySelector("input").checked;
+    const passa = escolhido || ((!filtroMarca || li.dataset.marca === filtroMarca) && termos.every(t => li.dataset.busca.indexOf(t) >= 0));
+    li.hidden = !passa;
+    if (passa) vistos++;
+  });
+  box.querySelector(".conta").textContent = vistos + (vistos === 1 ? " aparelho na lista" : " aparelhos na lista") +
+    (filtroMarca || termos.length ? " · os já escolhidos continuam visíveis" : " · do mais caro ao mais barato");
+}
+
 function marcaCatalogo(){
   const lista = document.getElementById("catalogo");
   if (!lista) return;
@@ -51,6 +95,7 @@ function marcaCatalogo(){
     i.disabled = CHAVES.length >= 3 && pos < 0;
     i.closest(".opcao").className = "opcao" + (pos >= 0 ? " s" + pos : "");
   });
+  aplicaFiltro();
   const resumo = document.getElementById("escolha-resumo");
   if (resumo) resumo.textContent = CHAVES.map(k => aparelhos[k].curto).join(" × ") + (CHAVES.length < 3 ? " · cabe mais 1" : "");
 }
@@ -79,7 +124,7 @@ function desenhaPalco(){
     // Nome curto: com três aparelhos lado a lado, o nome completo invade o vizinho.
     rot(a.curto.toUpperCase(), y - 54, "rotulo-nome", 15);
     rot(fmt(a.alt) + " × " + fmt(a.larg) + " × " + fmt(a.esp) + " mm", y - 34, "rotulo-dado", 12);
-    rot(a.peso + " g" + (a.dobra ? " · dobrado" : ""), y - 16, "rotulo-dado", 12);
+    rot(pesoTxt(a) + (a.dobra ? " · dobrado" : ""), y - 16, "rotulo-dado", 12);
     grupo.appendChild(el("path", {class: "lado", d: "M" + (x + w) + " " + (y + 10) + " L" + (x + w + d) + " " + (y + 10 - sk) + " L" + (x + w + d) + " " + (CHAO - sk) + " L" + (x + w) + " " + CHAO + " Z"}));
     grupo.appendChild(el("path", {class: "lado", d: "M" + (x + 10) + " " + y + " L" + (x + 10 + d) + " " + (y - sk) + " L" + (x + w + d) + " " + (y - sk) + " L" + (x + w) + " " + y + " Z"}));
     grupo.appendChild(el("rect", {class: "face", x: x, y: y, width: w, height: h, rx: 14}));
@@ -111,7 +156,7 @@ function desenhaPalco(){
     T(fmt(a.alt) + " mm", 1000, yy, {class: "tabela-v", "font-size": 12, "text-anchor": "end"});
     T(fmt(a.larg) + " mm", 1064, yy, {class: "tabela-v", "font-size": 12, "text-anchor": "end"});
     T(fmt(a.esp) + " mm", 1132, yy, {class: "tabela-v", "font-size": 12, "text-anchor": "end"});
-    T(a.peso + " g", 1186, yy, {class: "tabela-v", "font-size": 12, "text-anchor": "end"});
+    T(a.peso == null ? "—" : a.peso + " g", 1186, yy, {class: "tabela-v", "font-size": 12, "text-anchor": "end"});
     tab.appendChild(el("line", {class: "tabela-linha", x1: 852, y1: yy + 16, x2: 1188, y2: yy + 16}));
   });
   const yb = 418 + CHAVES.length * 44;
@@ -120,7 +165,7 @@ function desenhaPalco(){
 
   const svg = document.getElementById("palco-svg");
   if (svg) svg.setAttribute("aria-label", "Pesagem em escala: " + CHAVES.map(k => {
-    const a = aparelhos[k]; return a.nome + ", " + fmt(a.alt) + " por " + fmt(a.larg) + " por " + fmt(a.esp) + " mm, " + a.peso + " g";
+    const a = aparelhos[k]; return a.nome + ", " + fmt(a.alt) + " por " + fmt(a.larg) + " por " + fmt(a.esp) + " mm, " + pesoTxt(a);
   }).join("; ") + ".");
 }
 
@@ -158,7 +203,7 @@ function desenhaFita(){
   num("Espessura", "menos é melhor · dobráveis dobrados", k => aparelhos[k].esp, k => fmt(aparelhos[k].esp) + " mm", true, d => fmt(Math.round(d * 100) / 100) + " mm");
   num("Peso", "menos é melhor", k => aparelhos[k].peso, k => aparelhos[k].peso + " g", true, d => d + " g");
   txt("Altura × largura", "dobráveis dobrados", k => [fmt(aparelhos[k].alt) + " × " + fmt(aparelhos[k].larg) + " mm"]);
-  txt("Tela", null, k => [aparelhos[k].tela]);
+  txt("Tela", null, k => aparelhos[k].tela ? [aparelhos[k].tela] : ["não consta na ficha", " sem"]);
   num("Capacidade da bateria", "declarada pelo fabricante · não é autonomia medida", k => aparelhos[k].bateria, k => fmt(aparelhos[k].bateria) + " mAh", false, d => fmt(d) + " mAh", k => aparelhos[k].batNota);
   num("Câmera principal", "resolução declarada", k => aparelhos[k].cam, k => aparelhos[k].cam + " MP", false, d => d + " MP");
   num("Zoom óptico", 'o que o fabricante chama de óptico', k => aparelhos[k].zoom, k => aparelhos[k].zoom === 0 ? "sem tele" : fmt(aparelhos[k].zoom) + "x", false, d => fmt(d) + "x", k => aparelhos[k].zoomTxt);
@@ -193,7 +238,7 @@ function desenhaBilheteria(){
   if (!t) return;
   t.innerHTML = CHAVES.map((k, i) => {
     const a = aparelhos[k], it = P.itens[k];
-    const cap = it.gb >= 1024 ? fmt(it.gb / 1024) + " TB" : it.gb + " GB";
+    const cap = capTxt(it) || "capacidade não conferida";
     return '<article class="ingresso s' + i + '"><h3>' + htmlEsc(a.nome) + '</h3><p class="obs">' + cap + ' · ' + htmlEsc(it.condicao || "") +
       (it.suspeito ? '<span class="suspeito">⚠ ' + htmlEsc(it.suspeito) + '</span>' : '') + '</p>' +
       '<div class="preco">' + brl(it.preco) + '<small>' + htmlEsc(it.coleta || "coleta de " + dia(P.coletado_em)) + '</small></div>' +
@@ -223,10 +268,10 @@ function textoPesagem(){
   lin("Preço (Amazon)", k => brl(P.itens[k].preco) + (P.itens[k].suspeito ? " (!)" : ""));
   lin("Coleta", k => P.itens[k].coleta || dia(P.coletado_em));
   lin("A x L x E (mm)", k => fmt(aparelhos[k].alt) + "x" + fmt(aparelhos[k].larg) + "x" + fmt(aparelhos[k].esp));
-  lin("Peso", k => aparelhos[k].peso + " g");
-  lin("Tela", k => aparelhos[k].tela);
+  lin("Peso", k => pesoTxt(aparelhos[k]));
+  lin("Tela", k => aparelhos[k].tela || "não consta");
   lin("Bateria", k => aparelhos[k].bateria == null ? "sem mAh declarado" : fmt(aparelhos[k].bateria) + " mAh");
-  lin("Câmera principal", k => aparelhos[k].cam + " MP");
+  lin("Câmera principal", k => aparelhos[k].cam == null ? "não consta" : aparelhos[k].cam + " MP");
   lin("Zoom óptico", k => aparelhos[k].zoom == null ? "não consta" : aparelhos[k].zoom + "x");
   lin("5G", k => aparelhos[k].g5 === true ? "sim" : aparelhos[k].g5 === false ? "não" : "não consta");
   lin("Segurança até", k => aparelhos[k].seg ? dataBR(aparelhos[k].seg) : "não consta");

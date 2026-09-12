@@ -346,7 +346,16 @@
   .escolha>summary::after{content:"Trocar"; margin-left:auto; font-family:var(--dado); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--scan)}
   .escolha[open]>summary::after{content:"Fechar"}
   .escolha .aviso-sel{margin:0 .9rem .6rem; font-family:var(--dado); font-size:.78rem; color:var(--ouro)}
-  .catalogo{list-style:none; margin:0; padding:.3rem .9rem .9rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(13.5rem,1fr)); gap:.5rem}
+  .catalogo{list-style:none; margin:0; padding:.3rem .9rem .9rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(13.5rem,1fr)); gap:.5rem; max-height:min(34rem,62vh); overflow-y:auto; overscroll-behavior:contain}
+  .filtro-cat{display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; padding:.2rem .9rem .5rem}
+  .filtro-cat input{flex:1 1 12rem; min-height:44px; padding:.4rem .7rem; font:inherit; font-size:.9rem; color:var(--giz); background:var(--lona-2); border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio)}
+  .filtro-cat input:focus-visible{outline:2px solid var(--scan); outline-offset:1px}
+  .filtro-cat .marcas{display:flex; flex-wrap:wrap; gap:.35rem}
+  .filtro-cat button{min-height:44px; padding:.3rem .7rem; font-family:var(--dado); font-size:.75rem; letter-spacing:.06em; color:var(--giz-2); background:transparent; border:var(--hairline) solid var(--corda); border-radius:var(--raio); cursor:pointer}
+  .filtro-cat button small{color:var(--incerteza)}
+  .filtro-cat button[aria-pressed="true"]{color:var(--arena); background:var(--scan); border-color:var(--scan)}
+  .filtro-cat button[aria-pressed="true"] small{color:var(--arena)}
+  .filtro-cat .conta{width:100%; margin:0; font-family:var(--dado); font-size:.72rem; color:var(--incerteza)}
   .opcao{display:grid; grid-template-columns:auto 2.4rem 1fr; gap:.2rem .6rem; align-items:center; min-height:56px; padding:.45rem .6rem;
     border:var(--hairline) solid var(--corda); border-radius:var(--raio); cursor:pointer; transition:border-color var(--t-criterio) var(--sai-rapido)}
   .opcao:hover{border-color:var(--corda-forte)}
@@ -688,12 +697,12 @@
     economia:{titulo:"gastar menos", curto:"preço", limiar:250, escala:true, menorGanha:true,
       valor:(k, f) => { const it = (f || P).itens[k]; return it ? it.preco : null; },
       medida:k => brl(preco(k)),
-      linha:k => brl(preco(k)) + " · " + P.itens[k].gb + " GB",
+      linha:k => brl(preco(k)) + (capTxt(P.itens[k]) ? " · " + capTxt(P.itens[k]) : ""),
       dist:d => "+" + brl(d), quase:(b,d) => aparelhos[b].curto + " a " + brl(d) + " do nocaute no preço."},
     leveza:{titulo:"no bolso", curto:"peso e espessura", limiar:15, escala:true, menorGanha:true,
       valor:k => aparelhos[k].peso,
-      medida:k => aparelhos[k].peso + " g · " + fmt(aparelhos[k].esp) + " mm" + (aparelhos[k].dobra ? " dobrado" : ""),
-      linha:k => fmt(aparelhos[k].esp) + " mm" + (aparelhos[k].dobra ? " dobrado" : "") + " · " + aparelhos[k].peso + " g",
+      medida:k => pesoTxt(aparelhos[k]) + " · " + fmt(aparelhos[k].esp) + " mm" + (aparelhos[k].dobra ? " dobrado" : ""),
+      linha:k => fmt(aparelhos[k].esp) + " mm" + (aparelhos[k].dobra ? " dobrado" : "") + " · " + pesoTxt(aparelhos[k]),
       dist:d => "+" + d + " g", quase:(b,d) => aparelhos[b].curto + " a " + d + " g de distância."},
     foto:{titulo:"zoom", curto:"zoom óptico", limiar:1, escala:true, menorGanha:false,
       valor:k => aparelhos[k].zoom,
@@ -703,7 +712,7 @@
     bateria:{titulo:"capacidade da bateria", curto:"capacidade da bateria", limiar:300, escala:true, menorGanha:false,
       valor:k => aparelhos[k].bateria,
       medida:k => aparelhos[k].bateria == null ? "sem mAh declarado" : fmt(aparelhos[k].bateria) + " mAh",
-      linha:k => aparelhos[k].bateria == null ? aparelhos[k].batNota : fmt(aparelhos[k].bateria) + " mAh" + (aparelhos[k].batNota ? " " + aparelhos[k].batNota : ""),
+      linha:k => aparelhos[k].bateria == null ? (aparelhos[k].batNota || "mAh não consta na ficha") : fmt(aparelhos[k].bateria) + " mAh" + (aparelhos[k].batNota ? " " + aparelhos[k].batNota : ""),
       dist:d => "−" + fmt(d) + " mAh", quase:(b,d) => aparelhos[b].curto + " a " + fmt(d) + " mAh do topo."},
     anos:{titulo:"durar anos", curto:"prazo de segurança", limiar:null, escala:false, menorGanha:false,
       valor:k => aparelhos[k].seg ? Date.parse(aparelhos[k].seg) : null,
@@ -856,7 +865,7 @@
       h3.textContent = a.nome;
       const ficha = document.createElement("p");
       ficha.className = "ficha-curta";
-      ficha.textContent = (P.itens[k].gb >= 1024 ? fmt(P.itens[k].gb / 1024) + " TB" : P.itens[k].gb + " GB") + " · " + a.peso + " g" + (a.dobra ? " · dobrável" : "");
+      ficha.textContent = [capTxt(P.itens[k]), pesoTxt(a)].filter(Boolean).join(" · ") + (a.dobra ? " · dobrável" : "");
 
       const med = document.createElement("p");
       med.className = "medida";
@@ -1218,7 +1227,7 @@
     const cx = fx + fw + 44, cl = L - M - cx;
     x.font = poster; x.fillStyle = cor;
     let y = escreveEm(x, aparelhos[r.campeao].nome.toUpperCase(), cx, fy + 78, cl, 86);
-    const bolso = brl(preco(r.campeao)) + " · " + P.itens[r.campeao].gb + " GB";
+    const bolso = brl(preco(r.campeao)) + (capTxt(P.itens[r.campeao]) ? " · " + capTxt(P.itens[r.campeao]) : "");
     const linhas = [{f:dado(30), c:giz, t: usoAtual === "economia" ? bolso : r.c.medida(r.campeao), h:40}];
     if (usoAtual !== "economia") linhas.push({f:texto(27), c:giz2, t:bolso, h:36});
     if (r.segundo && r.delta != null && /[0-9]/.test(String(r.c.dist(r.delta))))

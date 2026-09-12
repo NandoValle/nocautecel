@@ -2,7 +2,7 @@
   "coletado_em": "2026-09-11T14:45:00-03:00",
   "proxima": null,
   "fonte": "amazon.com.br, CEP padrao de Sao Paulo",
-  "observacao": "Coleta manual. Enquanto proxima for null, a pagina diz que nao ha hora marcada em vez de inventar relogio. ASIN de pura e ultra conferidos em 12/09/2026 07h00, com os mesmos precos da coleta de 11/09 -- por isso coletado_em nao mudou. Em 12/09/2026 à noite entraram 13 aparelhos com preço lido na busca da Amazon (campo coleta por item).",
+  "observacao": "Coleta manual. Enquanto proxima for null, a pagina diz que nao ha hora marcada em vez de inventar relogio. ASIN de pura e ultra conferidos em 12/09/2026 07h00, com os mesmos precos da coleta de 11/09 -- por isso coletado_em nao mudou. Em 12/09/2026 à noite entraram 13 aparelhos com preço lido na busca da Amazon (campo coleta por item). Ainda em 12/09/2026 à noite entraram mais 74 aparelhos (iPhone, Samsung, Motorola, Huawei) com preço da busca por marca, todas as páginas; Galaxy A35 5G, S20 FE, A04, Moto g22 e g52 ficaram de fora por falta de ficha oficial lida.",
   "itens": {
     "edge": {
       "preco": 3799.05,
@@ -51,11 +51,11 @@
       "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
     },
     "fold8u": {
-      "preco": 13859.1,
+      "preco": 15299.0,
       "asin": "B0HCX3269F",
       "tipo": "busca",
       "gb": 512,
-      "coleta": "12/09/2026, busca da noite",
+      "coleta": "12/09/2026, busca da noite (2ª leitura; na 1ª estava R$ 13.859,10)",
       "condicao": "preço da página de busca; vendedor e condição não conferidos"
     },
     "s26u1t": {
@@ -132,6 +132,607 @@
       "gb": 512,
       "coleta": "12/09/2026, busca da noite",
       "condicao": "preço da página de busca; vendedor e condição não conferidos"
+    },
+    "ip11": {
+      "preco": 4999.0,
+      "asin": "B08M3KL2JK",
+      "tipo": "busca",
+      "gb": 64,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "ip12": {
+      "preco": 7999.0,
+      "asin": "B09B2T7GT4",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "ip13": {
+      "preco": 7998.78,
+      "asin": "B09T4YK6QK",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "ip13mini": {
+      "preco": 6374.0,
+      "asin": "B09V45V2GN",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "ip13p": {
+      "preco": 10142.0,
+      "asin": "B09V4711WT",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "ip14": {
+      "preco": 5199.0,
+      "asin": "B00CLP06OW",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "ip14plus": {
+      "preco": 8599.0,
+      "asin": "B00CLP163C",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "ip15": {
+      "preco": 4776.67,
+      "asin": "B0CP6CR795",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "ip15p": {
+      "preco": 9299.0,
+      "asin": "B0CHXRHSLC",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "ip16": {
+      "preco": 4598.99,
+      "asin": "B0DGML9C16",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "ip16e": {
+      "preco": 3998.89,
+      "asin": "B0DXR7GNWJ",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "ip17": {
+      "preco": 5593.39,
+      "asin": "B0GQW2J4SK",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "ip17e": {
+      "preco": 4229.1,
+      "asin": "B0GTRWMZWZ",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "ip18p": {
+      "preco": 12149.1,
+      "asin": "B0HJB9YV1F",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "ip18pm": {
+      "preco": 13049.1,
+      "asin": "B0HJB895X8",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "s26": {
+      "preco": 4619.69,
+      "asin": "B0GKQNGV23",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "s26plus": {
+      "preco": 6774.0,
+      "asin": "B0GS7C9QSW",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "s25": {
+      "preco": 3859.21,
+      "asin": "B0DSXX6XB3",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "s25u": {
+      "preco": 6253.33,
+      "asin": "B0HDYTBVQ5",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "s25fe": {
+      "preco": 2998.78,
+      "asin": "B0FTCYVMVC",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "s24u": {
+      "preco": 4036.55,
+      "asin": "B0FTKK795F",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "s24": {
+      "preco": 3466.55,
+      "asin": "B0GCBGH9VF",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "s23u": {
+      "preco": 4289.99,
+      "asin": "B0GD8WZ2C4",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "s23plus": {
+      "preco": 3089.99,
+      "asin": "B0FTP44T6K",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "s23": {
+      "preco": 1863.27,
+      "asin": "B0G6GJZJDL",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "fold8": {
+      "preco": 11339.1,
+      "asin": "B0HCX8S4R4",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "fold7": {
+      "preco": 10739.0,
+      "asin": "B0FDJ1KHX5",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "fold6": {
+      "preco": 8543.48,
+      "asin": "B0D9332XX9",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "flip7": {
+      "preco": 6598.92,
+      "asin": "B0FDHQRQ33",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "flip7fe": {
+      "preco": 5749.0,
+      "asin": "B0FDHZP6B8",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "a57": {
+      "preco": 1798.99,
+      "asin": "B0GVT1T3PB",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "a56": {
+      "preco": 3099.0,
+      "asin": "B0DYVPCX34",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos",
+      "suspeito": "preço acima do sucessor Galaxy A57 5G; conferir o vendedor"
+    },
+    "a55": {
+      "preco": 1549.0,
+      "asin": "B0FTMS4KP1",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "a37": {
+      "preco": 1888.99,
+      "asin": "B0GVT65QTG",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "a36": {
+      "preco": 2138.45,
+      "asin": "B0DYVNRG3B",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "a27": {
+      "preco": 1936.1,
+      "asin": "B0HC817324",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "a23": {
+      "preco": 719.97,
+      "asin": "B0G6FPM9JW",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "a17g5": {
+      "preco": 1299.99,
+      "asin": "B0FPPMWNLW",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "a17": {
+      "preco": 874.99,
+      "asin": "B0FPYS7W21",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "a16g5": {
+      "preco": 1259.0,
+      "asin": "B0DNRFQMKD",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "a16": {
+      "preco": 995.0,
+      "asin": "B0DNRD4QVQ",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "a15g5": {
+      "preco": 1280.0,
+      "asin": "B0CVSFHCVS",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "a07": {
+      "preco": 943.33,
+      "asin": "B0FPHXJQPF",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "edge60": {
+      "preco": 2499.0,
+      "asin": "B0F51KRTX1",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "edge60p": {
+      "preco": 2991.55,
+      "asin": "B0H37ZQQFP",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "edge60n": {
+      "preco": 2069.1,
+      "asin": "B0FVZQNT34",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "edge60f": {
+      "preco": 1718.1,
+      "asin": "B0F1GVZ8H4",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "edge70": {
+      "preco": 2249.11,
+      "asin": "B0GLTJ4MYM",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "edge70p": {
+      "preco": 3329.1,
+      "asin": "B0GZLL5D74",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "edge70f": {
+      "preco": 2198.99,
+      "asin": "B0H6C2HGYN",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "signature": {
+      "preco": 5799.08,
+      "asin": "B0GMKS98D5",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "edge50u": {
+      "preco": 5995.0,
+      "asin": "B0DJPMR1G5",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "edge50p": {
+      "preco": 1852.97,
+      "asin": "B0H6NJQ73H",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "edge50f": {
+      "preco": 1887.67,
+      "asin": "B0D54KKDGV",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "edge40n": {
+      "preco": 1269.0,
+      "asin": "B0HGZZZ9XR",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "razr60": {
+      "preco": 3298.99,
+      "asin": "B0F8LJSC9B",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "razr50u": {
+      "preco": 4999.99,
+      "asin": "B0D96XQGZ4",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "gmax": {
+      "preco": 1709.05,
+      "asin": "B0GZPXYC9G",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g86": {
+      "preco": 2158.9,
+      "asin": "B0G26XRKV7",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g84": {
+      "preco": 1999.0,
+      "asin": "B0CGVYYF4K",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g77": {
+      "preco": 1529.09,
+      "asin": "B0GLSLLGZL",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g67": {
+      "preco": 1180.97,
+      "asin": "B0GLQXJFBD",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g54": {
+      "preco": 946.57,
+      "asin": "B0FTPR5CZ7",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g47": {
+      "preco": 1079.1,
+      "asin": "B0GYPQBXVX",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g35": {
+      "preco": 849.0,
+      "asin": "B0DHWFBYVC",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g24": {
+      "preco": 1045.0,
+      "asin": "B0CTKY4CCB",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g17": {
+      "preco": 799.0,
+      "asin": "B0GKD2XXVJ",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "g15": {
+      "preco": 995.0,
+      "asin": "B0DV7F1MY9",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g06": {
+      "preco": 699.0,
+      "asin": "B0FR5NSCF7",
+      "tipo": "busca",
+      "gb": null,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor e capacidade não conferidos"
+    },
+    "g05": {
+      "preco": 854.05,
+      "asin": "B0FR499B9P",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "g04": {
+      "preco": 820.0,
+      "asin": "B0CTKXMH3Z",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "e13": {
+      "preco": 999.0,
+      "asin": "B0BSXR3YCB",
+      "tipo": "busca",
+      "gb": 64,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "mate80p": {
+      "preco": 5380.64,
+      "asin": "B0GVS1PS5D",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
+    },
+    "matex6": {
+      "preco": 8973.0,
+      "asin": "B093SVTYNB",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite (todas as páginas da marca)",
+      "condicao": "preço da página de busca; vendedor, cor não conferidos"
     }
   },
   "anterior": {
