@@ -239,6 +239,15 @@
   .acoes{display:grid; gap:.5rem; margin-top:.9rem}
   .acoes button,.acoes a{min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font:inherit; font-size:.9375rem; color:var(--giz-2); background:transparent; border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio); padding:.6rem 1rem; cursor:pointer; text-decoration:none}
   .acoes button:hover,.acoes a:hover{color:var(--giz); border-color:var(--giz-2)}
+  .bilhete .topo-cartao{display:grid; grid-template-columns:auto 1fr; gap:.9rem; align-items:center}
+  .bilhete .foto{width:72px; aspect-ratio:3/4; object-fit:cover; border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio); background:var(--lona-2)}
+  .retratos{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.75rem; margin-top:1rem}
+  .retrato{margin:0}
+  .retrato img{width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border:var(--hairline) solid var(--corda); border-radius:var(--raio); background:var(--lona-2); transition:border-color var(--t-criterio) var(--sai-rapido)}
+  :root[data-foco="edge"] .retrato.edge img,:root[data-foco="pura"] .retrato.pura img,:root[data-foco="ultra"] .retrato.ultra img{border-color:var(--c)}
+  :root[data-foco="edge"] .retrato:not(.edge) img,:root[data-foco="pura"] .retrato:not(.pura) img,:root[data-foco="ultra"] .retrato:not(.ultra) img{opacity:var(--fora-op)}
+  .retrato figcaption{margin-top:.4rem; font-family:var(--dado); font-size:.72rem; line-height:1.4; color:var(--fumaca)}
+  .retrato b{display:block; font-size:.8rem; color:var(--c,var(--giz-2)); letter-spacing:.04em}
   .round{margin:0 0 .8rem; padding:.6rem .75rem; border-left:2px solid var(--corda-forte); font-family:var(--dado); font-size:.82rem; line-height:1.55; color:var(--giz-2); background:color-mix(in srgb, var(--lona-2) 70%, transparent)}
   .round[data-t="encostou"]{border-left-color:var(--ouro); color:var(--giz)}
   .round[data-t="nocaute"]{border-left-color:var(--c,var(--cor-ativa)); color:var(--giz)}
@@ -291,8 +300,13 @@
     <div class="bilhete" id="bilhete" aria-live="polite">
       <p class="round" id="s-round"></p>
       <p class="faixa"><span id="s-titulo">Cinturão · gastar menos</span><span class="estado" id="s-estado"></span></p>
-      <strong class="campeao" id="s-quem">Galaxy S25 Edge</strong>
-      <p class="linha" id="s-linha">R$ 3.799,05 no Pix · 512 GB</p>
+      <div class="topo-cartao">
+        <img class="foto" id="s-foto" src="fotos/edge.webp" width="495" height="660" alt="" loading="lazy" decoding="async">
+        <div>
+          <strong class="campeao" id="s-quem">Galaxy S25 Edge</strong>
+          <p class="linha" id="s-linha">R$ 3.799,05 no Pix · 512 GB</p>
+        </div>
+      </div>
       <p class="frase" id="s-frase"></p>
       <!-- AFILIADO: os href saem do objeto "aparelhos" no script. Falta a tag do Amazon Associados. -->
       <a class="comprar" id="s-comprar" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon <span class="num" id="s-preco">R$ 3.799,05</span></a>
@@ -305,6 +319,21 @@
         <a href="#pesagem">Ver a pesagem</a>
       </div>
       <p class="mini">Coleta na Amazon em 11/09/2026 14h45, CEP padrão de São Paulo. Preço muda todo dia: confira vendedor, condição e capacidade antes de pagar. Como afiliado podemos ganhar comissão sem custo extra para você — os links desta demonstração ainda não têm a tag de afiliado.</p>
+    </div>
+
+    <div class="retratos">
+      <figure class="retrato edge">
+        <img src="fotos/edge.webp" width="495" height="660" alt="Traseira do Galaxy S25 Edge, prata, com as duas câmeras alinhadas no canto." loading="lazy" decoding="async">
+        <figcaption><b>S25 Edge</b>foto de loja · Miyako Fujimiya, CC BY-SA 4.0</figcaption>
+      </figure>
+      <figure class="retrato pura">
+        <img src="fotos/pura.webp" width="600" height="800" alt="Traseira do Huawei Pura 80 Pro, vermelho, com o módulo triangular de câmeras." loading="lazy" decoding="async">
+        <figcaption><b>Pura 80 Pro</b>foto de loja · Leongyy02, CC BY-SA 4.0</figcaption>
+      </figure>
+      <figure class="retrato ultra">
+        <img src="fotos/ultra.webp" width="600" height="800" alt="Traseira do Galaxy S26 Ultra, roxo, com as câmeras em coluna." loading="lazy" decoding="async">
+        <figcaption><b>S26 Ultra</b>foto de loja · Kyu3a, CC BY-SA 4.0</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -537,6 +566,7 @@
       <dt>Preço</dt><dd>Busca da amazon.com.br em 11/09/2026 às 14h45, CEP padrão de São Paulo.</dd>
       <dt>Bateria</dt><dd>Samsung informa 5.000 mAh como capacidade típica do S26 Ultra (nominal 4.855 mAh). Huawei informa 5.170 mAh nominal. Único teste independente conferido: Tom's Guide, S25 Edge.</dd>
       <dt>Fontes</dt><dd>samsung.com/br/smartphones/galaxy-s25-edge/specs/ · samsung.com/br/smartphones/galaxy-s26-ultra/specs/ · consumer.huawei.com/br/phones/pura80-pro/specs/ · tomsguide.com, "Galaxy S25 Edge battery life tested". Todas acessadas em 11/09/2026.</dd>
+      <dt>Fotos</dt><dd>Fotos de loja, não renders do fabricante, recortadas e redimensionadas por nós. S25 Edge por Miyako Fujimiya (<a href="https://commons.wikimedia.org/wiki/File:Samsung_Galaxy_S25_Edge_(2).jpg" rel="noopener" target="_blank">arquivo</a>); Pura 80 Pro por Leongyy02 (<a href="https://commons.wikimedia.org/wiki/File:Huawei_Pura_80_Pro_Glazed_Red.jpg" rel="noopener" target="_blank">arquivo</a>); S26 Ultra por Kyu3a (<a href="https://commons.wikimedia.org/wiki/File:Galaxy_S26_Ultra_-_2.jpg" rel="noopener" target="_blank">arquivo</a>). As três em <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.pt-br" rel="license noopener" target="_blank">CC BY-SA 4.0</a>, via Wikimedia Commons; os recortes ficam sob a mesma licença.</dd>
       <dt>Cinturão</dt><dd>Veredito editorial por critério de uso, não nota de qualidade.</dd>
     </dl>
     <div class="laudo-acoes">
@@ -692,6 +722,9 @@
     const est = document.getElementById("s-estado");
     est.textContent = rotulos[r.estado];
     est.dataset.t = r.estado;
+    const foto = document.getElementById("s-foto");
+    foto.src = "fotos/" + r.campeao + ".webp";
+    foto.alt = "Traseira do " + a.nome + ", em foto de loja.";
     document.getElementById("s-quem").textContent = a.nome;
     document.getElementById("s-linha").textContent = r.c.linha(r.campeao);
     document.getElementById("s-frase").textContent = r.c.frase[r.campeao];
@@ -850,6 +883,7 @@
       "consumer.huawei.com/br/phones/pura80-pro/specs/",
       "tomsguide.com - Galaxy S25 Edge battery life tested",
       "",
+      "Fotos: de loja, CC BY-SA 4.0 via Wikimedia Commons (Miyako Fujimiya, Leongyy02, Kyu3a).",
       "Preço muda todo dia. Confira na loja antes de pagar."
     ];
     const blob = new Blob([linhas.join("\r\n")], {type:"text/plain;charset=utf-8"});
