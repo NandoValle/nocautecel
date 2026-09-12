@@ -199,7 +199,6 @@
   .chips button{flex:0 0 auto; min-height:44px; display:inline-flex; align-items:center; gap:.45rem; font:inherit; font-size:.9375rem; color:var(--giz-2); background:var(--lona); border:var(--hairline) solid var(--corda); border-radius:999px; padding:.55rem 1rem; cursor:pointer; white-space:nowrap; transition:color var(--t-criterio) var(--sai-rapido), border-color var(--t-criterio) var(--sai-rapido), background-color var(--t-criterio) var(--sai-rapido)}
   .chips button:hover{color:var(--giz); border-color:var(--corda-forte)}
   .chips button[aria-pressed="true"]{color:var(--arena); background:var(--cor-ativa); border-color:var(--cor-ativa); font-weight:600}
-  .chips .perna[aria-pressed="true"]{color:var(--giz); background:color-mix(in srgb, var(--cor-ativa) 18%, transparent); border-color:var(--cor-ativa)}
   .bilhete{margin-top:.9rem; padding:1.1rem 1.1rem 1.25rem; background:var(--lona); border:var(--hairline) solid var(--c,var(--cor-ativa)); border-radius:var(--raio); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--c,var(--cor-ativa)) 22%, transparent)}
   .bilhete .faixa{margin:0 0 .5rem; display:flex; flex-wrap:wrap; gap:.5rem .9rem; align-items:baseline; font-family:var(--dado); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ouro)}
   .bilhete .estado{color:var(--incerteza)}
@@ -208,20 +207,6 @@
   .bilhete .linha{margin:.3rem 0 0; font-family:var(--dado); font-size:1rem; color:var(--giz)}
   .bilhete .frase{margin:.55rem 0 .9rem; color:var(--giz-2)}
   .bilhete .comprar{display:flex; width:100%}
-  /* Régua do critério: os três na mesma escala, a distância à direita. */
-  .distancias{list-style:none; margin:.9rem 0 0; padding:0; display:grid; gap:.4rem}
-  .distancias li{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.35rem .9rem; align-items:baseline; padding:.6rem .8rem; border:var(--hairline) solid var(--corda); border-radius:var(--raio); font-family:var(--dado); font-size:.9rem; color:var(--giz-2); transition:border-color var(--t-criterio) var(--sai-rapido)}
-  .distancias .nome{min-width:0; overflow-wrap:anywhere}
-  .distancias .med{display:block; color:var(--incerteza); font-size:.82rem; margin-top:.15rem}
-  .distancias .d{font-family:var(--poster); font-weight:800; font-size:1.25rem; color:var(--giz); letter-spacing:.01em; white-space:nowrap}
-  .distancias .d.vago{font-family:var(--dado); font-size:.82rem; font-weight:400; color:var(--incerteza); letter-spacing:.04em; white-space:normal}
-  .distancias .b{grid-column:1/-1; height:3px; width:var(--p,0%); min-width:2px; background:var(--corda-forte); border-radius:2px; transition:width var(--t-criterio) var(--sai-longo), background-color var(--t-criterio) var(--sai-rapido)}
-  .distancias li.lider{border-color:color-mix(in srgb, var(--c,var(--cor-ativa)) 55%, var(--corda)); background:color-mix(in srgb, var(--c,var(--cor-ativa)) 7%, transparent)}
-  .distancias li.lider .d{color:var(--c,var(--cor-ativa))}
-  .distancias li.lider .b{background:var(--c,var(--cor-ativa)); box-shadow:0 0 10px color-mix(in srgb, var(--c,var(--cor-ativa)) 45%, transparent)}
-  .distancias li.fora{opacity:.8; border-style:dashed}
-  .distancias li.fora .nome{text-decoration:line-through; text-decoration-color:var(--incerteza)}
-  .distancias li.fora .b{display:none}
   .mercado,.conta{margin:.8rem 0 0; font-family:var(--dado); font-size:.82rem; line-height:1.5; color:var(--incerteza)}
   .conta{color:var(--giz-2)}
   .acoes{display:grid; gap:.5rem; margin-top:.9rem}
@@ -229,13 +214,59 @@
   .acoes button:hover,.acoes a:hover{color:var(--giz); border-color:var(--giz-2)}
   .bilhete .topo-cartao{display:grid; grid-template-columns:auto 1fr; gap:.9rem; align-items:center}
   .bilhete .foto{width:72px; height:auto; aspect-ratio:3/4; object-fit:cover; border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio); background:var(--lona-2)}
-  .retratos{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.75rem; margin-top:1rem}
-  .retrato{margin:0}
-  .retrato img{width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block; border:var(--hairline) solid var(--corda); border-radius:var(--raio); background:var(--lona-2); transition:border-color var(--t-criterio) var(--sai-rapido)}
-  :root[data-foco="edge"] .retrato.edge img,:root[data-foco="pura"] .retrato.pura img,:root[data-foco="ultra"] .retrato.ultra img{border-color:var(--c)}
-  :root[data-foco="edge"] .retrato:not(.edge) img,:root[data-foco="pura"] .retrato:not(.pura) img,:root[data-foco="ultra"] .retrato:not(.ultra) img{opacity:var(--fora-op)}
-  .retrato figcaption{margin-top:.4rem; font-family:var(--dado); font-size:.72rem; line-height:1.4; color:var(--fumaca)}
-  .retrato b{display:block; font-size:.8rem; color:var(--c,var(--giz-2)); letter-spacing:.04em}
+  /* ---------- Os três desafiantes ---------- */
+  .desafiantes{list-style:none; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin:1.25rem 0 0; padding:0}
+  .desafiante{--c:var(--corda-forte); position:relative; display:flex; flex-direction:column; padding:.9rem .95rem 1rem;
+    background:linear-gradient(180deg, color-mix(in srgb, var(--c) 8%, var(--lona)) 0, var(--lona) 62%);
+    border:var(--hairline) solid var(--corda); border-radius:var(--raio); overflow:hidden;
+    transition:border-color var(--t-criterio) var(--sai-rapido), background var(--t-criterio) var(--sai-rapido), opacity var(--t-criterio) var(--sai-rapido)}
+  .desafiante.lider{border-color:color-mix(in srgb, var(--c) 60%, var(--corda)); box-shadow:0 20px 50px -38px var(--c)}
+  .desafiante.fora{opacity:var(--fora-op)}
+  .ordem{display:flex; justify-content:space-between; align-items:center; gap:.75rem; margin:0 0 .5rem;
+    font-family:var(--dado); font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; color:var(--fumaca)}
+  .ordem .num{color:var(--c)}
+  .ordem .selo{display:inline-flex; align-items:center; gap:.35rem; font-weight:400; color:var(--incerteza); white-space:nowrap}
+  .lider .ordem .selo{color:var(--metal-1); border:var(--hairline) solid color-mix(in srgb, var(--ouro) 55%, transparent);
+    background:color-mix(in srgb, var(--ouro) 12%, transparent); border-radius:999px; padding:.15rem .55rem}
+  .lider .ordem .selo svg{width:11px; height:11px; fill:none; stroke:currentColor; stroke-width:1.6}
+  .vitrine{position:relative; display:grid; place-items:center; padding:.35rem 0 .6rem}
+  .vitrine::before{content:""; position:absolute; inset:6% 12% 12%; border-radius:50%;
+    background:radial-gradient(closest-side, color-mix(in srgb, var(--c) 24%, transparent), transparent)}
+  .dagua{position:absolute; inset:auto 0 14% 0; text-align:center; font-family:var(--poster); font-weight:900;
+    font-size:clamp(3rem,7vw,4.6rem); line-height:1; letter-spacing:.02em; color:var(--c); opacity:.13; user-select:none}
+  .vitrine img{position:relative; width:auto; height:clamp(9rem,17vw,12.5rem); aspect-ratio:3/4; object-fit:cover;
+    border-radius:var(--raio); border:var(--hairline) solid color-mix(in srgb, var(--c) 35%, var(--corda)); background:var(--lona-2)}
+  .fabricante{margin:.2rem 0 .1rem; font-family:var(--dado); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--fumaca)}
+  .desafiante h3{margin:0; font-family:var(--poster); font-weight:800; font-size:clamp(1.3rem,2.4vw,1.65rem); line-height:1.05; text-transform:none}
+  .ficha-curta{margin:.25rem 0 .7rem; font-family:var(--dado); font-size:.8rem; color:var(--incerteza)}
+  .medida{margin:auto 0 0; padding-top:.7rem; border-top:var(--hairline) solid var(--corda);
+    font-family:var(--poster); font-weight:900; font-size:clamp(1.5rem,3vw,1.95rem); line-height:1; color:var(--c)}
+  .medida small{display:block; margin-top:.35rem; font-family:var(--dado); font-weight:400; font-size:.75rem; color:var(--incerteza)}
+  .situacao{margin:.5rem 0 0; font-family:var(--dado); font-size:.78rem; color:var(--giz-2)}
+  .lider .situacao{color:var(--c)}
+  .desafiante .b{display:block; height:3px; width:var(--p,0%); min-width:2px; margin-top:.55rem; border-radius:2px;
+    background:var(--corda-forte); transition:width var(--t-criterio) var(--sai-longo)}
+  .lider .b{background:var(--c); box-shadow:0 0 10px color-mix(in srgb, var(--c) 45%, transparent)}
+  .credito{margin:.6rem 0 0; font-family:var(--dado); font-size:.68rem; line-height:1.4; color:var(--fumaca)}
+
+  /* ---------- Exigências: dois requisitos, não um pacote ---------- */
+  .exigencias{display:flex; flex-wrap:wrap; align-items:center; gap:.6rem 1rem; margin-top:.85rem}
+  .exigencias .rot{font-family:var(--dado); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--fumaca)}
+  .exigencias > div{display:flex; flex-wrap:wrap; gap:.5rem}
+  .round-rot{margin-left:auto; font-family:var(--dado); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--cor-ativa)}
+  .trava{display:inline-flex; align-items:center; gap:.5rem; min-height:44px; padding:.3rem .75rem .3rem .5rem; cursor:pointer;
+    border:var(--hairline) solid var(--corda); border-radius:999px; font-size:.9rem; color:var(--giz-2);
+    transition:border-color var(--t-criterio) var(--sai-rapido), color var(--t-criterio) var(--sai-rapido)}
+  .trava:hover{border-color:var(--corda-forte); color:var(--giz)}
+  .trava input{appearance:none; flex:none; width:2.1rem; height:1.15rem; margin:0; border-radius:999px; cursor:pointer;
+    background:var(--corda); border:var(--hairline) solid var(--corda-forte); position:relative;
+    transition:background-color var(--t-criterio) var(--sai-rapido)}
+  .trava input::after{content:""; position:absolute; top:50%; left:2px; width:.85rem; height:.85rem; border-radius:50%;
+    background:var(--giz-2); transform:translateY(-50%); transition:transform var(--t-criterio) var(--sai-rapido), background-color var(--t-criterio) var(--sai-rapido)}
+  .trava input:checked{background:color-mix(in srgb, var(--cor-ativa) 45%, transparent); border-color:var(--cor-ativa)}
+  .trava input:checked::after{transform:translate(.95rem,-50%); background:var(--cor-ativa)}
+  .trava:has(input:checked){border-color:var(--cor-ativa); color:var(--giz)}
+  .chips button svg{flex:none; width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round}
   .round{margin:0 0 .8rem; padding:.6rem .75rem; border-left:2px solid var(--corda-forte); font-family:var(--dado); font-size:.82rem; line-height:1.55; color:var(--giz-2); background:color-mix(in srgb, var(--lona-2) 70%, transparent)}
   .round b{display:block; color:var(--giz); font-weight:600; letter-spacing:.01em}
   .round[data-t="encostou"]{border-left-color:var(--ouro); color:var(--giz)}
@@ -249,8 +280,8 @@
     box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--c,var(--cor-ativa)) 22%, transparent), 0 24px 60px -40px color-mix(in srgb, var(--c,var(--cor-ativa)) 70%, transparent);
     transition:background var(--t-criterio) var(--sai-rapido), border-color var(--t-criterio) var(--sai-rapido)}
   .palco-trilho{background:radial-gradient(50% 42% at 50% 72%, color-mix(in srgb, var(--cor-ativa) 11%, transparent), transparent 72%); transition:background var(--t-criterio) var(--sai-rapido)}
-  .retrato img{filter:saturate(.92)}
-  :root[data-foco="edge"] .retrato:not(.edge) img,:root[data-foco="pura"] .retrato:not(.pura) img,:root[data-foco="ultra"] .retrato:not(.ultra) img{filter:saturate(.45) brightness(.85)}
+  .vitrine img{filter:saturate(.92)}
+  .desafiante:not(.lider) .vitrine img{filter:saturate(.55) brightness(.88)}
 
   /* ---------- O que ele ganha, do que ele abre mão ---------- */
   .saldo{list-style:none; display:grid; gap:.45rem; margin:.9rem 0 0; padding:.75rem .8rem; border:var(--hairline) solid var(--corda); border-radius:var(--raio)}
@@ -282,6 +313,14 @@
   .palco-dica{display:none}
 
   @media (max-width:760px){
+    /* Os desafiantes viram carrossel: um por tela, o polegar arrasta. */
+    .desafiantes{grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:82%;
+      overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding-bottom:.35rem}
+    .desafiantes::-webkit-scrollbar{display:none}
+    .desafiante{scroll-snap-align:center}
+    .ordem{font-size:.62rem; letter-spacing:.1em}
+    .ordem .num{white-space:nowrap}
+    .round-rot{margin-left:0; flex-basis:100%}
     .resumo{display:flex}
     body{padding-bottom:4.6rem}
     .palco-dica{display:flex; align-items:center; gap:.45rem; margin:.4rem 0 0; font-family:var(--dado); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--incerteza)}
@@ -291,7 +330,6 @@
   @media (min-width:48rem){
     .acoes{grid-template-columns:repeat(2,minmax(0,1fr))}
     .bilhete .comprar{width:auto; display:inline-flex}
-    .distancias li{font-size:.95rem}
   }
 </style>
 </head>
@@ -322,12 +360,20 @@
     <h2 id="t-palpite">Qual merece o seu dinheiro?</h2>
     <p class="sub">Escolha o que importa. Veja quem leva o cinturão.</p>
     <div class="chips" role="group" aria-label="Critério do palpite">
-      <button type="button" data-uso="economia" aria-pressed="true">Gastar menos</button>
-      <button type="button" data-uso="leveza" aria-pressed="false">No bolso</button>
-      <button type="button" data-uso="foto" aria-pressed="false">Zoom</button>
-      <button type="button" data-uso="bateria" aria-pressed="false">Capacidade da bateria</button>
-      <button type="button" data-uso="anos" aria-pressed="false">Durar anos</button>
-      <button type="button" class="perna" data-perna="googleg5" aria-pressed="false">+ Google e 5G</button>
+      <button type="button" data-uso="economia" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v11H3zM3 11h18M7 15h3"/></svg>Gastar menos</button>
+      <button type="button" data-uso="leveza" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v14M6 8h12M8 8l-3 7h6ZM16 8l-3 7h6ZM9 20h6"/></svg>No bolso</button>
+      <button type="button" data-uso="foto" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M3 18V8h4l2-3h6l2 3h4v10z"/></svg>Zoom</button>
+      <button type="button" data-uso="bateria" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h15v9H3zM18 11h3v3h-3zM6 11v3"/></svg>Capacidade da bateria</button>
+      <button type="button" data-uso="anos" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 6.5-7 9-4-2.5-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Durar anos</button>
+    </div>
+
+    <div class="exigencias">
+      <span class="rot" id="rot-exig">Indispensável para mim</span>
+      <div role="group" aria-labelledby="rot-exig">
+        <label class="trava"><input type="checkbox" id="req-google"><span>Apps do Google</span></label>
+        <label class="trava"><input type="checkbox" id="req-5g"><span>5G</span></label>
+      </div>
+      <span class="round-rot" id="round-rot">Round 01 · Menor preço</span>
     </div>
 
     <div class="bilhete" id="bilhete" aria-live="polite">
@@ -347,7 +393,6 @@
         <li class="mais"><span class="rot">Leva também</span><span id="s-mais">—</span></li>
         <li class="menos"><span class="rot">Abre mão de</span><span id="s-menos">—</span></li>
       </ul>
-      <ul class="distancias" id="s-distancias"></ul>
       <p class="quase" id="s-quase" hidden></p>
       <div class="acoes">
         <button type="button" id="s-cartao">Cartão do meu campeão</button>
@@ -363,20 +408,8 @@
       </details>
     </div>
 
-    <div class="retratos">
-      <figure class="retrato edge">
-        <img src="fotos/edge.webp" width="495" height="660" alt="Traseira do Galaxy S25 Edge, prata, com as duas câmeras alinhadas no canto." loading="lazy" decoding="async">
-        <figcaption><b>S25 Edge</b>foto de loja · Miyako Fujimiya, CC BY-SA 4.0</figcaption>
-      </figure>
-      <figure class="retrato pura">
-        <img src="fotos/pura.webp" width="600" height="800" alt="Traseira do Huawei Pura 80 Pro, vermelho, com o módulo triangular de câmeras." loading="lazy" decoding="async">
-        <figcaption><b>Pura 80 Pro</b>foto de loja · Leongyy02, CC BY-SA 4.0</figcaption>
-      </figure>
-      <figure class="retrato ultra">
-        <img src="fotos/ultra.webp" width="600" height="800" alt="Traseira do Galaxy S26 Ultra, roxo, com as câmeras em coluna." loading="lazy" decoding="async">
-        <figcaption><b>S26 Ultra</b>foto de loja · Kyu3a, CC BY-SA 4.0</figcaption>
-      </figure>
-    </div>
+    <!-- Os três desafiantes: cada card mostra a medida do critério em disputa. Montados no script. -->
+    <ol class="desafiantes" id="desafiantes" aria-label="Os três aparelhos na disputa"></ol>
   </section>
 
   <h1 class="sr">Três na balança: Galaxy S25 Edge, Huawei Pura 80 Pro e Galaxy S26 Ultra</h1>
@@ -677,9 +710,12 @@
 
   // Ficha: não muda entre coletas. Preço entra pela pesagem.
   const aparelhos = {
-    edge: {nome:"Galaxy S25 Edge", curto:"S25 Edge", peso:163, esp:5.8, zoom:0, bateria:3900, g5:true, google:true, seg:null},
-    pura: {nome:"Huawei Pura 80 Pro", curto:"Pura 80 Pro", peso:219, esp:8.3, zoom:4, bateria:5170, g5:false, google:false, seg:null},
-    ultra:{nome:"Galaxy S26 Ultra", curto:"S26 Ultra", peso:214, esp:7.9, zoom:5, bateria:5000, g5:true, google:true, seg:"28/02/2033"}
+    edge: {nome:"Galaxy S25 Edge", curto:"S25 Edge", marca:"Samsung", sigla:"EDGE", peso:163, esp:5.8, zoom:0, bateria:3900, g5:true, google:true, seg:null,
+           foto:{w:495, h:660, alt:"Traseira do Galaxy S25 Edge, prata, com as duas câmeras alinhadas no canto.", credito:"foto de loja · Miyako Fujimiya, CC BY-SA 4.0"}},
+    pura: {nome:"Huawei Pura 80 Pro", curto:"Pura 80 Pro", marca:"Huawei", sigla:"PURA", peso:219, esp:8.3, zoom:4, bateria:5170, g5:false, google:false, seg:null,
+           foto:{w:600, h:800, alt:"Traseira do Huawei Pura 80 Pro, vermelho, com o módulo triangular de câmeras.", credito:"foto de loja · Leongyy02, CC BY-SA 4.0"}},
+    ultra:{nome:"Galaxy S26 Ultra", curto:"S26 Ultra", marca:"Samsung", sigla:"ULTRA", peso:214, esp:7.9, zoom:5, bateria:5000, g5:true, google:true, seg:"28/02/2033",
+           foto:{w:600, h:800, alt:"Traseira do Galaxy S26 Ultra, roxo, com as câmeras em coluna.", credito:"foto de loja · Kyu3a, CC BY-SA 4.0"}}
   };
   const busca = {edge:"https://www.amazon.com.br/s?k=galaxy+s25+edge+512gb", pura:"https://www.amazon.com.br/s?k=huawei+pura+80+pro+512gb", ultra:"https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb"};
 
@@ -754,7 +790,15 @@
       frase:{ultra:"Segurança garantida até 02/2033. Envelhece melhor, e cobra por isso.", edge:"Prazo de atualização não verificado nesta sessão.", pura:"Prazo de atualização não verificado nesta sessão."},
       dist:() => "não verificado", quase:() => null}
   };
-  const PERNA = {rotulo:"Google e 5G", passa:k => aparelhos[k].g5 && aparelhos[k].google, motivo:"sem 5G e sem apps do Google"};
+  // Dois requisitos independentes, não um pacote: dá para exigir só o Google, ou só o 5G.
+  const REQS = {
+    google:{rotulo:"apps do Google", passa:k => aparelhos[k].google, motivo:"sem apps do Google"},
+    "5g":  {rotulo:"5G",             passa:k => aparelhos[k].g5,     motivo:"sem 5G"}
+  };
+  const ORDEM_REQ = ["google","5g"];
+  const passaTudo = (k, reqs) => reqs.every(r => REQS[r].passa(k));
+  const porqueCaiu = (k, reqs) => reqs.filter(r => !REQS[r].passa(k)).map(r => REQS[r].motivo).join(" e ");
+  const nomeReqs = reqs => reqs.map(r => REQS[r].rotulo).join(" e ");
   const CHAVES = ["edge","pura","ultra"];
   const ORDEM_CRIT = ["economia","leveza","foto","bateria","anos"];
 
@@ -771,47 +815,145 @@
       if (outros.every(bate)) ganha.push(c.curto + " (" + c.medida(campeao) + ")");
       else if (outros.every(apanha)) perde.push(c.curto + " (" + c.medida(campeao) + ")");
     });
-    if (!aparelhos[campeao].g5 || !aparelhos[campeao].google) perde.unshift(PERNA.motivo);
+    const falta = ORDEM_REQ.filter(r => !REQS[r].passa(campeao)).map(r => REQS[r].motivo);
+    if (falta.length) perde.unshift(falta.join(" e "));
     const junta = l => l.length === 0 ? null : l.length === 1 ? l[0] : l.slice(0, 2).join(" e ");
     return {mais: junta(ganha) || "nada além do critério escolhido, nesta pesagem",
             menos: junta(perde) || "nada que esta pesagem meça"};
   }
 
-  function ordena(uso, perna, fonte){
+  function ordena(uso, reqs, fonte){
     const c = criterios[uso];
-    const lista = CHAVES.filter(k => !perna || PERNA.passa(k));
+    const lista = CHAVES.filter(k => passaTudo(k, reqs));
     return lista.sort((a,b) => c.menorGanha ? c.valor(a, fonte) - c.valor(b, fonte) : c.valor(b, fonte) - c.valor(a, fonte));
   }
 
-  function calcula(uso, perna){
+  function calcula(uso, reqs){
     const c = criterios[uso];
-    const ordem = ordena(uso, perna);
+    const ordem = ordena(uso, reqs);
     const campeao = ordem[0], segundo = ordem[1];
-    const cortado = perna ? CHAVES.find(k => !PERNA.passa(k)) : null;
-    const cortadoLiderava = Boolean(cortado) && ordena(uso, false)[0] === cortado;
+    const cortados = CHAVES.filter(k => !passaTudo(k, reqs));
+    const semReq = ordena(uso, []);
+    const cortadoLiderava = cortados.indexOf(semReq[0]) >= 0 ? semReq[0] : null;
     const delta = segundo ? Math.abs(c.valor(segundo) - c.valor(campeao)) : null;
-    const antesCampeao = uso === "economia" && P.anterior ? ordena(uso, perna, P.anterior)[0] : campeao;
+    const antesCampeao = uso === "economia" && P.anterior ? ordena(uso, reqs, P.anterior)[0] : campeao;
     const virou = antesCampeao !== campeao;
     const estado = virou ? "nocaute" : c.limiar === null ? "sem-disputa" : (delta < c.limiar ? "ameacado" : "firme");
-    return {c, uso, perna, campeao, segundo, cortado, cortadoLiderava, delta, estado, antesCampeao,
-      resto: ordena(uso, false).filter(k => k !== campeao)};
+    return {c, uso, reqs, campeao, segundo, cortados, cortadoLiderava, delta, estado, antesCampeao,
+      resto: semReq.filter(k => k !== campeao)};   // semReq traz os três: a ordem completa, sem corte
   }
 
   const rotulos = {firme:"título firme", ameacado:"título ameaçado", nocaute:"o cinturão trocou", "sem-disputa":"sem disputa medida"};
   const alturas = {edge:-348, pura:-358.6, ultra:-359.9};
   const raiz = document.documentElement;
   const chips = document.querySelectorAll(".chips button[data-uso]");
-  const chipPerna = document.querySelector(".chips .perna");
+  const travas = {google: document.getElementById("req-google"), "5g": document.getElementById("req-5g")};
   const leitura = document.getElementById("leitura");
   const bilhete = document.getElementById("bilhete");
-  let usoAtual = "economia", pernaAtiva = false, rodada = null;
+  let usoAtual = "economia", reqsAtivos = [], rodada = null;
 
   const CHAVE = "nocautecel:palpite";
   const anterior = (() => { try { return JSON.parse(localStorage.getItem(CHAVE) || "null"); } catch(e){ return null; } })();
 
-  function aplica(uso, perna, animar){
-    const r = calcula(uso, perna), a = aparelhos[r.campeao];
-    usoAtual = uso; pernaAtiva = perna; rodada = r;
+  // Palpite guardado antes de 12/09/2026 trazia "perna: true", que valia Google E 5G juntos.
+  const reqsSalvos = () => {
+    if (!anterior) return [];
+    if (Array.isArray(anterior.reqs)) return ORDEM_REQ.filter(x => anterior.reqs.indexOf(x) >= 0);
+    return anterior.perna ? ORDEM_REQ.slice() : [];
+  };
+
+  // Os três desafiantes. Cada card fala do critério em disputa, não só do preço.
+  const TROFEU = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3M9 20h6M12 14v6"/></svg>';
+
+  function desenhaDesafiantes(r){
+    const caixa = document.getElementById("desafiantes");
+    if (!caixa) return;
+    caixa.textContent = "";
+    const emJogo = CHAVES.filter(k => r.cortados.indexOf(k) < 0);
+    const teto = Math.max.apply(null, emJogo.map(k => Math.abs(r.c.valor(k))));
+    const ordem = [r.campeao].concat(r.resto);
+
+    ordem.forEach((k, i) => {
+      const a = aparelhos[k], fora = r.cortados.indexOf(k) >= 0, lider = k === r.campeao;
+      const li = document.createElement("li");
+      li.className = "desafiante " + k + (lider ? " lider" : "") + (fora ? " fora" : "");
+      li.style.setProperty("--c", "var(--" + k + ")");
+
+      const ordemP = document.createElement("p");
+      ordemP.className = "ordem";
+      const num = document.createElement("span");
+      num.className = "num";
+      num.textContent = "Desafiante " + String(i + 1).padStart(2, "0");
+      const selo = document.createElement("b");
+      selo.className = "selo";
+      if (lider){ selo.innerHTML = TROFEU; selo.append("Com o cinturão"); }
+      else selo.textContent = fora ? "Fora: " + porqueCaiu(k, r.reqs) : "Na disputa";
+      ordemP.append(num, selo);
+
+      const vitrine = document.createElement("div");
+      vitrine.className = "vitrine";
+      const dagua = document.createElement("span");
+      dagua.className = "dagua";
+      dagua.setAttribute("aria-hidden", "true");
+      dagua.textContent = a.sigla;
+      const img = document.createElement("img");
+      img.src = "fotos/" + k + ".webp";
+      img.width = a.foto.w; img.height = a.foto.h;
+      img.alt = a.foto.alt;
+      img.decoding = "async";
+      if (i > 0) img.loading = "lazy";
+      vitrine.append(dagua, img);
+
+      const marca = document.createElement("p");
+      marca.className = "fabricante";
+      marca.textContent = a.marca;
+      const h3 = document.createElement("h3");
+      h3.textContent = a.nome;
+      const ficha = document.createElement("p");
+      ficha.className = "ficha-curta";
+      ficha.textContent = P.itens[k].gb + " GB · " + a.peso + " g";
+
+      const med = document.createElement("p");
+      med.className = "medida";
+      med.append(r.c.medida(k));
+      const sub = document.createElement("small");
+      sub.textContent = legendaMedida(k);
+      med.appendChild(sub);
+
+      const sit = document.createElement("p");
+      sit.className = "situacao";
+      sit.textContent = fora ? "Não atende ao que você exigiu"
+        : lider ? "Melhor neste critério"
+        : r.c.escala ? r.c.dist(Math.abs(r.c.valor(k) - r.c.valor(r.campeao))) + " em relação ao líder"
+        : "Prazo não verificado";
+
+      li.append(ordemP, vitrine, marca, h3, ficha, med, sit);
+
+      if (r.c.escala && teto > 0 && !fora){
+        const b = document.createElement("i");
+        b.className = "b";
+        b.setAttribute("aria-hidden", "true");
+        b.style.setProperty("--p", (Math.abs(r.c.valor(k)) / teto * 100).toFixed(1) + "%");
+        li.appendChild(b);
+      }
+      const cred = document.createElement("p");
+      cred.className = "credito";
+      cred.textContent = a.foto.credito;
+      li.appendChild(cred);
+      caixa.appendChild(li);
+    });
+  }
+
+  // Legenda sob a medida: preço leva a origem; ficha oficial não muda entre coletas.
+  const legendaMedida = k => usoAtual === "economia"
+    ? "no Pix · coleta de " + dia(P.coletado_em)
+    : "ficha oficial";
+
+  function aplica(uso, reqs, animar){
+    reqs = ORDEM_REQ.filter(x => reqs.indexOf(x) >= 0);          // ordem fixa, sem repetido
+    if (!CHAVES.some(k => passaTudo(k, reqs))) reqs = [];        // exigência que zera a arena não vale
+    const r = calcula(uso, reqs), a = aparelhos[r.campeao];
+    usoAtual = uso; reqsAtivos = reqs; rodada = r;
 
     raiz.dataset.foco = r.campeao;
     raiz.style.setProperty("--cor-ativa", "var(--" + r.campeao + ")");
@@ -819,7 +961,7 @@
     bilhete.dataset.estado = r.estado;
     if (leitura) leitura.style.setProperty("--leitura-y", alturas[r.campeao] + "px");
 
-    document.getElementById("s-titulo").textContent = "Cinturão · " + r.c.titulo + (perna ? " + " + PERNA.rotulo : "");
+    document.getElementById("s-titulo").textContent = "Cinturão · " + r.c.titulo + (reqs.length ? " + " + nomeReqs(reqs) : "");
     const est = document.getElementById("s-estado");
     est.textContent = rotulos[r.estado];
     est.dataset.t = r.estado;
@@ -836,34 +978,7 @@
     quase.textContent = r.estado === "ameacado" && r.segundo ? r.c.quase(r.segundo, r.delta) : "";
     quase.hidden = !quase.textContent;
 
-    // Régua do critério: os três na mesma escala, o campeão na frente.
-    const lista = document.getElementById("s-distancias");
-    lista.textContent = "";
-    const teto = Math.max.apply(null, CHAVES.filter(k => k !== r.cortado).map(k => Math.abs(r.c.valor(k))));
-    [r.campeao].concat(r.resto).forEach(k => {
-      const li = document.createElement("li"), nome = document.createElement("span"),
-            med = document.createElement("span"), d = document.createElement("span");
-      if (k === r.campeao){ li.className = "lider"; li.style.setProperty("--c", "var(--" + k + ")"); }
-      else if (k === r.cortado){ li.className = "fora"; }
-      nome.className = "nome";
-      nome.textContent = aparelhos[k].curto + (k === r.cortado ? " · " + PERNA.motivo : "");
-      med.className = "med";
-      med.textContent = r.c.medida(k);
-      nome.appendChild(med);
-      const texto = k === r.campeao ? "leva"
-        : k === r.cortado ? "fora na 2ª perna"
-        : r.c.dist(Math.abs(r.c.valor(k) - r.c.valor(r.campeao)));
-      d.className = "d" + (k !== r.campeao && !/[0-9]/.test(texto) ? " vago" : "");
-      d.textContent = texto === med.textContent ? "" : texto;   // não repetir a medida na coluna da distância
-      li.append(nome, d);
-      if (r.c.escala && teto > 0 && k !== r.cortado){
-        const b = document.createElement("i");
-        b.className = "b";
-        b.style.setProperty("--p", (Math.abs(r.c.valor(k)) / teto * 100).toFixed(1) + "%");
-        li.appendChild(b);
-      }
-      lista.appendChild(li);
-    });
+    desenhaDesafiantes(r);
 
     // O que o campeão leva junto e o que ele custa em outro lugar.
     const s = saldo(r.campeao, uso);
@@ -884,11 +999,13 @@
     } else {
       texto = "Ficha oficial: não muda entre coletas. O que se mexe aqui é o preço.";
     }
-    if (r.cortadoLiderava) texto = aparelhos[r.cortado].curto + " ganhava a primeira perna e caiu na segunda, " + PERNA.motivo + ". " + texto;
+    if (r.cortadoLiderava) texto = aparelhos[r.cortadoLiderava].curto + " liderava e saiu da disputa, " + porqueCaiu(r.cortadoLiderava, reqs) + ". " + texto;
     mercado.textContent = texto;
 
     chips.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.uso === uso)));
-    chipPerna.setAttribute("aria-pressed", String(perna));
+    ORDEM_REQ.forEach(x => { if (travas[x]) travas[x].checked = reqs.indexOf(x) >= 0; });
+    const rot = document.getElementById("round-rot");
+    if (rot) rot.textContent = "Round " + String(ORDEM_CRIT.indexOf(uso) + 1).padStart(2, "0") + " · " + r.c.titulo;
 
     // Barra do campeão, no celular
     const res = document.getElementById("resumo");
@@ -900,7 +1017,7 @@
     }
 
     // A URL guarda a disputa: quem receber o link vê a mesma comparação.
-    try { history.replaceState(null, "", endereco(uso, perna) + location.hash); } catch(e){}
+    try { history.replaceState(null, "", endereco(uso, reqs) + location.hash); } catch(e){}
 
     if (animar){
       if (!matchMedia("(prefers-reduced-motion: reduce)").matches){
@@ -912,7 +1029,7 @@
     guarda(r);
   }
 
-  const endereco = (uso, perna) => location.pathname + "?c=" + uso + (perna ? "&r=1" : "");
+  const endereco = (uso, reqs) => location.pathname + "?c=" + uso + (reqs.length ? "&req=" + reqs.join(",") : "");
 
   // No celular o palco rola: ao trocar o cinturão, o campeão vem para o centro.
   const FRACAO = {edge:298.2/1200, pura:508.7/1200, ultra:721.9/1200};
@@ -927,7 +1044,7 @@
 
   function guarda(r){
     try {
-      localStorage.setItem(CHAVE, JSON.stringify({coleta:P.coletado_em, uso:usoAtual, perna:pernaAtiva,
+      localStorage.setItem(CHAVE, JSON.stringify({coleta:P.coletado_em, uso:usoAtual, reqs:reqsAtivos,
         campeao:r.campeao, segundo:r.segundo || null, delta:r.delta, estado:r.estado, em:new Date().toISOString()}));
     } catch(e){}
   }
@@ -948,7 +1065,7 @@
         "Quando entrar uma coleta nova, a conferência aparece aqui: se o preço mexeu e se o cinturão trocou.");
       return;
     }
-    const mesmoJogo = anterior.uso === usoAtual && anterior.perna === pernaAtiva;
+    const mesmoJogo = anterior.uso === usoAtual && reqsSalvos().join() === reqsAtivos.join();
     const c = criterios[anterior.uso];
     if (anterior.coleta === P.coletado_em){
       escreve("aberto", "Seu campeão continua valendo a pena?",
@@ -956,7 +1073,7 @@
         " em " + c.titulo + ", e a coleta no ar ainda é a de " + dia(P.coletado_em) + ". Nada mudou desde então.");
       return;
     }
-    const agora = calcula(anterior.uso, anterior.perna);
+    const agora = calcula(anterior.uso, reqsSalvos());
     const partes = ["Palpite de " + dia(anterior.coleta) + " · " + c.titulo,
       "Antes: " + aparelhos[anterior.campeao].curto + (anterior.delta != null ? ", folga " + c.dist(anterior.delta).replace(/^[+−]/, "") : "")];
     let t;
@@ -988,19 +1105,25 @@
     }
   }
 
-  chips.forEach(b => b.addEventListener("click", () => aplica(b.dataset.uso, pernaAtiva, true)));
-  chipPerna.addEventListener("click", () => aplica(usoAtual, !pernaAtiva, true));
+  chips.forEach(b => b.addEventListener("click", () => aplica(b.dataset.uso, reqsAtivos, true)));
+  ORDEM_REQ.forEach(x => {
+    if (!travas[x]) return;
+    travas[x].addEventListener("change", () => {
+      const marcados = ORDEM_REQ.filter(y => travas[y] && travas[y].checked);
+      aplica(usoAtual, marcados, true);
+    });
+  });
 
   document.getElementById("s-copiar").addEventListener("click", async (ev) => {
     const r = rodada, botao = ev.currentTarget;
     const linhas = [
       "NOCAUTECEL · coleta " + dia(P.coletado_em) + " " + hora(P.coletado_em),
-      "Critério: " + r.c.titulo + (pernaAtiva ? " + " + PERNA.rotulo : ""),
+      "Critério: " + r.c.titulo + (reqsAtivos.length ? " + " + nomeReqs(reqsAtivos) : ""),
       "Cinturão: " + aparelhos[r.campeao].nome + " — " + r.c.linha(r.campeao),
       r.segundo ? "Segundo: " + aparelhos[r.segundo].curto + " " + r.c.dist(r.delta) : "",
       r.estado === "nocaute" ? "O cinturão trocou nesta coleta." : r.estado === "ameacado" ? "Título ameaçado." : "",
       r.c.frase[r.campeao],
-      location.origin.indexOf("http") === 0 ? location.origin + endereco(usoAtual, pernaAtiva) : "nocautecel.com"
+      location.origin.indexOf("http") === 0 ? location.origin + endereco(usoAtual, reqsAtivos) : "nocautecel.com"
     ].filter(Boolean);
     try { await navigator.clipboard.writeText(linhas.join("\n")); botao.textContent = "Placar copiado"; }
     catch(e){ botao.textContent = "Não consegui copiar"; }
@@ -1013,7 +1136,9 @@
     afiliado();
     const q = new URLSearchParams(location.search);
     const pedido = q.get("c");
-    aplica(criterios[pedido] ? pedido : "economia", q.get("r") === "1", false);
+    // "req=google,5g" é a forma nova; "r=1" veio dos links de 12/09 e valia os dois juntos.
+    const pedidos = q.get("req") ? q.get("req").split(",").map(x => x.trim()) : (q.get("r") === "1" ? ORDEM_REQ.slice() : []);
+    aplica(criterios[pedido] ? pedido : "economia", ORDEM_REQ.filter(x => pedidos.indexOf(x) >= 0), false);
     focaPalco(rodada.campeao);   // no celular o palco já abre no campeão, não no vazio
     const res = document.getElementById("resumo");
     if (res && "IntersectionObserver" in window){
@@ -1089,8 +1214,22 @@
     x.fillStyle = faixa; x.fillRect(M, 190, L - M * 2, 78);
     x.strokeStyle = tinta("--metal-borda") || "#6E5A33"; x.lineWidth = 2; x.strokeRect(M, 190, L - M * 2, 78);
     esp("6px");
-    x.font = dado(28); x.fillStyle = tinta("--metal-tinta") || "#241C0E";
-    x.fillText(("MEU CAMPEÃO · " + r.c.titulo + (pernaAtiva ? " + " + PERNA.rotulo : "")).toUpperCase(), M + 26, 238);
+    x.fillStyle = tinta("--metal-tinta") || "#241C0E";
+    // A faixa é estreita: encolhe a fonte até caber e, no limite, abre mão do sufixo.
+    const cabe = L - M * 2 - 52;
+    let faixaTexto = ("MEU CAMPEÃO · " + r.c.titulo + (reqsAtivos.length ? " + " + nomeReqs(reqsAtivos) : "")).toUpperCase();
+    let corpo = 28;
+    x.font = dado(corpo);
+    while (x.measureText(faixaTexto).width > cabe && corpo > 19){ corpo -= 1; x.font = dado(corpo); }
+    let sobrou = "";
+    if (x.measureText(faixaTexto).width > cabe){
+      faixaTexto = ("MEU CAMPEÃO · " + r.c.titulo).toUpperCase();
+      sobrou = reqsAtivos.length ? ("Exigindo " + nomeReqs(reqsAtivos)).toUpperCase() : "";
+      corpo = 28; x.font = dado(corpo);
+      while (x.measureText(faixaTexto).width > cabe && corpo > 18){ corpo -= 1; x.font = dado(corpo); }
+    }
+    x.fillText(faixaTexto, M + 26, 238);
+    if (sobrou){ x.font = dado(19); x.fillStyle = fum; x.fillText(sobrou, M, 294); }
     esp("0px");
 
     const foto = await carrega("fotos/" + r.campeao + ".webp");
@@ -1135,7 +1274,7 @@
     x.fillText("PREÇO DA COLETA DE " + dia(P.coletado_em) + " " + hora(P.coletado_em) + " · AMAZON.COM.BR, CEP SP", M, A - 170);
     esp("0px");
     x.font = dado(26); x.fillStyle = cor;
-    x.fillText("nocautecel.com" + endereco(usoAtual, pernaAtiva).replace(/^\/?(index\.html)?/, "/"), M, A - 104);
+    x.fillText("nocautecel.com" + endereco(usoAtual, reqsAtivos).replace(/^\/?(index\.html)?/, "/"), M, A - 104);
     x.font = texto(22); x.fillStyle = fum;
     x.fillText("Veredito por critério de uso, não nota de qualidade. Confira o preço antes de pagar.", M, A - 62);
 
@@ -1149,7 +1288,7 @@
       const blob = await desenhaCartao(rodada);
       const nome = "nocautecel-" + rodada.campeao + "-" + usoAtual + ".png";
       const arquivo = new File([blob], nome, {type:"image/png"});
-      const alvo = location.origin + endereco(usoAtual, pernaAtiva);
+      const alvo = location.origin + endereco(usoAtual, reqsAtivos);
       const frase = "Meu campeão no Nocautecel: " + aparelhos[rodada.campeao].nome + " em " + rodada.c.titulo + ". E o seu? " + alvo;
       if (navigator.canShare && navigator.canShare({files:[arquivo]})){
         await navigator.share({files:[arquivo], text:frase});
@@ -1170,7 +1309,7 @@
 
   document.getElementById("s-link").addEventListener("click", async ev => {
     const botao = ev.currentTarget;
-    try { await navigator.clipboard.writeText(location.origin + endereco(usoAtual, pernaAtiva)); botao.textContent = "Link copiado"; }
+    try { await navigator.clipboard.writeText(location.origin + endereco(usoAtual, reqsAtivos)); botao.textContent = "Link copiado"; }
     catch(e){ botao.textContent = "Não consegui copiar"; }
     setTimeout(() => { botao.textContent = "Copiar link desta disputa"; }, 2200);
   });
