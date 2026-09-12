@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>S25 Edge × Pura 80 Pro × S26 Ultra | Nocautecel</title>
-<meta name="description" content="Pesagem em escala, ficha oficial comparada e preço do dia: Galaxy S25 Edge, Huawei Pura 80 Pro e Galaxy S26 Ultra.">
+<title>Nocautecel — escolha 2 ou 3 celulares e veja quem leva o cinturão</title>
+<meta name="description" content="Compare 2 ou 3 celulares: pesagem em escala, ficha oficial de cada fabricante e preço coletado na Amazon, com data.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Archivo:wght@400;500;600&family=Chivo+Mono:wght@400;500&display=swap">
@@ -14,6 +14,7 @@
     --texto:"Archivo","Segoe UI",system-ui,-apple-system,sans-serif;
     --dado:"Chivo Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
     --edge:#8CD8FF; --pura:#FF6B86; --ultra:#C4A8FF;
+    --s0:var(--edge); --s1:var(--pura); --s2:var(--ultra);   /* cor por posição na arena */
     --arena:#07090D; --lona:#0D1117; --lona-2:#131922;
     --corda:#222C3A; --corda-forte:#3A4A5E; --hairline:1px;
     --scan:#7EC8E8; --incerteza:#8494A5;
@@ -112,7 +113,7 @@
 
   /* ---------- Telemetria ---------- */
   .telemetria{border-top:var(--hairline) solid var(--giz)}
-  .tl{display:grid; grid-template-columns:minmax(10rem,1.15fr) repeat(3,minmax(0,1fr)); border-bottom:var(--hairline) solid var(--corda)}
+  .tl{display:grid; grid-template-columns:minmax(10rem,1.15fr) repeat(var(--n,3),minmax(0,1fr)); border-bottom:var(--hairline) solid var(--corda)}
   .tl > div{padding:.8rem .9rem .85rem}
   .tl.cab .lutador{font-family:var(--poster); font-weight:800; font-size:1.35rem; line-height:1; text-transform:uppercase; color:var(--c)}
   .tl .rot{color:var(--giz-2); font-size:.9375rem}
@@ -170,7 +171,7 @@
     .selo .caixa{display:none}
     .instrumentos{grid-template-columns:1fr}
     .inst{border-right:0; border-bottom:var(--hairline) solid var(--corda)}
-    .tl{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .tl{grid-template-columns:repeat(var(--n,3),minmax(0,1fr))}
     .tl.cab > div:first-child{display:none}
     .tl > div{padding:.5rem .45rem .75rem}
     .tl .rot{grid-column:1/-1; padding:.75rem .45rem 0}
@@ -215,7 +216,7 @@
   .bilhete .topo-cartao{display:grid; grid-template-columns:auto 1fr; gap:.9rem; align-items:center}
   .bilhete .foto{width:72px; height:auto; aspect-ratio:3/4; object-fit:cover; border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio); background:var(--lona-2)}
   /* ---------- Os três desafiantes ---------- */
-  .desafiantes{list-style:none; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin:1.25rem 0 0; padding:0}
+  .desafiantes{list-style:none; display:grid; grid-template-columns:repeat(var(--n,3),minmax(0,1fr)); gap:1rem; margin:1.25rem 0 0; padding:0}
   .desafiante{--c:var(--corda-forte); position:relative; display:flex; flex-direction:column; padding:.9rem .95rem 1rem;
     background:linear-gradient(180deg, color-mix(in srgb, var(--c) 8%, var(--lona)) 0, var(--lona) 62%);
     border:var(--hairline) solid var(--corda); border-radius:var(--raio); overflow:hidden;
@@ -327,6 +328,39 @@
     .palco-dica svg{flex:none; width:14px; height:14px}
   }
   @media (prefers-reduced-motion:reduce){ .resumo{transition:none} }
+
+  /* ---------- Cores por posição na arena, não por aparelho ---------- */
+  :root[data-foco="s0"] .corpo:not(.s0), :root[data-foco="s1"] .corpo:not(.s1), :root[data-foco="s2"] .corpo:not(.s2){opacity:var(--fora-op)}
+  :root[data-foco="s0"] .ingresso.s0, :root[data-foco="s1"] .ingresso.s1, :root[data-foco="s2"] .ingresso.s2{opacity:1; background:color-mix(in srgb, var(--c) 7%, transparent); box-shadow:inset 0 0 0 var(--hairline) var(--c)}
+  .corpo.s1{animation-delay:90ms} .corpo.s2{animation-delay:180ms}
+  .vitrine-silhueta{position:relative; display:block; height:clamp(9rem,17vw,12.5rem); aspect-ratio:3/4}
+  .ingresso .suspeito{display:block}
+  .s0{--c:var(--edge)} .s1{--c:var(--pura)} .s2{--c:var(--ultra)}
+
+  /* ---------- Escolha da disputa: 2 ou 3 do catálogo ---------- */
+  .escolha{margin-top:1rem; border:var(--hairline) solid var(--corda); border-radius:var(--raio); background:var(--lona)}
+  .escolha>summary{display:flex; flex-wrap:wrap; align-items:center; gap:.4rem .9rem; min-height:48px; padding:.6rem .9rem; cursor:pointer; list-style:none}
+  .escolha>summary::-webkit-details-marker{display:none}
+  .escolha>summary b{font-family:var(--dado); font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; color:var(--giz)}
+  .escolha>summary span{font-family:var(--dado); font-size:.78rem; color:var(--incerteza)}
+  .escolha>summary::after{content:"Trocar"; margin-left:auto; font-family:var(--dado); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--scan)}
+  .escolha[open]>summary::after{content:"Fechar"}
+  .escolha .aviso-sel{margin:0 .9rem .6rem; font-family:var(--dado); font-size:.78rem; color:var(--ouro)}
+  .catalogo{list-style:none; margin:0; padding:.3rem .9rem .9rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(13.5rem,1fr)); gap:.5rem}
+  .opcao{display:grid; grid-template-columns:auto 2.4rem 1fr; gap:.2rem .6rem; align-items:center; min-height:56px; padding:.45rem .6rem;
+    border:var(--hairline) solid var(--corda); border-radius:var(--raio); cursor:pointer; transition:border-color var(--t-criterio) var(--sai-rapido)}
+  .opcao:hover{border-color:var(--corda-forte)}
+  .opcao input{width:1.1rem; height:1.1rem; margin:0; accent-color:var(--scan)}
+  .opcao:has(input:checked){border-color:var(--c,var(--scan)); background:color-mix(in srgb, var(--c,var(--scan)) 8%, transparent)}
+  .opcao:has(input:disabled:not(:checked)){opacity:.5; cursor:not-allowed}
+  .opcao .mini-foto{width:2.4rem; height:3.2rem; object-fit:cover; border-radius:var(--raio); background:var(--lona-2)}
+  .opcao .txt{min-width:0; font-size:.88rem; line-height:1.25; color:var(--giz)}
+  .opcao .txt small{display:block; font-family:var(--dado); font-size:.72rem; color:var(--incerteza)}
+  .opcao .txt em{font-style:normal; color:var(--ouro)}
+  .silhueta{display:block; width:100%; height:100%}
+  .silhueta rect{fill:var(--lona-2); stroke:var(--c,var(--corda-forte)); stroke-width:2}
+  .silhueta text{fill:var(--incerteza); font-family:var(--dado)}
+  .suspeito{margin:.4rem 0 0; font-family:var(--dado); font-size:.74rem; line-height:1.4; color:var(--ouro)}
   @media (min-width:48rem){
     .acoes{grid-template-columns:repeat(2,minmax(0,1fr))}
     .bilhete .comprar{width:auto; display:inline-flex}
@@ -359,6 +393,11 @@
   <section class="slip" id="palpite" aria-labelledby="t-palpite">
     <h2 id="t-palpite">Qual merece o seu dinheiro?</h2>
     <p class="sub">Escolha o que importa. Veja quem leva o cinturão.</p>
+    <details class="escolha" id="escolha">
+      <summary><b>Na arena</b><span id="escolha-resumo">S25 Edge × Pura 80 Pro × S26 Ultra</span></summary>
+      <p class="aviso-sel" id="escolha-aviso" hidden></p>
+      <ul class="catalogo" id="catalogo" aria-label="Escolha 2 ou 3 celulares"></ul>
+    </details>
     <div class="chips" role="group" aria-label="Critério do palpite">
       <button type="button" data-uso="economia" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18v11H3zM3 11h18M7 15h3"/></svg>Gastar menos</button>
       <button type="button" data-uso="leveza" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v14M6 8h12M8 8l-3 7h6ZM16 8l-3 7h6ZM9 20h6"/></svg>No bolso</button>
@@ -370,7 +409,7 @@
     <div class="exigencias">
       <span class="rot" id="rot-exig">Indispensável para mim</span>
       <div role="group" aria-labelledby="rot-exig">
-        <label class="trava"><input type="checkbox" id="req-google"><span>Apps do Google</span></label>
+        <label class="trava"><input type="checkbox" id="req-google"><span>Play Store ou App Store</span></label>
         <label class="trava"><input type="checkbox" id="req-5g"><span>5G</span></label>
       </div>
       <span class="round-rot" id="round-rot">Round 01 · Menor preço</span>
@@ -412,7 +451,7 @@
     <ol class="desafiantes" id="desafiantes" aria-label="Os três aparelhos na disputa"></ol>
   </section>
 
-  <h1 class="sr">Três na balança: Galaxy S25 Edge, Huawei Pura 80 Pro e Galaxy S26 Ultra</h1>
+  <h1 class="sr" id="titulo-h1">Comparador de celulares: escolha 2 ou 3 e veja quem leva o cinturão</h1>
 
   <div class="palco" id="pesagem">
     <div class="palco-rolo">
@@ -422,18 +461,15 @@
         <span class="ancora" style="left:60%"></span>
         <span class="ancora" style="left:85%"></span>
         <!-- 1 mm = 2,2 unidades · chão em y=600 · medidas declaradas pelos fabricantes -->
-        <svg viewBox="0 0 1200 760" role="img" aria-label="Pesagem em escala: os três celulares vistos por trás sobre uma plataforma de calibração, com régua em milímetros à esquerda e tabela de medidas à direita. S25 Edge 158,2 por 75,6 por 5,8 mm, 163 g. Pura 80 Pro 163,0 por 76,1 por 8,3 mm, 219 g. S26 Ultra 163,6 por 78,1 por 7,9 mm, 214 g.">
+        <svg viewBox="0 0 1200 760" role="img" id="palco-svg" aria-label="Pesagem em escala dos aparelhos escolhidos.">
           <defs>
             <radialGradient id="disco" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#1A2230"/><stop offset=".7" stop-color="#0E131B"/><stop offset="1" stop-color="#080B10"/></radialGradient>
             <linearGradient id="borda-disco" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A3646"/><stop offset="1" stop-color="#07090D"/></linearGradient>
             <radialGradient id="brilho" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#7EC8E8" stop-opacity=".22"/><stop offset="1" stop-color="#7EC8E8" stop-opacity="0"/></radialGradient>
-            <clipPath id="c-edge"><rect x="215" y="252" width="166.3" height="348" rx="18"/></clipPath>
-            <clipPath id="c-pura"><rect x="425" y="241.4" width="167.4" height="358.6" rx="18"/></clipPath>
-            <clipPath id="c-ultra"><rect x="636" y="240.1" width="171.8" height="359.9" rx="18"/></clipPath>
           </defs>
 
           <!-- título em contorno -->
-          <text class="t-titulo" x="640" y="158" text-anchor="middle" font-size="156" textLength="960" lengthAdjust="spacing" aria-hidden="true">TRÊS NA BALANÇA</text>
+          <text class="t-titulo" id="palco-titulo" x="640" y="158" text-anchor="middle" font-size="156" textLength="960" lengthAdjust="spacing" aria-hidden="true">TRÊS NA BALANÇA</text>
 
           <!-- trilho da régua -->
           <text class="mono" x="22" y="40" font-size="15" fill="#E7EDF4" letter-spacing="2">RÉGUA LASER</text>
@@ -458,84 +494,33 @@
           <text class="mono" x="512" y="704" font-size="13" fill="#B7C2CE" text-anchor="middle" letter-spacing="3">PLATAFORMA DE CALIBRAÇÃO</text>
           <g id="eixo-x" class="regua-num" font-size="12.5"></g>
 
-          <!-- Galaxy S25 Edge: x 215, y 252, 166,3 × 348 · espessura 5,8 mm -->
-          <g class="corpo edge">
-            <text class="rotulo-nome" x="298.2" y="198" text-anchor="middle" font-size="15">GALAXY S25 EDGE</text>
-            <text class="rotulo-dado" x="298.2" y="218" text-anchor="middle" font-size="12.5">158,2 × 75,6 × 5,8 mm</text>
-            <text class="rotulo-dado" x="298.2" y="236" text-anchor="middle" font-size="12.5">163 g</text>
-            <path class="lado" d="M381.3 262 L391.5 256.3 L391.5 594.3 L381.3 600 Z"/>
-            <path class="lado" d="M225 252 L235.2 246.3 L391.5 246.3 L381.3 252 Z"/>
-            <rect class="face" x="215" y="252" width="166.3" height="348" rx="18"/>
-            <g clip-path="url(#c-edge)" id="g-edge"><image href="fotos/edge-corpo.webp" x="215" y="252" width="166.3" height="348" preserveAspectRatio="xMidYMid slice"/></g>
-            <rect class="contorno" x="215" y="252" width="166.3" height="348" rx="18"/>
-          </g>
-
-          <!-- Huawei Pura 80 Pro: x 425, y 241,4, 167,4 × 358,6 · espessura 8,3 mm -->
-          <g class="corpo pura">
-            <text class="rotulo-nome" x="508.7" y="187.4" text-anchor="middle" font-size="15">HUAWEI PURA 80 PRO</text>
-            <text class="rotulo-dado" x="508.7" y="207.4" text-anchor="middle" font-size="12.5">163,0 × 76,1 × 8,3 mm</text>
-            <text class="rotulo-dado" x="508.7" y="225.4" text-anchor="middle" font-size="12.5">219 g</text>
-            <path class="lado" d="M592.4 251.4 L607 243.2 L607 591.8 L592.4 600 Z"/>
-            <path class="lado" d="M435 241.4 L449.6 233.2 L607 233.2 L592.4 241.4 Z"/>
-            <rect class="face" x="425" y="241.4" width="167.4" height="358.6" rx="18"/>
-            <g clip-path="url(#c-pura)" id="g-pura"><image href="fotos/pura-corpo.webp" x="425" y="241.4" width="167.4" height="358.6" preserveAspectRatio="xMidYMid slice"/></g>
-            <rect class="contorno" x="425" y="241.4" width="167.4" height="358.6" rx="18"/>
-          </g>
-
-          <!-- Galaxy S26 Ultra: x 636, y 240,1, 171,8 × 359,9 · espessura 7,9 mm -->
-          <g class="corpo ultra">
-            <text class="rotulo-nome" x="721.9" y="186.1" text-anchor="middle" font-size="15">GALAXY S26 ULTRA</text>
-            <text class="rotulo-dado" x="721.9" y="206.1" text-anchor="middle" font-size="12.5">163,6 × 78,1 × 7,9 mm</text>
-            <text class="rotulo-dado" x="721.9" y="224.1" text-anchor="middle" font-size="12.5">214 g</text>
-            <path class="lado" d="M807.8 250.1 L821.7 242.3 L821.7 592.2 L807.8 600 Z"/>
-            <path class="lado" d="M646 240.1 L659.9 232.3 L821.7 232.3 L807.8 240.1 Z"/>
-            <rect class="face" x="636" y="240.1" width="171.8" height="359.9" rx="12"/>
-            <g clip-path="url(#c-ultra)" id="g-ultra"><image href="fotos/ultra-corpo.webp" x="636" y="240.1" width="171.8" height="359.9" preserveAspectRatio="xMidYMid slice"/></g>
-            <rect class="contorno" x="636" y="240.1" width="171.8" height="359.9" rx="18"/>
-          </g>
+          <g id="corpos"></g>
 
           <!-- plano de leitura na altura do aparelho em foco -->
           <g class="leitura" id="leitura"><line x1="40" y1="600" x2="830" y2="600"/></g>
 
-          <!-- tabela de medidas -->
-          <text class="tabela-t" x="860" y="336" font-size="13.5">ESPECIFICAÇÕES COMPARATIVAS</text>
-          <line class="tabela-linha" x1="852" y1="352" x2="1188" y2="352"/>
-          <g class="tabela-cab" font-size="9.5">
-            <text x="856" y="376">MODELO</text><text x="1000" y="376" text-anchor="end">ALTURA</text><text x="1064" y="376" text-anchor="end">LARGURA</text><text x="1132" y="376" text-anchor="end">ESPESSURA</text><text x="1186" y="376" text-anchor="end">PESO</text>
-          </g>
-          <line class="tabela-linha" x1="852" y1="388" x2="1188" y2="388"/>
-          <g class="tabela-v" font-size="12">
-            <text x="856" y="418" fill="#8CD8FF">S25 EDGE</text><text x="1000" y="418" text-anchor="end">158,2 mm</text><text x="1064" y="418" text-anchor="end">75,6 mm</text><text x="1132" y="418" text-anchor="end">5,8 mm</text><text x="1186" y="418" text-anchor="end">163 g</text>
-            <text x="856" y="462" fill="#FF6B86">PURA 80 PRO</text><text x="1000" y="462" text-anchor="end">163,0 mm</text><text x="1064" y="462" text-anchor="end">76,1 mm</text><text x="1132" y="462" text-anchor="end">8,3 mm</text><text x="1186" y="462" text-anchor="end">219 g</text>
-            <text x="856" y="506" fill="#C4A8FF">S26 ULTRA</text><text x="1000" y="506" text-anchor="end">163,6 mm</text><text x="1064" y="506" text-anchor="end">78,1 mm</text><text x="1132" y="506" text-anchor="end">7,9 mm</text><text x="1186" y="506" text-anchor="end">214 g</text>
-          </g>
-          <line class="tabela-linha" x1="852" y1="434" x2="1188" y2="434"/>
-          <line class="tabela-linha" x1="852" y1="478" x2="1188" y2="478"/>
-          <line class="tabela-linha" x1="852" y1="522" x2="1188" y2="522"/>
-          <text class="mono" x="856" y="548" font-size="11" fill="#8494A5">Medidas declaradas pelo fabricante.</text>
-          <text class="mono" x="856" y="566" font-size="11" fill="#8494A5">Nada foi medido em bancada.</text>
-          <text class="mono" x="856" y="584" font-size="11" fill="#8494A5">Corpo: foto do aparelho, na caixa em escala.</text>
+          <g id="tabela-palco"></g>
         </svg>
       </div>
     </div>
     <p class="palco-dica" id="palco-dica" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg>
-      Arraste para ver os três na mesma escala
+      Arraste para ver todos na mesma escala
     </p>
   </div>
 
   <div class="instrumentos" role="list">
     <div class="inst" role="listitem">
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M10 4h14l8 8v24H10Z"/><path d="M24 4v8h8M15 20h12M15 25h12M15 30h8"/></svg>
-      <div><b>Fonte: fichas oficiais</b><span>Samsung e Huawei · acesso 11/09/2026</span></div>
+      <div><b>Fonte: fichas oficiais</b><span>fabricante de cada aparelho · acesso 11 e 12/09/2026</span></div>
     </div>
     <div class="inst" role="listitem">
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20 5v28M8 11h24M11 11 5 23h12Zm18 0-6 12h12ZM13 35h14"/><circle cx="20" cy="7" r="2"/></svg>
-      <div><b>Escala única</b><span>1 mm = 2,2 unidades · os três iguais</span></div>
+      <div><b>Escala única</b><span>1 mm = 2,2 unidades · a mesma para todos</span></div>
     </div>
     <div class="inst" role="listitem">
       <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="20" cy="20" r="13"/><circle cx="20" cy="20" r="6"/><path d="M20 2v10M20 28v10M2 20h10M28 20h10"/></svg>
-      <div><b>Preço do dia</b><span>Amazon · 11/09/2026 14h45 · CEP SP</span></div>
+      <div><b>Preço do dia</b><span>Amazon · data da coleta em cada aparelho</span></div>
     </div>
     <div class="lema"><p>Precisão não é opinião. É fonte. <span aria-hidden="true">✦</span></p></div>
   </div>
@@ -546,67 +531,15 @@
       <h2 id="t-fita">A fita métrica</h2>
       <p>O que o fabricante declara. Em cada linha, o melhor aparece na cor dele; os outros mostram a distância até o melhor. Barra = mesma escala dentro da linha.</p>
     </div>
-    <div class="telemetria" role="table" aria-label="Ficha oficial comparada">
-      <div class="tl cab" role="row"><div role="columnheader"><span class="sr">Critério</span></div><div class="edge" role="columnheader"><span class="lutador">S25 Edge</span></div><div class="pura" role="columnheader"><span class="lutador">Pura 80 Pro</span></div><div class="ultra" role="columnheader"><span class="lutador">S26 Ultra</span></div></div>
-      <div class="tl grande" role="row"><div class="rot" role="rowheader">Preço hoje<small>Amazon · 11/09 14h45</small></div>
-        <div class="v edge ganha" role="cell"><span class="val">R$ 3.799</span><span class="nota">no Pix</span><i class="barra" style="--p:56.3%"></i><span class="sr">melhor nesta linha</span></div>
-        <div class="v pura" role="cell"><span class="val">R$ 3.999</span><span class="delta">+R$ 200</span><span class="nota">cor preta · vendedor terceiro</span><i class="barra" style="--p:59.3%"></i></div>
-        <div class="v ultra" role="cell"><span class="val">R$ 6.749</span><span class="delta">+R$ 2.950</span><span class="nota">no Pix</span><i class="barra" style="--p:100%"></i></div></div>
-      <div class="tl" role="row"><div class="rot" role="rowheader">Altura × largura</div>
-        <div class="v edge" role="cell"><span class="val">158,2 × 75,6 mm</span><i class="barra" style="--p:96.7%"></i></div>
-        <div class="v pura" role="cell"><span class="val">163,0 × 76,1 mm</span><i class="barra" style="--p:99.6%"></i></div>
-        <div class="v ultra" role="cell"><span class="val">163,6 × 78,1 mm</span><i class="barra" style="--p:100%"></i></div></div>
-      <div class="tl" role="row"><div class="rot" role="rowheader">Espessura<small>menos é melhor</small></div>
-        <div class="v edge ganha" role="cell"><span class="val">5,8 mm</span><i class="barra" style="--p:69.9%"></i><span class="sr">melhor nesta linha</span></div>
-        <div class="v pura" role="cell"><span class="val">8,3 mm</span><span class="delta">+2,5 mm</span><i class="barra" style="--p:100%"></i></div>
-        <div class="v ultra" role="cell"><span class="val">7,9 mm</span><span class="delta">+2,1 mm</span><i class="barra" style="--p:95.2%"></i></div></div>
-      <div class="tl" role="row"><div class="rot" role="rowheader">Peso<small>menos é melhor</small></div>
-        <div class="v edge ganha" role="cell"><span class="val">163 g</span><i class="barra" style="--p:74.4%"></i><span class="sr">melhor nesta linha</span></div>
-        <div class="v pura" role="cell"><span class="val">219 g</span><span class="delta">+56 g</span><i class="barra" style="--p:100%"></i></div>
-        <div class="v ultra" role="cell"><span class="val">214 g</span><span class="delta">+51 g</span><i class="barra" style="--p:97.7%"></i></div></div>
-      <div class="tl" role="row"><div class="rot" role="rowheader">Tela</div>
-        <div class="v edge" role="cell"><span class="val">6,7"</span><i class="barra" style="--p:97.1%"></i></div>
-        <div class="v pura" role="cell"><span class="val">6,8"</span><i class="barra" style="--p:98.6%"></i></div>
-        <div class="v ultra" role="cell"><span class="val">6,9"</span><i class="barra" style="--p:100%"></i></div></div>
-      <div class="tl" role="row"><div class="rot" role="rowheader">Capacidade da bateria<small>declarada pelo fabricante · não é autonomia medida</small></div>
-        <div class="v edge" role="cell"><span class="val">3.900 mAh</span><span class="delta">−1.270 mAh</span><i class="barra" style="--p:75.4%"></i></div>
-        <div class="v pura ganha" role="cell"><span class="val">5.170 mAh</span><span class="nota">nominal</span><i class="barra" style="--p:100%"></i><span class="sr">melhor nesta linha</span></div>
-        <div class="v ultra" role="cell"><span class="val">5.000 mAh</span><span class="delta">−170 mAh</span><span class="nota">típica · nominal 4.855</span><i class="barra" style="--p:96.7%"></i></div></div>
-      <div class="tl" role="row"><div class="rot" role="rowheader">Câmeras traseiras</div>
-        <div class="v edge" role="cell"><span class="val">2 · 200 MP</span></div>
-        <div class="v pura" role="cell"><span class="val">4 · 50 MP</span><span class="nota">sensor principal de 1"</span></div>
-        <div class="v ultra" role="cell"><span class="val">4 · 200 MP</span></div></div>
-      <div class="tl" role="row"><div class="rot" role="rowheader">Zoom óptico<small>teleobjetiva de verdade</small></div>
-        <div class="v edge sem" role="cell"><span class="val">sem tele</span><i class="barra" style="--p:0%"></i></div>
-        <div class="v pura" role="cell"><span class="val">4×</span><span class="delta">−1×</span><i class="barra" style="--p:80%"></i></div>
-        <div class="v ultra ganha" role="cell"><span class="val">3× e 5×</span><i class="barra" style="--p:100%"></i><span class="sr">melhor nesta linha</span></div></div>
-      <div class="tl" role="row"><div class="rot" role="rowheader">5G</div>
-        <div class="v edge ganha" role="cell"><span class="val">sim</span></div><div class="v pura sem" role="cell"><span class="val">não, só 4G</span></div><div class="v ultra ganha" role="cell"><span class="val">sim</span></div></div>
-      <div class="tl" role="row"><div class="rot" role="rowheader">Apps do Google</div>
-        <div class="v edge ganha" role="cell"><span class="val">sim</span></div><div class="v pura sem" role="cell"><span class="val">não, EMUI 15</span></div><div class="v ultra ganha" role="cell"><span class="val">sim</span></div></div>
-    </div>
+    <div class="telemetria" id="fita-tabela" role="table" aria-label="Ficha oficial comparada"></div>
   </section>
 
   <section id="replay" aria-labelledby="t-replay">
     <div class="sec-topo">
       <h2 id="t-replay">O que a ficha não mostra</h2>
-      <p>Três fatos de fora da ficha, no mesmo grid. "Sem dado" = nada comparável nesta pesagem.</p>
+      <p>O que não é tamanho nem preço. "Sem dado" = não consta na ficha oficial ou não foi conferido.</p>
     </div>
-    <div class="telemetria" role="table" aria-label="Fatos fora da ficha">
-      <div class="tl cab" role="row"><div role="columnheader"><span class="sr">Fato</span></div><div class="edge" role="columnheader"><span class="lutador">S25 Edge</span></div><div class="pura" role="columnheader"><span class="lutador">Pura 80 Pro</span></div><div class="ultra" role="columnheader"><span class="lutador">S26 Ultra</span></div></div>
-      <div class="tl grande" role="row"><div class="rot" role="rowheader">Autonomia medida<small>Tom's Guide · navegação web</small></div>
-        <div class="v edge" role="cell"><span class="val">12h38</span><span class="nota">o S25 Ultra fez 17h14 no mesmo teste</span></div>
-        <div class="v pura sem" role="cell"><span class="val">sem dado</span><span class="nota">teste não conferido</span></div>
-        <div class="v ultra sem" role="cell"><span class="val">sem dado</span><span class="nota">teste não conferido</span></div></div>
-      <div class="tl grande" role="row"><div class="rot" role="rowheader">Sensor principal<small>ficha da Huawei</small></div>
-        <div class="v edge sem" role="cell"><span class="val">sem dado</span></div>
-        <div class="v pura" role="cell"><span class="val">1"</span><span class="nota">abertura variável, f/1.6 a f/4.0</span></div>
-        <div class="v ultra sem" role="cell"><span class="val">sem dado</span></div></div>
-      <div class="tl grande" role="row"><div class="rot" role="rowheader">Segurança garantida até<small>ficha da Samsung</small></div>
-        <div class="v edge sem" role="cell"><span class="val">sem dado</span><span class="nota">não achei na ficha oficial</span></div>
-        <div class="v pura sem" role="cell"><span class="val">sem dado</span><span class="nota">não conferido</span></div>
-        <div class="v ultra" role="cell"><span class="val">02/2033</span><span class="nota">28/02/2033 · tem S Pen</span></div></div>
-    </div>
+    <div class="telemetria" id="replay-tabela" role="table" aria-label="Fatos fora da ficha"></div>
   </section>
 
   <section id="bilheteria" aria-labelledby="t-bilheteria">
@@ -614,15 +547,7 @@
       <h2 id="t-bilheteria">Bilheteria</h2>
       <p>O preço aceso é o do seu critério. Preço muda todo dia: confira na loja antes de pagar.</p>
     </div>
-    <div class="bilheteria">
-      <!-- AFILIADO: o href destes três é reescrito na carga a partir de pesagem.json + TAG_AMAZON. -->
-      <article class="ingresso edge"><h3>Galaxy S25 Edge</h3><p class="obs">512 GB · 12x de R$ 333,25 sem juros · confira a reputação do vendedor</p><div class="preco">R$ 3.799,05<small>à vista no Pix</small></div>
-        <a class="comprar" data-loja="edge" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon</a></article>
-      <article class="ingresso pura"><h3>Huawei Pura 80 Pro</h3><p class="obs">12 GB + 512 GB, cor preta · enviado pela Amazon, vendido por Imagem Hitech FULL · devolução em 7 dias · a versão vermelha da foto custava R$ 4.399,00</p><div class="preco">R$ 3.999,00<small>à vista</small></div>
-        <a class="comprar" data-loja="pura" href="https://www.amazon.com.br/s?k=huawei+pura+80+pro+512gb" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon</a></article>
-      <article class="ingresso ultra"><h3>Galaxy S26 Ultra</h3><p class="obs">256 GB, cor branca · vendido e enviado pela Amazon · 12x de R$ 624,99 · a versão preta estava a R$ 7.990</p><div class="preco">R$ 6.749,10<small>à vista no Pix ou NuPay</small></div>
-        <a class="comprar" data-loja="ultra" href="https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon</a></article>
-    </div>
+    <div class="bilheteria" id="bilheteria-lista"></div>
   </section>
 
   <footer class="laudo" id="laudo" aria-labelledby="t-laudo">
@@ -630,14 +555,14 @@
     <details class="detalhe" open>
       <summary>Método, escala, preço, bateria, fontes e fotos</summary>
     <dl>
-      <dt>Método</dt><dd>Comparação das fichas oficiais, sem medição em bancada. Não somos laboratório acreditado. A régua desenha as medidas declaradas, na mesma escala para os três aparelhos.</dd>
-      <dt>Escala</dt><dd>1 mm = 2,2 unidades do desenho; zero da régua no chão da plataforma. A silhueta de cada aparelho vem das medidas declaradas; dentro dela fica a foto do próprio aparelho, recortada rente ao corpo e ampliada para preencher a caixa. Ou seja: o tamanho é medida, a textura é foto.</dd>
-      <dt>Preço</dt><dd>Coleta na amazon.com.br em 11/09/2026 às 14h45, CEP padrão de São Paulo. Em 12/09/2026 às 07h00 os três aparelhos ganharam link de produto (ASIN) em vez de busca, e o preço de cada um foi reconferido na própria página: os três continuavam iguais, por isso a data da coleta não mudou. Cada botão leva ao anúncio exato que foi lido — S25 Edge B0F8PHM63K, Pura 80 Pro preto B0FDKNBCQ8, S26 Ultra branco B0GKQK9ZVT.</dd>
-      <dt>Bateria</dt><dd>O critério chama-se <b>capacidade da bateria</b> porque compara mAh declarados, não autonomia: mAh não é hora de tela. Samsung informa 5.000 mAh como capacidade típica do S26 Ultra (nominal 4.855 mAh); Huawei informa 5.170 mAh nominal — a comparação mistura capacidade típica e nominal, que são medidas diferentes. "Autonomia" fica reservada a teste comparável, e o único conferido é o do Tom's Guide com o S25 Edge; sem o mesmo teste nos outros dois, não há cinturão de autonomia nesta pesagem.</dd>
-      <dt>Fontes</dt><dd>samsung.com/br/smartphones/galaxy-s25-edge/specs/ · samsung.com/br/smartphones/galaxy-s26-ultra/specs/ · consumer.huawei.com/br/phones/pura80-pro/specs/ · tomsguide.com, "Galaxy S25 Edge battery life tested". Todas acessadas em 11/09/2026.</dd>
-      <dt>Fotos</dt><dd>Fotos de loja, não renders do fabricante, recortadas e redimensionadas por nós. S25 Edge por Miyako Fujimiya (<a href="https://commons.wikimedia.org/wiki/File:Samsung_Galaxy_S25_Edge_(2).jpg" rel="noopener" target="_blank">arquivo</a>); Pura 80 Pro por Leongyy02 (<a href="https://commons.wikimedia.org/wiki/File:Huawei_Pura_80_Pro_Glazed_Red.jpg" rel="noopener" target="_blank">arquivo</a>); S26 Ultra por Kyu3a (<a href="https://commons.wikimedia.org/wiki/File:Galaxy_S26_Ultra_-_2.jpg" rel="noopener" target="_blank">arquivo</a>). As três em <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.pt-br" rel="license noopener" target="_blank">CC BY-SA 4.0</a>, via Wikimedia Commons; os recortes ficam sob a mesma licença.</dd>
+      <dt>Método</dt><dd>Comparação das fichas oficiais de cada fabricante, sem medição em bancada. Não somos laboratório acreditado. A régua desenha as medidas declaradas, na mesma escala para todos os aparelhos da arena; dobráveis aparecem dobrados.</dd>
+      <dt>Escala</dt><dd>1 mm = 2,2 unidades do desenho; zero da régua no chão da plataforma. O tamanho de cada corpo vem das medidas declaradas. S25 Edge, Pura 80 Pro e S26 Ultra têm a textura de uma foto recortada rente ao aparelho; os demais aparecem só em contorno.</dd>
+      <dt>Preço</dt><dd>Amazon.com.br, CEP padrão de São Paulo. S25 Edge, Pura 80 Pro e S26 Ultra 256 GB: coleta de 11/09/2026 às 14h45, reconferida na página de cada produto em 12/09/2026. Os demais: preço lido na página de busca em 12/09/2026 à noite, com vendedor e condição não conferidos. Quatro deles aparecem marcados como preço suspeito — anunciados acima de um modelo mais novo e mais completo da mesma marca.</dd>
+      <dt>Bateria</dt><dd>O critério chama-se <b>capacidade da bateria</b> porque compara mAh declarados, não autonomia: mAh não é hora de tela. Há fabricantes que informam capacidade típica e outros nominal, que são medidas diferentes. A Apple não declara mAh, só horas de vídeo — por isso iPhone aparece "sem mAh declarado" nesse critério, em vez de uma estimativa. "Autonomia" fica reservada a teste comparável, e o único conferido é o do Tom's Guide com o S25 Edge.</dd>
+      <dt>Fontes</dt><dd id="laudo-fontes"></dd>
+      <dt>Fotos</dt><dd id="laudo-fotos"></dd>
       <dt>Cinturão</dt><dd>Veredito editorial por critério de uso, não nota de qualidade. O cartão do campeão e o link da disputa carregam o critério escolhido e a data da coleta: quem receber consegue refazer a mesma comparação.</dd>
-      <dt>Fotos, limite</dt><dd>As três fotos são de loja, de autores diferentes, com fundo e iluminação diferentes. Padronizamos a moldura, a proporção e o tratamento, não a fotografia: enquadramento único só com foto própria, que ainda não temos.</dd>
+      <dt>Fotos, limite</dt><dd>As fotos são de loja ou de uso, de autores diferentes, com fundo e luz diferentes. Padronizamos moldura, proporção e tratamento, não a fotografia. Sem foto de licença livre — ou com foto que enganaria, como aparelho embalado com etiqueta de revenda —, o aparelho aparece como silhueta desenhada das medidas oficiais.</dd>
     </dl>
     </details>
     <div class="laudo-acoes">
@@ -658,6 +583,8 @@
   <a class="comprar" id="r-comprar" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored nofollow" tabindex="-1">Ver na Amazon</a>
 </div>
 
+<script src="catalogo.js"></script>
+<script src="arena.js"></script>
 <script>
   const ns = "http://www.w3.org/2000/svg";
   const el = (tag, attrs) => { const n = document.createElementNS(ns, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); return n; };
@@ -708,16 +635,17 @@
   const dia = iso => new Date(iso).toLocaleDateString("pt-BR", {day:"2-digit", month:"2-digit"});
   const hora = iso => new Date(iso).toLocaleTimeString("pt-BR", {hour:"2-digit", minute:"2-digit"}).replace(":", "h");
 
-  // Ficha: não muda entre coletas. Preço entra pela pesagem.
-  const aparelhos = {
-    edge: {nome:"Galaxy S25 Edge", curto:"S25 Edge", marca:"Samsung", sigla:"EDGE", peso:163, esp:5.8, zoom:0, bateria:3900, g5:true, google:true, seg:null,
-           foto:{w:245, h:326, alt:"Traseira do Galaxy S25 Edge, prata, com as duas câmeras alinhadas no canto.", credito:"foto de loja · Miyako Fujimiya, CC BY-SA 4.0"}},
-    pura: {nome:"Huawei Pura 80 Pro", curto:"Pura 80 Pro", marca:"Huawei", sigla:"PURA", peso:219, esp:8.3, zoom:4, bateria:5170, g5:false, google:false, seg:null,
-           foto:{w:600, h:800, alt:"Traseira do Huawei Pura 80 Pro, vermelho, com o módulo triangular de câmeras.", credito:"foto da versão vermelha; o link vai para a preta · Leongyy02, CC BY-SA 4.0"}},
-    ultra:{nome:"Galaxy S26 Ultra", curto:"S26 Ultra", marca:"Samsung", sigla:"ULTRA", peso:214, esp:7.9, zoom:5, bateria:5000, g5:true, google:true, seg:"28/02/2033",
-           foto:{w:600, h:800, alt:"Traseira do Galaxy S26 Ultra, roxo, com as câmeras em coluna.", credito:"foto de loja · Kyu3a, CC BY-SA 4.0"}}
-  };
-  const busca = {edge:"https://www.amazon.com.br/s?k=galaxy+s25+edge+512gb", pura:"https://www.amazon.com.br/s?k=huawei+pura+80+pro+512gb", ultra:"https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb"};
+  // Ficha: vem de catalogo.js (lida na ficha oficial de cada fabricante). Preço entra pela pesagem.
+  // A arena usa só os escolhidos (2 ou 3); a cor segue a posição, não o aparelho.
+  const PADRAO = ["edge","pura","ultra"];
+  const aparelhos = window.CATALOGO || {};
+  let CHAVES = PADRAO.slice();
+  const cor = k => "var(--s" + Math.max(0, CHAVES.indexOf(k)) + ")";
+  const corHex = k => ["#8CD8FF","#FF6B86","#C4A8FF"][Math.max(0, CHAVES.indexOf(k))];
+  const fotoDe = k => aparelhos[k] && aparelhos[k].foto ? "fotos/" + (aparelhos[k].foto.arquivoLocal || k) + ".webp" : null;
+  const dataBR = iso => iso.split("-").reverse().join("/");
+  const fmt = n => n.toLocaleString("pt-BR");
+  const busca = {};
 
   let P = PESAGEM_LOCAL;
   const preco = (k, fonte) => (fonte || P).itens[k].preco;
@@ -755,52 +683,56 @@
   }
 
   // Cada critério: como ordenar, o que mostrar, a distância até o segundo e o limiar da ameaça.
-  // "curto" nomeia o critério em frase corrida; "medida" é o valor curto, para a régua e o cartão;
-  // "escala" diz se a barra comparativa faz sentido (em "durar anos" não faz: é sim ou não verificado).
+  // valor null = o dado não consta na ficha: vai para o fim da fila e nunca vira vantagem.
   const criterios = {
-    economia:{titulo:"gastar menos", curto:"preço", limiar:250, unidade:"R$", escala:true,
-      valor:(k, f) => preco(k, f), menorGanha:true,
+    economia:{titulo:"gastar menos", curto:"preço", limiar:250, escala:true, menorGanha:true,
+      valor:(k, f) => { const it = (f || P).itens[k]; return it ? it.preco : null; },
       medida:k => brl(preco(k)),
-      linha:k => brl(preco(k)) + " no Pix · " + P.itens[k].gb + " GB",
-      frase:{edge:"Barato. Sem teleobjetiva e com a menor bateria dos três.", pura:"Preço de entrada. Sem 5G e sem apps do Google.", ultra:"O mais completo. Também o que mais custa."},
+      linha:k => brl(preco(k)) + " · " + P.itens[k].gb + " GB",
       dist:d => "+" + brl(d), quase:(b,d) => aparelhos[b].curto + " a " + brl(d) + " do nocaute no preço."},
-    leveza:{titulo:"no bolso", curto:"peso e espessura", limiar:15, unidade:"g", escala:true,
-      valor:k => aparelhos[k].peso, menorGanha:true,
-      medida:k => aparelhos[k].peso + " g · " + aparelhos[k].esp.toLocaleString("pt-BR") + " mm",
-      linha:k => aparelhos[k].esp.toLocaleString("pt-BR") + " mm · " + aparelhos[k].peso + " g",
-      frase:{edge:"5,8 mm e 163 g. Some no bolso; a conta chega na bateria.", ultra:"Grande e pesado, mas entrega o resto todo.", pura:"O mais gordo dos três, com a maior capacidade de bateria."},
+    leveza:{titulo:"no bolso", curto:"peso e espessura", limiar:15, escala:true, menorGanha:true,
+      valor:k => aparelhos[k].peso,
+      medida:k => aparelhos[k].peso + " g · " + fmt(aparelhos[k].esp) + " mm" + (aparelhos[k].dobra ? " dobrado" : ""),
+      linha:k => fmt(aparelhos[k].esp) + " mm" + (aparelhos[k].dobra ? " dobrado" : "") + " · " + aparelhos[k].peso + " g",
       dist:d => "+" + d + " g", quase:(b,d) => aparelhos[b].curto + " a " + d + " g de distância."},
-    foto:{titulo:"zoom", curto:"zoom óptico", limiar:1, unidade:"x", escala:true,
-      valor:k => aparelhos[k].zoom, menorGanha:false,
-      medida:k => aparelhos[k].zoom === 0 ? "sem teleobjetiva" : (k === "ultra" ? "3x e 5x ópticos" : aparelhos[k].zoom + "x óptico"),
-      linha:k => aparelhos[k].zoom === 0 ? "sem teleobjetiva · 2x por recorte" : (k === "ultra" ? "3x e 5x ópticos" : aparelhos[k].zoom + "x óptico"),
-      frase:{ultra:"Tele de verdade, 3x e 5x. O preço não perdoa.", pura:"4x óptico e sensor de 1 polegada. Sem 5G e sem Google.", edge:"Não entrou neste round: não tem teleobjetiva."},
-      dist:d => "−" + d + "x", quase:(b,d) => aparelhos[b].curto + " a " + d + "x do alcance do líder."},
-    bateria:{titulo:"capacidade da bateria", curto:"capacidade da bateria", limiar:300, unidade:"mAh", escala:true,
-      valor:k => aparelhos[k].bateria, menorGanha:false,
-      medida:k => aparelhos[k].bateria.toLocaleString("pt-BR") + " mAh" + (k === "ultra" ? " típica" : k === "pura" ? " nominal" : ""),
-      linha:k => aparelhos[k].bateria.toLocaleString("pt-BR") + " mAh" + (k === "ultra" ? " típica" : k === "pura" ? " nominal" : ""),
-      frase:{pura:"5.170 mAh nominais, a maior capacidade dos três. Capacidade não é autonomia: não há teste igual para os três. Sem 5G e sem Play Store.",
-             ultra:"5.000 mAh típica (nominal 4.855), com 5G e Google no pacote. Sem teste de autonomia conferido.",
-             edge:"3.900 mAh, a menor capacidade — e o único com autonomia medida: 12h38 na navegação do Tom's Guide."},
-      dist:d => "−" + d.toLocaleString("pt-BR") + " mAh", quase:(b,d) => aparelhos[b].curto + " a " + d.toLocaleString("pt-BR") + " mAh do topo."},
-    anos:{titulo:"durar anos", curto:"prazo de segurança", limiar:null, unidade:null, escala:false,
-      valor:k => aparelhos[k].seg ? 1 : 0, menorGanha:false,
-      medida:k => aparelhos[k].seg ? "até " + aparelhos[k].seg : "não verificado",
-      linha:k => aparelhos[k].seg ? "segurança até " + aparelhos[k].seg : "prazo não verificado",
-      frase:{ultra:"Segurança garantida até 02/2033. Envelhece melhor, e cobra por isso.", edge:"Prazo de atualização não verificado nesta sessão.", pura:"Prazo de atualização não verificado nesta sessão."},
-      dist:() => "não verificado", quase:() => null}
+    foto:{titulo:"zoom", curto:"zoom óptico", limiar:1, escala:true, menorGanha:false,
+      valor:k => aparelhos[k].zoom,
+      medida:k => aparelhos[k].zoom == null ? "não consta" : aparelhos[k].zoom === 0 ? "sem teleobjetiva" : fmt(aparelhos[k].zoom) + "x óptico",
+      linha:k => aparelhos[k].zoomTxt,
+      dist:d => "−" + fmt(d) + "x", quase:(b,d) => aparelhos[b].curto + " a " + fmt(d) + "x do alcance do líder."},
+    bateria:{titulo:"capacidade da bateria", curto:"capacidade da bateria", limiar:300, escala:true, menorGanha:false,
+      valor:k => aparelhos[k].bateria,
+      medida:k => aparelhos[k].bateria == null ? "sem mAh declarado" : fmt(aparelhos[k].bateria) + " mAh",
+      linha:k => aparelhos[k].bateria == null ? aparelhos[k].batNota : fmt(aparelhos[k].bateria) + " mAh" + (aparelhos[k].batNota ? " " + aparelhos[k].batNota : ""),
+      dist:d => "−" + fmt(d) + " mAh", quase:(b,d) => aparelhos[b].curto + " a " + fmt(d) + " mAh do topo."},
+    anos:{titulo:"durar anos", curto:"prazo de segurança", limiar:null, escala:false, menorGanha:false,
+      valor:k => aparelhos[k].seg ? Date.parse(aparelhos[k].seg) : null,
+      medida:k => aparelhos[k].seg ? "até " + dataBR(aparelhos[k].seg) : "não consta",
+      linha:k => aparelhos[k].seg ? "segurança até " + dataBR(aparelhos[k].seg) : "prazo não consta na ficha",
+      dist:d => d > 0 ? "−" + Math.round(d / 2629800000) + " meses" : "mesmo prazo", quase:() => null}
   };
-  // Dois requisitos independentes, não um pacote: dá para exigir só o Google, ou só o 5G.
+  // Frase do cinturão: fato, não adjetivo. Sai do dado, nunca escrita à mão por aparelho.
+  function frase(r){
+    const a = aparelhos[r.campeao], n = CHAVES.length === 2 ? "dos dois" : "dos três";
+    if (r.c.valor(r.campeao) == null) return "Nenhum dos escolhidos tem esse dado na ficha oficial: não há cinturão aqui.";
+    const t = {economia:"O menor preço " + n + " nesta coleta.",
+      leveza:"O mais leve " + n + ": " + r.c.medida(r.campeao) + ".",
+      foto:"O maior zoom óptico declarado " + n + ": " + a.zoomTxt + ".",
+      bateria:"A maior capacidade declarada " + n + ". Capacidade não é autonomia.",
+      anos:"O prazo de segurança mais longo entre as fichas que informam prazo."}[r.uso];
+    return t + (a.dobra ? " Dobrável; " + a.dobra + "." : "");
+  }
+  // Dois requisitos independentes. "google" ficou como nome na URL: hoje vale Play Store OU App Store.
   const REQS = {
-    google:{rotulo:"apps do Google", passa:k => aparelhos[k].google, motivo:"sem apps do Google"},
-    "5g":  {rotulo:"5G",             passa:k => aparelhos[k].g5,     motivo:"sem 5G"}
+    google:{rotulo:"Play Store ou App Store", passa:k => !!aparelhos[k].loja,
+      motivo:k => aparelhos[k].loja === null ? "loja de apps não consta na ficha" : "sem Google Play"},
+    "5g":{rotulo:"5G", passa:k => aparelhos[k].g5 === true,
+      motivo:k => aparelhos[k].g5 === null ? "5G não consta na ficha" : "sem 5G"}
   };
   const ORDEM_REQ = ["google","5g"];
   const passaTudo = (k, reqs) => reqs.every(r => REQS[r].passa(k));
-  const porqueCaiu = (k, reqs) => reqs.filter(r => !REQS[r].passa(k)).map(r => REQS[r].motivo).join(" e ");
+  const porqueCaiu = (k, reqs) => reqs.filter(r => !REQS[r].passa(k)).map(r => REQS[r].motivo(k)).join(" e ");
   const nomeReqs = reqs => reqs.map(r => REQS[r].rotulo).join(" e ");
-  const CHAVES = ["edge","pura","ultra"];
   const ORDEM_CRIT = ["economia","leveza","foto","bateria","anos"];
 
   // O saldo do campeão: onde ele também é o melhor dos três e onde é o pior.
@@ -811,22 +743,27 @@
       if (u === usoEscolhido) return;
       const c = criterios[u], v = c.valor(campeao);
       const outros = CHAVES.filter(k => k !== campeao).map(k => c.valor(k));
+      if (v == null || outros.some(x => x == null)) return;      // sem dado de todos: nem vantagem, nem concessão
       const bate = x => c.menorGanha ? v < x : v > x;
       const apanha = x => c.menorGanha ? v > x : v < x;
       if (outros.every(bate)) ganha.push(c.curto + " (" + c.medida(campeao) + ")");
       else if (outros.every(apanha)) perde.push(c.curto + " (" + c.medida(campeao) + ")");
     });
-    const falta = ORDEM_REQ.filter(r => !REQS[r].passa(campeao)).map(r => REQS[r].motivo);
+    const falta = ORDEM_REQ.filter(r => !REQS[r].passa(campeao)).map(r => REQS[r].motivo(campeao));
     if (falta.length) perde.unshift(falta.join(" e "));
     const junta = l => l.length === 0 ? null : l.length === 1 ? l[0] : l.slice(0, 2).join(" e ");
-    return {mais: junta(ganha) || "nada além do critério escolhido, nesta pesagem",
-            menos: junta(perde) || "nada que esta pesagem meça"};
+    return {mais: junta(ganha) || "nada além do critério escolhido, nesta disputa",
+            menos: junta(perde) || "nada que esta disputa meça"};
   }
 
   function ordena(uso, reqs, fonte){
     const c = criterios[uso];
-    const lista = CHAVES.filter(k => passaTudo(k, reqs));
-    return lista.sort((a,b) => c.menorGanha ? c.valor(a, fonte) - c.valor(b, fonte) : c.valor(b, fonte) - c.valor(a, fonte));
+    return CHAVES.filter(k => passaTudo(k, reqs)).sort((a, b) => {
+      const va = c.valor(a, fonte), vb = c.valor(b, fonte);
+      if (va == null) return vb == null ? 0 : 1;
+      if (vb == null) return -1;
+      return c.menorGanha ? va - vb : vb - va;
+    });
   }
 
   function calcula(uso, reqs){
@@ -836,22 +773,22 @@
     const cortados = CHAVES.filter(k => !passaTudo(k, reqs));
     const semReq = ordena(uso, []);
     const cortadoLiderava = cortados.indexOf(semReq[0]) >= 0 ? semReq[0] : null;
-    const delta = segundo ? Math.abs(c.valor(segundo) - c.valor(campeao)) : null;
-    const antesCampeao = uso === "economia" && P.anterior ? ordena(uso, reqs, P.anterior)[0] : campeao;
-    const virou = antesCampeao !== campeao;
-    const estado = virou ? "nocaute" : c.limiar === null ? "sem-disputa" : (delta < c.limiar ? "ameacado" : "firme");
+    const vc = c.valor(campeao), vs = segundo ? c.valor(segundo) : null;
+    const delta = vc != null && vs != null ? Math.abs(vs - vc) : null;
+    const temAnterior = uso === "economia" && P.anterior && CHAVES.every(k => P.anterior.itens[k]);
+    const antesCampeao = temAnterior ? ordena(uso, reqs, P.anterior)[0] : campeao;
+    const estado = antesCampeao !== campeao ? "nocaute" : (c.limiar === null || delta === null) ? "sem-disputa" : (delta < c.limiar ? "ameacado" : "firme");
     return {c, uso, reqs, campeao, segundo, cortados, cortadoLiderava, delta, estado, antesCampeao,
-      resto: semReq.filter(k => k !== campeao)};   // semReq traz os três: a ordem completa, sem corte
+      resto: semReq.filter(k => k !== campeao)};
   }
 
   const rotulos = {firme:"título firme", ameacado:"título ameaçado", nocaute:"o cinturão trocou", "sem-disputa":"sem disputa medida"};
-  const alturas = {edge:-348, pura:-358.6, ultra:-359.9};
   const raiz = document.documentElement;
   const chips = document.querySelectorAll(".chips button[data-uso]");
   const travas = {google: document.getElementById("req-google"), "5g": document.getElementById("req-5g")};
   const leitura = document.getElementById("leitura");
   const bilhete = document.getElementById("bilhete");
-  let usoAtual = "economia", reqsAtivos = [], rodada = null;
+  let usoAtual = "economia", reqsAtivos = [], rodada = null, arenaDe = "";
 
   const CHAVE = "nocautecel:palpite";
   const anterior = (() => { try { return JSON.parse(localStorage.getItem(CHAVE) || "null"); } catch(e){ return null; } })();
@@ -875,10 +812,10 @@
     const ordem = [r.campeao].concat(r.resto);
 
     ordem.forEach((k, i) => {
-      const a = aparelhos[k], fora = r.cortados.indexOf(k) >= 0, lider = k === r.campeao;
+      const a = aparelhos[k], fora = r.cortados.indexOf(k) >= 0, lider = k === r.campeao && r.c.valor(r.campeao) != null;   // sem dado, ninguém leva selo
       const li = document.createElement("li");
       li.className = "desafiante " + k + (lider ? " lider" : "") + (fora ? " fora" : "");
-      li.style.setProperty("--c", "var(--" + k + ")");
+      li.style.setProperty("--c", cor(k));
 
       const ordemP = document.createElement("p");
       ordemP.className = "ordem";
@@ -897,13 +834,20 @@
       dagua.className = "dagua";
       dagua.setAttribute("aria-hidden", "true");
       dagua.textContent = a.sigla;
-      const img = document.createElement("img");
-      img.src = "fotos/" + k + ".webp";
-      img.width = a.foto.w; img.height = a.foto.h;
-      img.alt = a.foto.alt;
-      img.decoding = "async";
-      if (i > 0) img.loading = "lazy";
-      vitrine.append(dagua, img);
+      if (a.foto){
+        const img = document.createElement("img");
+        img.src = fotoDe(k);
+        img.width = a.foto.w; img.height = a.foto.h;
+        img.alt = a.foto.alt;
+        img.decoding = "async";
+        if (i > 0) img.loading = "lazy";
+        vitrine.append(dagua, img);
+      } else {
+        const sil = document.createElement("span");
+        sil.className = "vitrine-silhueta";
+        sil.innerHTML = silhueta(k);
+        vitrine.append(dagua, sil);
+      }
 
       const marca = document.createElement("p");
       marca.className = "fabricante";
@@ -912,7 +856,7 @@
       h3.textContent = a.nome;
       const ficha = document.createElement("p");
       ficha.className = "ficha-curta";
-      ficha.textContent = P.itens[k].gb + " GB · " + a.peso + " g";
+      ficha.textContent = (P.itens[k].gb >= 1024 ? fmt(P.itens[k].gb / 1024) + " TB" : P.itens[k].gb + " GB") + " · " + a.peso + " g" + (a.dobra ? " · dobrável" : "");
 
       const med = document.createElement("p");
       med.className = "medida";
@@ -925,12 +869,13 @@
       sit.className = "situacao";
       sit.textContent = fora ? "Não atende ao que você exigiu"
         : lider ? "Melhor neste critério"
-        : r.c.escala ? r.c.dist(Math.abs(r.c.valor(k) - r.c.valor(r.campeao))) + " em relação ao líder"
-        : "Prazo não verificado";
+        : r.c.valor(k) == null ? "Não consta na ficha oficial"
+        : r.c.valor(r.campeao) == null ? "Sem disputa neste critério"
+        : r.c.dist(Math.abs(r.c.valor(k) - r.c.valor(r.campeao))) + (r.c.escala ? " em relação ao líder" : "");
 
       li.append(ordemP, vitrine, marca, h3, ficha, med, sit);
 
-      if (r.c.escala && teto > 0 && !fora){
+      if (r.c.escala && teto > 0 && !fora && r.c.valor(k) != null){
         const b = document.createElement("i");
         b.className = "b";
         b.setAttribute("aria-hidden", "true");
@@ -939,15 +884,21 @@
       }
       const cred = document.createElement("p");
       cred.className = "credito";
-      cred.textContent = a.foto.credito;
+      cred.textContent = a.foto ? "foto " + a.foto.autor + ", " + a.foto.lic + (a.foto.nota ? " · " + a.foto.nota : "") : "sem foto livre · silhueta em escala";
       li.appendChild(cred);
+      if (P.itens[k].suspeito){
+        const sus = document.createElement("p");
+        sus.className = "suspeito";
+        sus.textContent = "⚠ Preço suspeito: " + P.itens[k].suspeito + ".";
+        li.appendChild(sus);
+      }
       caixa.appendChild(li);
     });
   }
 
   // Legenda sob a medida: preço leva a origem; ficha oficial não muda entre coletas.
   const legendaMedida = k => usoAtual === "economia"
-    ? "no Pix · coleta de " + dia(P.coletado_em)
+    ? (P.itens[k].coleta || "no Pix · coleta de " + dia(P.coletado_em))
     : "ficha oficial";
 
   function aplica(uso, reqs, animar){
@@ -955,10 +906,15 @@
     if (!CHAVES.some(k => passaTudo(k, reqs))) reqs = [];        // exigência que zera a arena não vale
     const r = calcula(uso, reqs), a = aparelhos[r.campeao];
     usoAtual = uso; reqsAtivos = reqs; rodada = r;
+    if (arenaDe !== CHAVES.join()){          // só redesenha o que depende de QUEM está na arena
+      desenhaPalco(); desenhaFita(); desenhaReplay(); desenhaBilheteria(); desenhaLaudo();
+      arenaDe = CHAVES.join();
+    }
+    marcaCatalogo();
 
-    raiz.dataset.foco = r.campeao;
-    raiz.style.setProperty("--cor-ativa", "var(--" + r.campeao + ")");
-    bilhete.style.setProperty("--c", "var(--" + r.campeao + ")");
+    raiz.dataset.foco = "s" + CHAVES.indexOf(r.campeao);
+    raiz.style.setProperty("--cor-ativa", cor(r.campeao));
+    bilhete.style.setProperty("--c", cor(r.campeao));
     bilhete.dataset.estado = r.estado;
     if (leitura) leitura.style.setProperty("--leitura-y", alturas[r.campeao] + "px");
 
@@ -967,11 +923,11 @@
     est.textContent = rotulos[r.estado];
     est.dataset.t = r.estado;
     const foto = document.getElementById("s-foto");
-    foto.src = "fotos/" + r.campeao + ".webp";
-    foto.alt = "Traseira do " + a.nome + ", em foto de loja.";
-    document.getElementById("s-quem").textContent = a.nome;
+    foto.hidden = !fotoDe(r.campeao);
+    if (fotoDe(r.campeao)){ foto.src = fotoDe(r.campeao); foto.alt = a.foto.alt; }
+    document.getElementById("s-quem").textContent = r.c.valor(r.campeao) == null ? "Sem cinturão" : a.nome;
     document.getElementById("s-linha").textContent = r.c.linha(r.campeao);
-    document.getElementById("s-frase").textContent = r.c.frase[r.campeao];
+    document.getElementById("s-frase").textContent = frase(r);
     document.getElementById("s-preco").textContent = brl(preco(r.campeao));
     document.getElementById("s-comprar").href = link(r.campeao);
 
@@ -985,11 +941,11 @@
     const s = saldo(r.campeao, uso);
     document.getElementById("s-mais").textContent = s.mais;
     document.getElementById("s-menos").textContent = s.menos;
-    document.getElementById("s-saldo").style.setProperty("--c", "var(--" + r.campeao + ")");
+    document.getElementById("s-saldo").style.setProperty("--c", cor(r.campeao));
 
     const mercado = document.getElementById("s-mercado");
     let texto = "";
-    if (uso === "economia" && P.anterior){
+    if (uso === "economia" && P.anterior && CHAVES.every(k => P.anterior.itens[k])){
       const movimentos = CHAVES.map(k => {
         const d = preco(k) - preco(k, P.anterior);
         return d === 0 ? null : aparelhos[k].curto + " " + (d < 0 ? "−" : "+") + brl(Math.abs(d));
@@ -1011,7 +967,7 @@
     // Barra do campeão, no celular
     const res = document.getElementById("resumo");
     if (res){
-      res.style.setProperty("--c", "var(--" + r.campeao + ")");
+      res.style.setProperty("--c", cor(r.campeao));
       document.getElementById("r-quem").textContent = a.nome;
       document.getElementById("r-nota").textContent = "Cinturão · " + r.c.titulo + " · " + r.c.medida(r.campeao);
       document.getElementById("r-comprar").href = link(r.campeao);
@@ -1030,10 +986,9 @@
     guarda(r);
   }
 
-  const endereco = (uso, reqs) => location.pathname + "?c=" + uso + (reqs.length ? "&req=" + reqs.join(",") : "");
+  const endereco = (uso, reqs) => location.pathname + "?p=" + CHAVES.join(",") + "&c=" + uso + (reqs.length ? "&req=" + reqs.join(",") : "");
 
   // No celular o palco rola: ao trocar o cinturão, o campeão vem para o centro.
-  const FRACAO = {edge:298.2/1200, pura:508.7/1200, ultra:721.9/1200};
   // Salto seco de propósito: com scroll-snap ligado, o Chrome cancela o scroll suave
   // programático e devolve o palco à âncora anterior. Medido em 12/09/2026.
   function focaPalco(k){
@@ -1045,7 +1000,7 @@
 
   function guarda(r){
     try {
-      localStorage.setItem(CHAVE, JSON.stringify({coleta:P.coletado_em, uso:usoAtual, reqs:reqsAtivos,
+      localStorage.setItem(CHAVE, JSON.stringify({coleta:P.coletado_em, uso:usoAtual, reqs:reqsAtivos, sel:CHAVES.slice(),
         campeao:r.campeao, segundo:r.segundo || null, delta:r.delta, estado:r.estado, em:new Date().toISOString()}));
     } catch(e){}
   }
@@ -1060,7 +1015,7 @@
       b.textContent = titulo;
       caixa.append(b, corpo);
     };
-    const ok = anterior && aparelhos[anterior.campeao] && criterios[anterior.uso];
+    const ok = anterior && CHAVES.indexOf(anterior.campeao) >= 0 && criterios[anterior.uso] && (anterior.sel ? anterior.sel.join() === CHAVES.join() : CHAVES.join() === PADRAO.join());
     if (!ok){
       escreve("novo", "Este palpite fica salvo neste navegador.",
         "Quando entrar uma coleta nova, a conferência aparece aqui: se o preço mexeu e se o cinturão trocou.");
@@ -1121,9 +1076,9 @@
       "NOCAUTECEL · coleta " + dia(P.coletado_em) + " " + hora(P.coletado_em),
       "Critério: " + r.c.titulo + (reqsAtivos.length ? " + " + nomeReqs(reqsAtivos) : ""),
       "Cinturão: " + aparelhos[r.campeao].nome + " — " + r.c.linha(r.campeao),
-      r.segundo ? "Segundo: " + aparelhos[r.segundo].curto + " " + r.c.dist(r.delta) : "",
+      r.segundo && r.delta != null ? "Segundo: " + aparelhos[r.segundo].curto + " " + r.c.dist(r.delta) : "",
       r.estado === "nocaute" ? "O cinturão trocou nesta coleta." : r.estado === "ameacado" ? "Título ameaçado." : "",
-      r.c.frase[r.campeao],
+      frase(r),
       location.origin.indexOf("http") === 0 ? location.origin + endereco(usoAtual, reqsAtivos) : "nocautecel.com"
     ].filter(Boolean);
     try { await navigator.clipboard.writeText(linhas.join("\n")); botao.textContent = "Placar copiado"; }
@@ -1139,6 +1094,13 @@
     const pedido = q.get("c");
     // "req=google,5g" é a forma nova; "r=1" veio dos links de 12/09 e valia os dois juntos.
     const pedidos = q.get("req") ? q.get("req").split(",").map(x => x.trim()) : (q.get("r") === "1" ? ORDEM_REQ.slice() : []);
+    // "p=edge,pura,ultra" diz quem está na arena; links antigos, sem p, abrem a arena original.
+    const pedidosSel = [...new Set((q.get("p") || "").split(",").filter(k => aparelhos[k] && P.itens[k]))].slice(0, 3);
+    CHAVES = pedidosSel.length >= 2 ? pedidosSel : PADRAO.filter(k => P.itens[k]);
+    montaCatalogo(sel => {
+      CHAVES = CHAVES.filter(k => sel.indexOf(k) >= 0).concat(sel.filter(k => CHAVES.indexOf(k) < 0));   // quem já estava mantém a cor
+      aplica(usoAtual, reqsAtivos, true);
+    });
     aplica(criterios[pedido] ? pedido : "economia", ORDEM_REQ.filter(x => pedidos.indexOf(x) >= 0), false);
     focaPalco(rodada.campeao);   // no celular o palco já abre no campeão, não no vazio
     const res = document.getElementById("resumo");
@@ -1185,7 +1147,7 @@
     const cv = document.createElement("canvas");
     cv.width = L; cv.height = A;
     const x = cv.getContext("2d");
-    const cor = tinta("--" + r.campeao) || "#8CD8FF";
+    const cor = corHex(r.campeao);
     const giz = tinta("--giz") || "#E7EDF4", giz2 = tinta("--giz-2") || "#B7C2CE", fum = tinta("--incerteza") || "#8494A5";
     const poster = '900 88px "Big Shoulders Display", Impact, sans-serif';
     const dado = n => '500 ' + n + 'px "Chivo Mono", ui-monospace, monospace';
@@ -1233,7 +1195,7 @@
     if (sobrou){ x.font = dado(19); x.fillStyle = fum; x.fillText(sobrou, M, 294); }
     esp("0px");
 
-    const foto = await carrega("fotos/" + r.campeao + ".webp");
+    const foto = fotoDe(r.campeao) ? await carrega(fotoDe(r.campeao)) : null;
     const fx = M, fy = 312, fw = 288, fh = 384;
     x.save();
     x.beginPath(); x.rect(fx, fy, fw, fh); x.clip();
@@ -1241,6 +1203,14 @@
     if (foto){
       const e = Math.max(fw / foto.width, fh / foto.height);
       x.drawImage(foto, fx + (fw - foto.width * e) / 2, fy + (fh - foto.height * e) / 2, foto.width * e, foto.height * e);
+    } else {
+      // Sem foto livre: silhueta na proporção oficial, e o aviso escrito.
+      const ap = aparelhos[r.campeao], sh = fh - 110, sw = Math.min(fw - 60, sh * ap.larg / ap.alt), sh2 = Math.min(sh, sw * ap.alt / ap.larg);
+      x.strokeStyle = cor; x.lineWidth = 3;
+      x.beginPath(); x.roundRect ? x.roundRect(fx + (fw - sw) / 2, fy + 30 + (sh - sh2) / 2, sw, sh2, 18) : x.rect(fx + (fw - sw) / 2, fy + 30, sw, sh2); x.stroke();
+      x.font = dado(18); x.fillStyle = fum; x.textAlign = "center";
+      x.fillText("SEM FOTO LIVRE", fx + fw / 2, fy + fh - 46); x.fillText("SILHUETA EM ESCALA", fx + fw / 2, fy + fh - 20);
+      x.textAlign = "left";
     }
     x.restore();
     x.strokeStyle = cor; x.lineWidth = 2; x.strokeRect(fx, fy, fw, fh);
@@ -1272,7 +1242,7 @@
     x.beginPath(); x.moveTo(M, A - 268); x.lineTo(L - M, A - 268); x.stroke();
     esp("4px"); x.font = dado(21); x.fillStyle = fum;
     x.fillText("NA DISPUTA: " + CHAVES.map(k => aparelhos[k].curto).join("  ·  ").toUpperCase(), M, A - 212);
-    x.fillText("PREÇO DA COLETA DE " + dia(P.coletado_em) + " " + hora(P.coletado_em) + " · AMAZON.COM.BR, CEP SP", M, A - 170);
+    x.fillText(("PREÇO: " + (P.itens[r.campeao].coleta || "coleta de " + dia(P.coletado_em) + " " + hora(P.coletado_em)) + " · amazon.com.br").toUpperCase(), M, A - 170);
     esp("0px");
     x.font = dado(26); x.fillStyle = cor;
     x.fillText("nocautecel.com" + endereco(usoAtual, reqsAtivos).replace(/^\/?(index\.html)?/, "/"), M, A - 104);
@@ -1316,40 +1286,9 @@
   });
 
   document.getElementById("baixar").addEventListener("click", () => {
-    const linhas = [
-      "NOCAUTECEL · LAUDO DA PESAGEM",
-      "Sessão: 11/09/2026 14h45 · amazon.com.br, CEP padrão SP · ASIN reconferidos em 12/09/2026 07h00",
-      "Método: fichas oficiais comparadas, sem medição em bancada. Não somos laboratório acreditado.",
-      "",
-      "                     S25 Edge        Pura 80 Pro     S26 Ultra",
-      "Preço (Amazon)       R$ 3.799,05     R$ 3.999,00     R$ 6.749,10",
-      "Altura x largura     158,2x75,6 mm   163,0x76,1 mm   163,6x78,1 mm",
-      "Espessura            5,8 mm          8,3 mm          7,9 mm",
-      "Peso                 163 g           219 g           214 g",
-      "Tela                 6,7\"            6,8\"            6,9\"",
-      "Bateria              3.900 mAh       5.170 (nominal) 5.000 (típica; nominal 4.855)",
-      "Câmeras traseiras    2, 200 MP       4, 50 MP (1\")   4, 200 MP",
-      "Zoom óptico          sem tele        4x              3x e 5x",
-      "5G                   sim             não (4G)        sim",
-      "Apps do Google       sim             não (EMUI 15)   sim",
-      "",
-      "Fora da ficha:",
-      "- S25 Edge: 12h38 no teste de navegação do Tom's Guide (S25 Ultra: 17h14).",
-      "- Pura 80 Pro: sensor principal de 1\", abertura f/1.6 a f/4.0.",
-      "- S26 Ultra: atualização de segurança até 28/02/2033.",
-      "",
-      "Fontes (acesso em 11/09/2026):",
-      "samsung.com/br/smartphones/galaxy-s25-edge/specs/",
-      "samsung.com/br/smartphones/galaxy-s26-ultra/specs/",
-      "consumer.huawei.com/br/phones/pura80-pro/specs/",
-      "tomsguide.com - Galaxy S25 Edge battery life tested",
-      "",
-      "Fotos: de loja, CC BY-SA 4.0 via Wikimedia Commons (Miyako Fujimiya, Leongyy02, Kyu3a).",
-      "Preço muda todo dia. Confira na loja antes de pagar."
-    ];
-    const blob = new Blob([linhas.join("\r\n")], {type:"text/plain;charset=utf-8"});
+    const blob = new Blob([textoPesagem()], {type:"text/plain;charset=utf-8"});
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob); a.download = "nocautecel-pesagem-2026-09-11.txt";
+    a.href = URL.createObjectURL(blob); a.download = "nocautecel-" + CHAVES.join("-") + ".txt";
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   });

@@ -2,18 +2,150 @@
   "coletado_em": "2026-09-11T14:45:00-03:00",
   "proxima": null,
   "fonte": "amazon.com.br, CEP padrao de Sao Paulo",
-  "observacao": "Coleta manual. Enquanto proxima for null, a pagina diz que nao ha hora marcada em vez de inventar relogio. ASIN de pura e ultra conferidos em 12/09/2026 07h00, com os mesmos precos da coleta de 11/09 -- por isso coletado_em nao mudou.",
+  "observacao": "Coleta manual. Enquanto proxima for null, a pagina diz que nao ha hora marcada em vez de inventar relogio. ASIN de pura e ultra conferidos em 12/09/2026 07h00, com os mesmos precos da coleta de 11/09 -- por isso coletado_em nao mudou. Em 12/09/2026 à noite entraram 13 aparelhos com preço lido na busca da Amazon (campo coleta por item).",
   "itens": {
-    "edge": { "preco": 3799.05, "asin": "B0F8PHM63K", "tipo": "produto", "gb": 512, "condicao": "novo, vendedor Magalu. na Amazon; conferir reputacao" },
-    "pura": { "preco": 3999.00, "asin": "B0FDKNBCQ8", "tipo": "produto", "gb": 512, "condicao": "novo, cor PRETA; enviado pela Amazon, vendido por Imagem Hitech FULL; devolucao em 7 dias. A versao vermelha da foto e outro ASIN (B0FDKT1QLW) e custava R$ 4.399,00" },
-    "ultra": { "preco": 6749.10, "asin": "B0GKQK9ZVT", "tipo": "produto", "gb": 256, "condicao": "novo, cor branca, vendido e enviado por Amazon.com.br; a versao preta (B0GKQTTCMM) estava a R$ 7.990,00" }
+    "edge": {
+      "preco": 3799.05,
+      "asin": "B0F8PHM63K",
+      "tipo": "produto",
+      "gb": 512,
+      "condicao": "novo, vendedor Magalu. na Amazon; conferir reputacao"
+    },
+    "pura": {
+      "preco": 3999.0,
+      "asin": "B0FDKNBCQ8",
+      "tipo": "produto",
+      "gb": 512,
+      "condicao": "novo, cor PRETA; enviado pela Amazon, vendido por Imagem Hitech FULL; devolucao em 7 dias. A versao vermelha da foto e outro ASIN (B0FDKT1QLW) e custava R$ 4.399,00"
+    },
+    "ultra": {
+      "preco": 6749.1,
+      "asin": "B0GKQK9ZVT",
+      "tipo": "produto",
+      "gb": 256,
+      "condicao": "novo, cor branca, vendido e enviado por Amazon.com.br; a versao preta (B0GKQTTCMM) estava a R$ 7.990,00"
+    },
+    "matext": {
+      "preco": 19996.6,
+      "asin": "B0DXKVSX1H",
+      "tipo": "busca",
+      "gb": 1024,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos"
+    },
+    "ip17pm": {
+      "preco": 15555.54,
+      "asin": "B0FQHFV3WB",
+      "tipo": "busca",
+      "gb": 2048,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos"
+    },
+    "ip16pm": {
+      "preco": 15499.0,
+      "asin": "B0DGLY8XBK",
+      "tipo": "busca",
+      "gb": 1024,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "fold8u": {
+      "preco": 13859.1,
+      "asin": "B0HCX3269F",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos"
+    },
+    "s26u1t": {
+      "preco": 13199.0,
+      "asin": "B0GKQNSB9Z",
+      "tipo": "busca",
+      "gb": 1024,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos"
+    },
+    "ip16p": {
+      "preco": 12185.47,
+      "asin": "B0DGM8MJ4Y",
+      "tipo": "busca",
+      "gb": 128,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "razr70u": {
+      "preco": 11999.0,
+      "asin": "B0GZQYL93G",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos"
+    },
+    "ip16plus": {
+      "preco": 11799.0,
+      "asin": "B0DGMCLRKS",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "ip13pm": {
+      "preco": 11108.0,
+      "asin": "B09V4L4PVV",
+      "tipo": "busca",
+      "gb": 256,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos",
+      "suspeito": "preço acima de modelo mais novo e mais completo da mesma marca; conferir o vendedor"
+    },
+    "ip17p": {
+      "preco": 10899.99,
+      "asin": "B0FQJ7JHVP",
+      "tipo": "busca",
+      "gb": 1024,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos"
+    },
+    "oppox9p": {
+      "preco": 10799.1,
+      "asin": "B0GPZ9MRP4",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos"
+    },
+    "ipair": {
+      "preco": 10599.0,
+      "asin": "B0FQGYPXK9",
+      "tipo": "busca",
+      "gb": 1024,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos"
+    },
+    "flip8": {
+      "preco": 9999.0,
+      "asin": "B0HCZXDFXS",
+      "tipo": "busca",
+      "gb": 512,
+      "coleta": "12/09/2026, busca da noite",
+      "condicao": "preço da página de busca; vendedor e condição não conferidos"
+    }
   },
   "anterior": {
     "coletado_em": "2026-09-10T00:00:00-03:00",
     "itens": {
-      "edge": { "preco": 3799.05 },
-      "pura": { "preco": 3999.00 },
-      "ultra": { "preco": 10092.90 }
+      "edge": {
+        "preco": 3799.05
+      },
+      "pura": {
+        "preco": 3999.0
+      },
+      "ultra": {
+        "preco": 10092.9
+      }
     }
   }
 }
