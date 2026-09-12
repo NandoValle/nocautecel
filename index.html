@@ -341,7 +341,7 @@
         </div>
       </div>
       <p class="frase" id="s-frase"></p>
-      <!-- AFILIADO: os href saem do objeto "aparelhos" no script. Falta a tag do Amazon Associados. -->
+      <!-- AFILIADO: href montado no script a partir de pesagem.json + TAG_AMAZON. -->
       <a class="comprar" id="s-comprar" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon <span class="num" id="s-preco">R$ 3.799,05</span></a>
       <ul class="saldo" id="s-saldo">
         <li class="mais"><span class="rot">Leva também</span><span id="s-mais">—</span></li>
@@ -359,7 +359,7 @@
         <summary>De onde vem o preço · afiliação</summary>
         <p class="mercado" id="s-mercado"></p>
         <p class="mercado" id="s-proxima"></p>
-        <p class="mini">Coleta na Amazon em 11/09/2026 14h45, CEP padrão de São Paulo. Preço muda todo dia: confira vendedor, condição e capacidade antes de pagar. Como afiliado podemos ganhar comissão sem custo extra para você — os links desta demonstração ainda não têm a tag de afiliado.</p>
+        <p class="mini">Coleta na Amazon em 11/09/2026 14h45, CEP padrão de São Paulo. Os preços e a disponibilidade valem para a data e a hora indicadas e podem mudar: confira vendedor, condição e capacidade antes de pagar. Comprar pelos links não custa nada a mais para você.<span id="s-demo"> Nesta demonstração os links ainda não têm o ID de Associado, então não rastreiam comissão.</span></p>
       </details>
     </div>
 
@@ -582,15 +582,13 @@
       <p>O preço aceso é o do seu critério. Preço muda todo dia: confira na loja antes de pagar.</p>
     </div>
     <div class="bilheteria">
+      <!-- AFILIADO: o href destes três é reescrito na carga a partir de pesagem.json + TAG_AMAZON. -->
       <article class="ingresso edge"><h3>Galaxy S25 Edge</h3><p class="obs">512 GB · 12x de R$ 333,25 sem juros · confira a reputação do vendedor</p><div class="preco">R$ 3.799,05<small>à vista no Pix</small></div>
-        <!-- AFILIADO: trocar pelo link gerado no painel Amazon Associados -->
-        <a class="comprar" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored">Ver na Amazon</a></article>
+        <a class="comprar" data-loja="edge" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon</a></article>
       <article class="ingresso pura"><h3>Huawei Pura 80 Pro</h3><p class="obs">12 GB + 512 GB · a Amazon marca "menor preço em 365 dias"</p><div class="preco">R$ 3.999,00<small>preço da busca</small></div>
-        <!-- AFILIADO: trocar pelo link gerado no painel Amazon Associados -->
-        <a class="comprar" href="https://www.amazon.com.br/s?k=huawei+pura+80+pro" target="_blank" rel="noopener sponsored">Ver na Amazon</a></article>
+        <a class="comprar" data-loja="pura" href="https://www.amazon.com.br/s?k=huawei+pura+80+pro+512gb" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon</a></article>
       <article class="ingresso ultra"><h3>Galaxy S26 Ultra</h3><p class="obs">256 GB, cor branca · 12x de R$ 624,91 · a versão preta estava a R$ 7.990</p><div class="preco">R$ 6.749,10<small>à vista no Pix</small></div>
-        <!-- AFILIADO: trocar pelo link gerado no painel Amazon Associados -->
-        <a class="comprar" href="https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb" target="_blank" rel="noopener sponsored">Ver na Amazon</a></article>
+        <a class="comprar" data-loja="ultra" href="https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon</a></article>
     </div>
   </section>
 
@@ -611,10 +609,10 @@
     </details>
     <div class="laudo-acoes">
       <button type="button" class="baixar" id="baixar">Baixar a pesagem (.txt)</button>
-      <span class="aviso">Demo: links ainda sem tag de afiliado</span>
+      <span class="aviso" id="aviso-demo">Demo: links ainda sem o ID de Associado</span>
       <span class="versoes" aria-label="Versões do design">Versão <a href="./" aria-current="page">A</a><a href="b/">B</a><a href="c/">C</a></span>
     </div>
-    <p class="fecho">Como afiliado, podemos receber comissão pelas compras feitas nos links desta página, sem custo extra para você.</p>
+    <p class="fecho" id="fecho-afiliado">Como participante do Programa de Associados da Amazon, sou remunerado pelas compras qualificadas efetuadas. Comprar pelos links desta página não custa nada a mais para você. Os preços e a disponibilidade valem para a data e a hora indicadas em cada coleta e podem mudar.</p>
   </footer>
 </div>
 
@@ -687,7 +685,37 @@
 
   let P = PESAGEM_LOCAL;
   const preco = (k, fonte) => (fonte || P).itens[k].preco;
-  const link = k => P.itens[k].asin ? "https://www.amazon.com.br/dp/" + P.itens[k].asin : busca[k];
+
+  // ---------- Amazon Associados ----------
+  // Cole aqui, entre as aspas, o ID de Associado (ou a ID de rastreamento) do painel
+  // — Amazon Associados > Gerenciar IDs de rastreamento. A Amazon entrega no formato
+  // XXXXX-20, ou outro que ela designar; use exatamente o que estiver lá.
+  // Esta é a ÚNICA linha a mexer: todos os botões da página passam por ela.
+  // Enquanto estiver vazia, a página assume que é demonstração e avisa isso ao leitor.
+  const TAG_AMAZON = "";
+
+  // Acrescenta ?tag= na URL da Amazon, sem duplicar parâmetro e sem tocar em outro domínio.
+  function comTag(url){
+    if (!TAG_AMAZON) return url;
+    try {
+      const u = new URL(url, location.href);
+      if (!/(^|\.)amazon\.com\.br$/i.test(u.hostname)) return url;
+      u.searchParams.set("tag", TAG_AMAZON);
+      return u.toString();
+    } catch(e){ return url; }
+  }
+
+  const link = k => comTag(P.itens[k].asin ? "https://www.amazon.com.br/dp/" + P.itens[k].asin : busca[k]);
+
+  // Bilheteria e avisos: uma fonte só para link e para o texto de divulgação.
+  function afiliado(){
+    document.querySelectorAll("a[data-loja]").forEach(a => { a.href = link(a.dataset.loja); });
+    const demo = !TAG_AMAZON;
+    const aviso = document.getElementById("aviso-demo");
+    const nota = document.getElementById("s-demo");
+    if (aviso) aviso.hidden = !demo;
+    if (nota) nota.hidden = !demo;
+  }
 
   // Cada critério: como ordenar, o que mostrar, a distância até o segundo e o limiar da ameaça.
   // "curto" nomeia o critério em frase corrida; "medida" é o valor curto, para a régua e o cartão;
@@ -982,6 +1010,7 @@
   // Link recebido (?c=criterio&r=1) reabre a mesma disputa.
   function liga(){
     carimbo();
+    afiliado();
     const q = new URLSearchParams(location.search);
     const pedido = q.get("c");
     aplica(criterios[pedido] ? pedido : "economia", q.get("r") === "1", false);
