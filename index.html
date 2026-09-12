@@ -21,7 +21,7 @@
     --ouro:#D9B872;
     --raio:2px;
     --sai-rapido:cubic-bezier(.25,1,.5,1); --sai-longo:cubic-bezier(.16,1,.3,1);
-    --t-load:900ms; --t-criterio:220ms; --fora-op:.3;
+    --t-load:900ms; --t-criterio:220ms; --fora-op:.55;
     --cor-ativa:var(--edge);
     --metal-1:#E6D4A3; --metal-2:#C9B07A; --metal-3:#9C8250; --metal-borda:#6E5A33; --metal-tinta:#241C0E;
   }
@@ -50,10 +50,11 @@
   .nav a[aria-current="page"]{color:var(--scan); border-bottom-color:var(--scan)}
   .selo{display:grid; justify-items:end; gap:.4rem}
   .selo .caixa{display:flex; align-items:center; gap:.7rem; border:var(--hairline) solid var(--corda-forte); padding:.5rem .8rem; font-family:var(--dado); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--giz-2)}
-  .selo .pesagem-hora{font-family:var(--dado); font-size:.9rem; letter-spacing:.1em; color:var(--ouro)}
-  .versoes{display:flex; gap:.35rem; font-family:var(--dado); font-size:.74rem; color:var(--fumaca)}
-  .versoes a{text-decoration:none; padding:.1rem .4rem; border:var(--hairline) solid var(--corda)}
-  .versoes a[aria-current="page"]{color:var(--arena); background:var(--scan); border-color:var(--scan)}
+  .selo .pesagem-hora{font-family:var(--dado); font-size:.9rem; letter-spacing:.1em; color:var(--giz-2)}
+  /* Versões A/B/C: fora da experiência principal, ficam no rodapé. */
+  .versoes{display:flex; flex-wrap:wrap; align-items:center; gap:.35rem; font-family:var(--dado); font-size:.74rem; color:var(--incerteza)}
+  .versoes a{text-decoration:none; padding:.15rem .45rem; border:var(--hairline) solid var(--corda); color:var(--giz-2)}
+  .versoes a[aria-current="page"]{color:var(--arena); background:var(--corda-forte); border-color:var(--corda-forte)}
 
   /* ---------- Palco ---------- */
   .palco{position:relative; margin-top:.5rem}
@@ -93,41 +94,21 @@
   /* ---------- Faixa de instrumentos ---------- */
   .instrumentos{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)) minmax(15rem,1.1fr); border-top:var(--hairline) solid var(--corda); border-bottom:var(--hairline) solid var(--corda); margin-top:.25rem}
   .inst{display:flex; align-items:center; gap:1rem; padding:1.1rem 1.2rem; border-right:var(--hairline) solid var(--corda)}
-  .inst svg{flex:none; width:40px; height:40px; color:var(--ouro)}
+  .inst svg{flex:none; width:40px; height:40px; color:var(--giz-2)}
   .inst b{display:block; font-family:var(--dado); font-weight:500; font-size:.82rem; letter-spacing:.1em; text-transform:uppercase}
   .inst span{display:block; font-family:var(--dado); font-size:.78rem; color:var(--fumaca); margin-top:.2rem}
   .lema{display:flex; align-items:center; justify-content:center; padding:1rem 1.2rem}
   .lema p{margin:0; width:100%; display:flex; justify-content:space-between; align-items:center; gap:1rem; border:var(--hairline) solid var(--corda-forte); padding:1rem 1.2rem; font-family:var(--dado); font-size:.82rem; letter-spacing:.1em; text-transform:uppercase}
-  .lema p span{color:var(--ouro); font-size:1.1rem}
+  .lema p span{color:var(--scan); font-size:1.1rem}
 
   /* ---------- Cinturão ---------- */
   section{padding-top:clamp(2.5rem,6vw,4.5rem)}
   .sec-topo{display:flex; justify-content:space-between; align-items:flex-end; gap:.75rem 2rem; flex-wrap:wrap; margin-bottom:1.1rem}
   h2{font-family:var(--poster); font-weight:800; letter-spacing:-.01em; text-transform:uppercase; font-size:clamp(2rem,4.5vw,3.2rem); line-height:.95; margin:0}
   .sec-topo p{margin:0; max-width:36rem; color:var(--giz-2)}
-  .segmentos{display:flex; flex-wrap:wrap; border:var(--hairline) solid var(--corda); border-radius:var(--raio)}
-  .segmentos button{flex:1 1 9.5rem; min-height:48px; font:inherit; font-size:.9375rem; color:var(--giz-2); background:transparent; border:0; border-right:var(--hairline) solid var(--corda); padding:.6rem .9rem; cursor:pointer; transition:background-color var(--t-criterio) var(--sai-rapido), color var(--t-criterio) var(--sai-rapido), box-shadow var(--t-criterio) var(--sai-rapido)}
-  .segmentos button:last-child{border-right:0}
-  .segmentos button:hover{background:var(--lona-2); color:var(--giz)}
-  .segmentos button[aria-pressed="true"]{background:color-mix(in srgb, var(--cor-ativa) 14%, transparent); color:var(--giz); box-shadow:inset 0 -2px 0 var(--cor-ativa); font-weight:600}
-  .veredito{display:grid; grid-template-columns:auto 1fr auto; gap:1rem 1.75rem; align-items:center; margin-top:1rem; padding:1.1rem 1.25rem; background:var(--lona); border:var(--hairline) solid var(--corda); border-radius:var(--raio)}
-  .placa{position:relative; min-width:13rem; padding:.85rem 1.6rem .9rem; text-align:center; border:1px solid var(--metal-borda); border-radius:var(--raio);
-    background:
-      radial-gradient(circle, #F6EDD0 0 1.2px, var(--metal-borda) 1.8px 2.8px, transparent 3.2px) 5px 5px / 8px 8px no-repeat,
-      radial-gradient(circle, #F6EDD0 0 1.2px, var(--metal-borda) 1.8px 2.8px, transparent 3.2px) calc(100% - 5px) 5px / 8px 8px no-repeat,
-      radial-gradient(circle, #F6EDD0 0 1.2px, var(--metal-borda) 1.8px 2.8px, transparent 3.2px) 5px calc(100% - 5px) / 8px 8px no-repeat,
-      radial-gradient(circle, #F6EDD0 0 1.2px, var(--metal-borda) 1.8px 2.8px, transparent 3.2px) calc(100% - 5px) calc(100% - 5px) / 8px 8px no-repeat,
-      linear-gradient(180deg,var(--metal-1) 0%,var(--metal-2) 48%,var(--metal-3) 100%);
-    box-shadow:0 2px 0 var(--metal-borda), 0 12px 28px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.45); color:var(--metal-tinta)}
-  .placa span{font-family:var(--dado); font-size:.8125rem; letter-spacing:.14em; text-transform:uppercase}
-  .placa strong{display:block; font-family:var(--poster); font-weight:900; font-size:1.95rem; line-height:1; text-transform:uppercase; margin-top:.25rem; text-shadow:0 1px 0 rgba(255,255,255,.4)}
-  .placa.salta{animation:salta var(--t-criterio) var(--sai-rapido)}
-  @keyframes salta{from{transform:translateY(-5px)}}
-  .veredito p{margin:0; color:var(--giz-2); max-width:56ch}
   .comprar{display:inline-flex; align-items:center; justify-content:center; gap:.5rem; min-height:48px; padding:.7rem 1.1rem; border-radius:var(--raio); text-decoration:none; font-weight:600; color:var(--arena); background:var(--c, var(--cor-ativa)); white-space:nowrap; transition:filter .2s var(--sai-rapido), transform .12s var(--sai-rapido)}
   .comprar:hover{filter:brightness(1.1)} .comprar:active{transform:scale(.98)}
-  #v-comprar{background:var(--cor-ativa)}
-  #v-comprar .num{font-family:var(--dado); font-size:.875rem}
+  .comprar .num{font-family:var(--dado); font-size:.875rem}
 
   /* ---------- Telemetria ---------- */
   .telemetria{border-top:var(--hairline) solid var(--giz)}
@@ -167,7 +148,7 @@
   .laudo-acoes{display:flex; flex-wrap:wrap; align-items:center; gap:.75rem 1.25rem}
   .baixar{min-height:48px; font:inherit; font-weight:600; color:var(--giz); background:transparent; border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio); padding:.65rem 1.1rem; cursor:pointer}
   .baixar:hover{border-color:var(--scan); background:var(--lona)}
-  .aviso{font-family:var(--dado); font-size:.8125rem; color:var(--ouro); border:1px dashed var(--ouro); border-radius:var(--raio); padding:.35rem .7rem}
+  .aviso{font-family:var(--dado); font-size:.8125rem; color:var(--giz-2); border:1px dashed var(--corda-forte); border-radius:var(--raio); padding:.35rem .7rem}
   .laudo .fecho{color:var(--fumaca); font-size:.9375rem; max-width:75ch; margin:1.25rem 0 0}
 
   @media (max-width:1100px){
@@ -178,8 +159,6 @@
     .lema{grid-column:1/-1; border-top:var(--hairline) solid var(--corda)}
   }
   @media (max-width:900px){
-    .veredito{grid-template-columns:auto 1fr}
-    .veredito #v-comprar{grid-column:1/-1; justify-self:start}
     .ingresso{grid-template-columns:1fr auto}
     .ingresso .obs{grid-column:1/-1; grid-row:2}
   }
@@ -191,8 +170,6 @@
     .selo .caixa{display:none}
     .instrumentos{grid-template-columns:1fr}
     .inst{border-right:0; border-bottom:var(--hairline) solid var(--corda)}
-    .veredito{grid-template-columns:1fr}
-    .placa{justify-self:start}
     .tl{grid-template-columns:repeat(3,minmax(0,1fr))}
     .tl.cab > div:first-child{display:none}
     .tl > div{padding:.5rem .45rem .75rem}
@@ -221,8 +198,8 @@
   .chips{display:flex; gap:.5rem; overflow-x:auto; overflow-y:hidden; padding-bottom:.5rem; scrollbar-width:thin; -webkit-overflow-scrolling:touch}
   .chips button{flex:0 0 auto; min-height:44px; display:inline-flex; align-items:center; gap:.45rem; font:inherit; font-size:.9375rem; color:var(--giz-2); background:var(--lona); border:var(--hairline) solid var(--corda); border-radius:999px; padding:.55rem 1rem; cursor:pointer; white-space:nowrap; transition:color var(--t-criterio) var(--sai-rapido), border-color var(--t-criterio) var(--sai-rapido), background-color var(--t-criterio) var(--sai-rapido)}
   .chips button:hover{color:var(--giz); border-color:var(--corda-forte)}
-  .chips button[aria-pressed="true"]{color:var(--arena); background:var(--ouro); border-color:var(--ouro); font-weight:600}
-  .chips .perna[aria-pressed="true"]{color:var(--giz); background:color-mix(in srgb, var(--ouro) 16%, transparent); border-color:var(--ouro)}
+  .chips button[aria-pressed="true"]{color:var(--arena); background:var(--cor-ativa); border-color:var(--cor-ativa); font-weight:600}
+  .chips .perna[aria-pressed="true"]{color:var(--giz); background:color-mix(in srgb, var(--cor-ativa) 18%, transparent); border-color:var(--cor-ativa)}
   .bilhete{margin-top:.9rem; padding:1.1rem 1.1rem 1.25rem; background:var(--lona); border:var(--hairline) solid var(--c,var(--cor-ativa)); border-radius:var(--raio); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--c,var(--cor-ativa)) 22%, transparent)}
   .bilhete .faixa{margin:0 0 .5rem; display:flex; flex-wrap:wrap; gap:.5rem .9rem; align-items:baseline; font-family:var(--dado); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ouro)}
   .bilhete .estado{color:var(--incerteza)}
@@ -231,10 +208,20 @@
   .bilhete .linha{margin:.3rem 0 0; font-family:var(--dado); font-size:1rem; color:var(--giz)}
   .bilhete .frase{margin:.55rem 0 .9rem; color:var(--giz-2)}
   .bilhete .comprar{display:flex; width:100%}
+  /* Régua do critério: os três na mesma escala, a distância à direita. */
   .distancias{list-style:none; margin:.9rem 0 0; padding:0; display:grid; gap:.4rem}
-  .distancias li{display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:.6rem .8rem; border:var(--hairline) solid var(--corda); border-radius:var(--raio); font-family:var(--dado); font-size:.9rem; color:var(--giz-2)}
-  .distancias .d{font-family:var(--poster); font-weight:800; font-size:1.25rem; color:var(--ouro); letter-spacing:.01em}
-  .distancias .d.vago{font-family:var(--dado); font-size:.82rem; font-weight:400; color:var(--incerteza); letter-spacing:.04em}
+  .distancias li{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.35rem .9rem; align-items:baseline; padding:.6rem .8rem; border:var(--hairline) solid var(--corda); border-radius:var(--raio); font-family:var(--dado); font-size:.9rem; color:var(--giz-2); transition:border-color var(--t-criterio) var(--sai-rapido)}
+  .distancias .nome{min-width:0; overflow-wrap:anywhere}
+  .distancias .med{display:block; color:var(--incerteza); font-size:.82rem; margin-top:.15rem}
+  .distancias .d{font-family:var(--poster); font-weight:800; font-size:1.25rem; color:var(--giz); letter-spacing:.01em; white-space:nowrap}
+  .distancias .d.vago{font-family:var(--dado); font-size:.82rem; font-weight:400; color:var(--incerteza); letter-spacing:.04em; white-space:normal}
+  .distancias .b{grid-column:1/-1; height:3px; width:var(--p,0%); min-width:2px; background:var(--corda-forte); border-radius:2px; transition:width var(--t-criterio) var(--sai-longo), background-color var(--t-criterio) var(--sai-rapido)}
+  .distancias li.lider{border-color:color-mix(in srgb, var(--c,var(--cor-ativa)) 55%, var(--corda)); background:color-mix(in srgb, var(--c,var(--cor-ativa)) 7%, transparent)}
+  .distancias li.lider .d{color:var(--c,var(--cor-ativa))}
+  .distancias li.lider .b{background:var(--c,var(--cor-ativa)); box-shadow:0 0 10px color-mix(in srgb, var(--c,var(--cor-ativa)) 45%, transparent)}
+  .distancias li.fora{opacity:.8; border-style:dashed}
+  .distancias li.fora .nome{text-decoration:line-through; text-decoration-color:var(--incerteza)}
+  .distancias li.fora .b{display:none}
   .mercado,.conta{margin:.8rem 0 0; font-family:var(--dado); font-size:.82rem; line-height:1.5; color:var(--incerteza)}
   .conta{color:var(--giz-2)}
   .acoes{display:grid; gap:.5rem; margin-top:.9rem}
@@ -250,11 +237,57 @@
   .retrato figcaption{margin-top:.4rem; font-family:var(--dado); font-size:.72rem; line-height:1.4; color:var(--fumaca)}
   .retrato b{display:block; font-size:.8rem; color:var(--c,var(--giz-2)); letter-spacing:.04em}
   .round{margin:0 0 .8rem; padding:.6rem .75rem; border-left:2px solid var(--corda-forte); font-family:var(--dado); font-size:.82rem; line-height:1.55; color:var(--giz-2); background:color-mix(in srgb, var(--lona-2) 70%, transparent)}
+  .round b{display:block; color:var(--giz); font-weight:600; letter-spacing:.01em}
   .round[data-t="encostou"]{border-left-color:var(--ouro); color:var(--giz)}
   .round[data-t="nocaute"]{border-left-color:var(--c,var(--cor-ativa)); color:var(--giz)}
   .quase{margin:.7rem 0 0; padding:.55rem .75rem; border-left:2px solid var(--ouro); font-family:var(--dado); font-size:.88rem; color:var(--giz); background:color-mix(in srgb, var(--ouro) 7%, transparent)}
   .bilhete[data-estado="nocaute"] .faixa{color:var(--c,var(--cor-ativa))}
   .mini{margin:.9rem 0 0; font-family:var(--dado); font-size:.75rem; line-height:1.55; color:var(--fumaca)}
+
+  /* ---------- Luz da arena: a cor do campeão acende o palco ---------- */
+  .bilhete{background:linear-gradient(180deg, color-mix(in srgb, var(--c,var(--cor-ativa)) 9%, var(--lona)) 0, var(--lona) 55%);
+    box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--c,var(--cor-ativa)) 22%, transparent), 0 24px 60px -40px color-mix(in srgb, var(--c,var(--cor-ativa)) 70%, transparent);
+    transition:background var(--t-criterio) var(--sai-rapido), border-color var(--t-criterio) var(--sai-rapido)}
+  .palco-trilho{background:radial-gradient(50% 42% at 50% 72%, color-mix(in srgb, var(--cor-ativa) 11%, transparent), transparent 72%); transition:background var(--t-criterio) var(--sai-rapido)}
+  .retrato img{filter:saturate(.92)}
+  :root[data-foco="edge"] .retrato:not(.edge) img,:root[data-foco="pura"] .retrato:not(.pura) img,:root[data-foco="ultra"] .retrato:not(.ultra) img{filter:saturate(.45) brightness(.85)}
+
+  /* ---------- O que ele ganha, do que ele abre mão ---------- */
+  .saldo{list-style:none; display:grid; gap:.45rem; margin:.9rem 0 0; padding:.75rem .8rem; border:var(--hairline) solid var(--corda); border-radius:var(--raio)}
+  .saldo li{display:grid; grid-template-columns:7.5rem minmax(0,1fr); gap:.25rem .8rem; align-items:baseline; font-size:.9375rem; color:var(--giz-2)}
+  @media (max-width:30rem){ .saldo li{grid-template-columns:1fr; gap:.1rem} }
+  .saldo .rot{font-family:var(--dado); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--incerteza)}
+  .saldo b{font-weight:600; color:var(--giz)}
+  .saldo .mais .rot{color:var(--c,var(--cor-ativa))}
+
+  /* ---------- Blocos recolhíveis: o técnico fica, mas não atropela ---------- */
+  .detalhe{margin:.9rem 0 0; border-top:var(--hairline) solid var(--corda)}
+  .detalhe>summary{display:flex; align-items:center; gap:.5rem; min-height:44px; list-style:none; cursor:pointer; font-family:var(--dado); font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--incerteza)}
+  .detalhe>summary::-webkit-details-marker{display:none}
+  .detalhe>summary::after{content:"+"; margin-left:auto; font-size:1.1rem; line-height:1}
+  .detalhe[open]>summary::after{content:"–"}
+  .detalhe>summary:hover{color:var(--giz-2)}
+  .detalhe .mini{margin-top:0}
+
+  /* ---------- Resumo do campeão, sempre à mão no celular ---------- */
+  .resumo{position:fixed; inset:auto 0 0 0; z-index:30; display:none; align-items:center; gap:.75rem;
+    padding:.55rem clamp(.75rem,3vw,1rem); padding-bottom:calc(.55rem + env(safe-area-inset-bottom,0px));
+    background:color-mix(in srgb, var(--arena) 92%, transparent); backdrop-filter:blur(8px);
+    border-top:1px solid var(--c,var(--cor-ativa)); transform:translateY(115%); transition:transform .24s var(--sai-longo)}
+  .resumo.vem{transform:none}
+  .resumo .quem{flex:1; min-width:0}
+  .resumo b{display:block; font-family:var(--poster); font-weight:800; font-size:1.15rem; line-height:1.05; text-transform:uppercase; color:var(--c,var(--cor-ativa)); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .resumo span{display:block; font-family:var(--dado); font-size:.76rem; color:var(--giz-2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .resumo .comprar{min-height:44px; padding:.5rem .85rem; font-size:.9375rem}
+  .palco-dica{display:none}
+
+  @media (max-width:760px){
+    .resumo{display:flex}
+    body{padding-bottom:4.6rem}
+    .palco-dica{display:flex; align-items:center; gap:.45rem; margin:.4rem 0 0; font-family:var(--dado); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--incerteza)}
+    .palco-dica svg{flex:none; width:14px; height:14px}
+  }
+  @media (prefers-reduced-motion:reduce){ .resumo{transition:none} }
   @media (min-width:48rem){
     .acoes{grid-template-columns:repeat(2,minmax(0,1fr))}
     .bilhete .comprar{width:auto; display:inline-flex}
@@ -282,18 +315,17 @@
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="#B7C2CE" stroke-width="1.1"><path d="M8 1v10M3 5h10M4 5 2 10h4Zm8 0-2 5h4ZM5 14h6"/></svg>
       </div>
       <div class="pesagem-hora" id="coleta-stamp">ÚLTIMA COLETA 11.09.2026 14h45</div>
-      <div class="versoes" aria-label="Versões do design">Versão <a href="./" aria-current="page">A</a><a href="b/">B</a><a href="c/">C</a></div>
     </div>
   </header>
 
   <section class="slip" id="palpite" aria-labelledby="t-palpite">
-    <h2 id="t-palpite">O que mais pesa pra você?</h2>
-    <p class="sub">Escolha um critério. Some um requisito, se quiser. O cinturão muda.</p>
+    <h2 id="t-palpite">Qual merece o seu dinheiro?</h2>
+    <p class="sub">Escolha o que importa. Veja quem leva o cinturão.</p>
     <div class="chips" role="group" aria-label="Critério do palpite">
       <button type="button" data-uso="economia" aria-pressed="true">Gastar menos</button>
       <button type="button" data-uso="leveza" aria-pressed="false">No bolso</button>
       <button type="button" data-uso="foto" aria-pressed="false">Zoom</button>
-      <button type="button" data-uso="bateria" aria-pressed="false">Bateria</button>
+      <button type="button" data-uso="bateria" aria-pressed="false">Capacidade da bateria</button>
       <button type="button" data-uso="anos" aria-pressed="false">Durar anos</button>
       <button type="button" class="perna" data-perna="googleg5" aria-pressed="false">+ Google e 5G</button>
     </div>
@@ -311,15 +343,24 @@
       <p class="frase" id="s-frase"></p>
       <!-- AFILIADO: os href saem do objeto "aparelhos" no script. Falta a tag do Amazon Associados. -->
       <a class="comprar" id="s-comprar" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon <span class="num" id="s-preco">R$ 3.799,05</span></a>
+      <ul class="saldo" id="s-saldo">
+        <li class="mais"><span class="rot">Leva também</span><span id="s-mais">—</span></li>
+        <li class="menos"><span class="rot">Abre mão de</span><span id="s-menos">—</span></li>
+      </ul>
       <ul class="distancias" id="s-distancias"></ul>
       <p class="quase" id="s-quase" hidden></p>
-      <p class="mercado" id="s-mercado"></p>
-      <p class="mercado" id="s-proxima"></p>
       <div class="acoes">
+        <button type="button" id="s-cartao">Cartão do meu campeão</button>
+        <button type="button" id="s-link">Copiar link desta disputa</button>
         <button type="button" id="s-copiar">Copiar placar</button>
         <a href="#pesagem">Ver a pesagem</a>
       </div>
-      <p class="mini">Coleta na Amazon em 11/09/2026 14h45, CEP padrão de São Paulo. Preço muda todo dia: confira vendedor, condição e capacidade antes de pagar. Como afiliado podemos ganhar comissão sem custo extra para você — os links desta demonstração ainda não têm a tag de afiliado.</p>
+      <details class="detalhe">
+        <summary>De onde vem o preço · afiliação</summary>
+        <p class="mercado" id="s-mercado"></p>
+        <p class="mercado" id="s-proxima"></p>
+        <p class="mini">Coleta na Amazon em 11/09/2026 14h45, CEP padrão de São Paulo. Preço muda todo dia: confira vendedor, condição e capacidade antes de pagar. Como afiliado podemos ganhar comissão sem custo extra para você — os links desta demonstração ainda não têm a tag de afiliado.</p>
+      </details>
     </div>
 
     <div class="retratos">
@@ -444,6 +485,10 @@
         </svg>
       </div>
     </div>
+    <p class="palco-dica" id="palco-dica" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg>
+      Arraste para ver os três na mesma escala
+    </p>
   </div>
 
   <div class="instrumentos" role="list">
@@ -490,7 +535,7 @@
         <div class="v edge" role="cell"><span class="val">6,7"</span><i class="barra" style="--p:97.1%"></i></div>
         <div class="v pura" role="cell"><span class="val">6,8"</span><i class="barra" style="--p:98.6%"></i></div>
         <div class="v ultra" role="cell"><span class="val">6,9"</span><i class="barra" style="--p:100%"></i></div></div>
-      <div class="tl" role="row"><div class="rot" role="rowheader">Bateria<small>capacidade declarada</small></div>
+      <div class="tl" role="row"><div class="rot" role="rowheader">Capacidade da bateria<small>declarada pelo fabricante · não é autonomia medida</small></div>
         <div class="v edge" role="cell"><span class="val">3.900 mAh</span><span class="delta">−1.270 mAh</span><i class="barra" style="--p:75.4%"></i></div>
         <div class="v pura ganha" role="cell"><span class="val">5.170 mAh</span><span class="nota">nominal</span><i class="barra" style="--p:100%"></i><span class="sr">melhor nesta linha</span></div>
         <div class="v ultra" role="cell"><span class="val">5.000 mAh</span><span class="delta">−170 mAh</span><span class="nota">típica · nominal 4.855</span><i class="barra" style="--p:96.7%"></i></div></div>
@@ -516,7 +561,7 @@
     </div>
     <div class="telemetria" role="table" aria-label="Fatos fora da ficha">
       <div class="tl cab" role="row"><div role="columnheader"><span class="sr">Fato</span></div><div class="edge" role="columnheader"><span class="lutador">S25 Edge</span></div><div class="pura" role="columnheader"><span class="lutador">Pura 80 Pro</span></div><div class="ultra" role="columnheader"><span class="lutador">S26 Ultra</span></div></div>
-      <div class="tl grande" role="row"><div class="rot" role="rowheader">Bateria medida<small>Tom's Guide · navegação web</small></div>
+      <div class="tl grande" role="row"><div class="rot" role="rowheader">Autonomia medida<small>Tom's Guide · navegação web</small></div>
         <div class="v edge" role="cell"><span class="val">12h38</span><span class="nota">o S25 Ultra fez 17h14 no mesmo teste</span></div>
         <div class="v pura sem" role="cell"><span class="val">sem dado</span><span class="nota">teste não conferido</span></div>
         <div class="v ultra sem" role="cell"><span class="val">sem dado</span><span class="nota">teste não conferido</span></div></div>
@@ -551,21 +596,35 @@
 
   <footer class="laudo" id="laudo" aria-labelledby="t-laudo">
     <h2 id="t-laudo">Metodologia e laudo</h2>
+    <details class="detalhe" open>
+      <summary>Método, escala, preço, bateria, fontes e fotos</summary>
     <dl>
       <dt>Método</dt><dd>Comparação das fichas oficiais, sem medição em bancada. Não somos laboratório acreditado. A régua desenha as medidas declaradas, na mesma escala para os três aparelhos.</dd>
       <dt>Escala</dt><dd>1 mm = 2,2 unidades do desenho; zero da régua no chão da plataforma. A silhueta de cada aparelho vem das medidas declaradas; dentro dela fica a foto do próprio aparelho, recortada rente ao corpo e ampliada para preencher a caixa. Ou seja: o tamanho é medida, a textura é foto.</dd>
       <dt>Preço</dt><dd>Busca da amazon.com.br em 11/09/2026 às 14h45, CEP padrão de São Paulo.</dd>
-      <dt>Bateria</dt><dd>Samsung informa 5.000 mAh como capacidade típica do S26 Ultra (nominal 4.855 mAh). Huawei informa 5.170 mAh nominal. Único teste independente conferido: Tom's Guide, S25 Edge.</dd>
+      <dt>Bateria</dt><dd>O critério chama-se <b>capacidade da bateria</b> porque compara mAh declarados, não autonomia: mAh não é hora de tela. Samsung informa 5.000 mAh como capacidade típica do S26 Ultra (nominal 4.855 mAh); Huawei informa 5.170 mAh nominal — a comparação mistura capacidade típica e nominal, que são medidas diferentes. "Autonomia" fica reservada a teste comparável, e o único conferido é o do Tom's Guide com o S25 Edge; sem o mesmo teste nos outros dois, não há cinturão de autonomia nesta pesagem.</dd>
       <dt>Fontes</dt><dd>samsung.com/br/smartphones/galaxy-s25-edge/specs/ · samsung.com/br/smartphones/galaxy-s26-ultra/specs/ · consumer.huawei.com/br/phones/pura80-pro/specs/ · tomsguide.com, "Galaxy S25 Edge battery life tested". Todas acessadas em 11/09/2026.</dd>
       <dt>Fotos</dt><dd>Fotos de loja, não renders do fabricante, recortadas e redimensionadas por nós. S25 Edge por Miyako Fujimiya (<a href="https://commons.wikimedia.org/wiki/File:Samsung_Galaxy_S25_Edge_(2).jpg" rel="noopener" target="_blank">arquivo</a>); Pura 80 Pro por Leongyy02 (<a href="https://commons.wikimedia.org/wiki/File:Huawei_Pura_80_Pro_Glazed_Red.jpg" rel="noopener" target="_blank">arquivo</a>); S26 Ultra por Kyu3a (<a href="https://commons.wikimedia.org/wiki/File:Galaxy_S26_Ultra_-_2.jpg" rel="noopener" target="_blank">arquivo</a>). As três em <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.pt-br" rel="license noopener" target="_blank">CC BY-SA 4.0</a>, via Wikimedia Commons; os recortes ficam sob a mesma licença.</dd>
-      <dt>Cinturão</dt><dd>Veredito editorial por critério de uso, não nota de qualidade.</dd>
+      <dt>Cinturão</dt><dd>Veredito editorial por critério de uso, não nota de qualidade. O cartão do campeão e o link da disputa carregam o critério escolhido e a data da coleta: quem receber consegue refazer a mesma comparação.</dd>
+      <dt>Fotos, limite</dt><dd>As três fotos são de loja, de autores diferentes, com fundo e iluminação diferentes. Padronizamos a moldura, a proporção e o tratamento, não a fotografia: enquadramento único só com foto própria, que ainda não temos.</dd>
     </dl>
+    </details>
     <div class="laudo-acoes">
       <button type="button" class="baixar" id="baixar">Baixar a pesagem (.txt)</button>
       <span class="aviso">Demo: links ainda sem tag de afiliado</span>
+      <span class="versoes" aria-label="Versões do design">Versão <a href="./" aria-current="page">A</a><a href="b/">B</a><a href="c/">C</a></span>
     </div>
     <p class="fecho">Como afiliado, podemos receber comissão pelas compras feitas nos links desta página, sem custo extra para você.</p>
   </footer>
+</div>
+
+<!-- Resumo do campeão: no celular, o resultado nunca fica longe do polegar. -->
+<div class="resumo" id="resumo" aria-hidden="true">
+  <div class="quem">
+    <b id="r-quem">Galaxy S25 Edge</b>
+    <span id="r-nota">Cinturão · gastar menos</span>
+  </div>
+  <a class="comprar" id="r-comprar" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored nofollow" tabindex="-1">Ver na Amazon</a>
 </div>
 
 <script>
@@ -631,35 +690,64 @@
   const link = k => P.itens[k].asin ? "https://www.amazon.com.br/dp/" + P.itens[k].asin : busca[k];
 
   // Cada critério: como ordenar, o que mostrar, a distância até o segundo e o limiar da ameaça.
+  // "curto" nomeia o critério em frase corrida; "medida" é o valor curto, para a régua e o cartão;
+  // "escala" diz se a barra comparativa faz sentido (em "durar anos" não faz: é sim ou não verificado).
   const criterios = {
-    economia:{titulo:"gastar menos", limiar:250, unidade:"R$",
+    economia:{titulo:"gastar menos", curto:"preço", limiar:250, unidade:"R$", escala:true,
       valor:(k, f) => preco(k, f), menorGanha:true,
+      medida:k => brl(preco(k)),
       linha:k => brl(preco(k)) + " no Pix · " + P.itens[k].gb + " GB",
-      frase:{edge:"Barato. Sem teleobjetiva e com a bateria mais fraca dos três.", pura:"Preço de entrada. Sem 5G e sem apps do Google.", ultra:"O mais completo. Também o que mais custa."},
+      frase:{edge:"Barato. Sem teleobjetiva e com a menor bateria dos três.", pura:"Preço de entrada. Sem 5G e sem apps do Google.", ultra:"O mais completo. Também o que mais custa."},
       dist:d => "+" + brl(d), quase:(b,d) => aparelhos[b].curto + " a " + brl(d) + " do nocaute no preço."},
-    leveza:{titulo:"no bolso", limiar:15, unidade:"g",
+    leveza:{titulo:"no bolso", curto:"peso e espessura", limiar:15, unidade:"g", escala:true,
       valor:k => aparelhos[k].peso, menorGanha:true,
+      medida:k => aparelhos[k].peso + " g · " + aparelhos[k].esp.toLocaleString("pt-BR") + " mm",
       linha:k => aparelhos[k].esp.toLocaleString("pt-BR") + " mm · " + aparelhos[k].peso + " g",
-      frase:{edge:"5,8 mm e 163 g. Some no bolso; a conta chega na bateria.", ultra:"Grande e pesado, mas entrega o resto todo.", pura:"O mais gordo dos três, com a maior bateria."},
+      frase:{edge:"5,8 mm e 163 g. Some no bolso; a conta chega na bateria.", ultra:"Grande e pesado, mas entrega o resto todo.", pura:"O mais gordo dos três, com a maior capacidade de bateria."},
       dist:d => "+" + d + " g", quase:(b,d) => aparelhos[b].curto + " a " + d + " g de distância."},
-    foto:{titulo:"zoom", limiar:1, unidade:"x",
+    foto:{titulo:"zoom", curto:"zoom óptico", limiar:1, unidade:"x", escala:true,
       valor:k => aparelhos[k].zoom, menorGanha:false,
+      medida:k => aparelhos[k].zoom === 0 ? "sem teleobjetiva" : (k === "ultra" ? "3x e 5x ópticos" : aparelhos[k].zoom + "x óptico"),
       linha:k => aparelhos[k].zoom === 0 ? "sem teleobjetiva · 2x por recorte" : (k === "ultra" ? "3x e 5x ópticos" : aparelhos[k].zoom + "x óptico"),
       frase:{ultra:"Tele de verdade, 3x e 5x. O preço não perdoa.", pura:"4x óptico e sensor de 1 polegada. Sem 5G e sem Google.", edge:"Não entrou neste round: não tem teleobjetiva."},
       dist:d => "−" + d + "x", quase:(b,d) => aparelhos[b].curto + " a " + d + "x do alcance do líder."},
-    bateria:{titulo:"bateria", limiar:300, unidade:"mAh",
+    bateria:{titulo:"capacidade da bateria", curto:"capacidade da bateria", limiar:300, unidade:"mAh", escala:true,
       valor:k => aparelhos[k].bateria, menorGanha:false,
+      medida:k => aparelhos[k].bateria.toLocaleString("pt-BR") + " mAh" + (k === "ultra" ? " típica" : k === "pura" ? " nominal" : ""),
       linha:k => aparelhos[k].bateria.toLocaleString("pt-BR") + " mAh" + (k === "ultra" ? " típica" : k === "pura" ? " nominal" : ""),
-      frase:{pura:"5.170 mAh aguentam o dia. Sem 5G e sem Play Store.", ultra:"5.000 mAh típica, com 5G e Google no pacote.", edge:"3.900 mAh: 12h38 no teste de navegação do Tom's Guide."},
+      frase:{pura:"5.170 mAh nominais, a maior capacidade dos três. Capacidade não é autonomia: não há teste igual para os três. Sem 5G e sem Play Store.",
+             ultra:"5.000 mAh típica (nominal 4.855), com 5G e Google no pacote. Sem teste de autonomia conferido.",
+             edge:"3.900 mAh, a menor capacidade — e o único com autonomia medida: 12h38 na navegação do Tom's Guide."},
       dist:d => "−" + d.toLocaleString("pt-BR") + " mAh", quase:(b,d) => aparelhos[b].curto + " a " + d.toLocaleString("pt-BR") + " mAh do topo."},
-    anos:{titulo:"durar anos", limiar:null, unidade:null,
+    anos:{titulo:"durar anos", curto:"prazo de segurança", limiar:null, unidade:null, escala:false,
       valor:k => aparelhos[k].seg ? 1 : 0, menorGanha:false,
+      medida:k => aparelhos[k].seg ? "até " + aparelhos[k].seg : "não verificado",
       linha:k => aparelhos[k].seg ? "segurança até " + aparelhos[k].seg : "prazo não verificado",
       frase:{ultra:"Segurança garantida até 02/2033. Envelhece melhor, e cobra por isso.", edge:"Prazo de atualização não verificado nesta sessão.", pura:"Prazo de atualização não verificado nesta sessão."},
       dist:() => "não verificado", quase:() => null}
   };
   const PERNA = {rotulo:"Google e 5G", passa:k => aparelhos[k].g5 && aparelhos[k].google, motivo:"sem 5G e sem apps do Google"};
   const CHAVES = ["edge","pura","ultra"];
+  const ORDEM_CRIT = ["economia","leveza","foto","bateria","anos"];
+
+  // O saldo do campeão: onde ele também é o melhor dos três e onde é o pior.
+  // Só entra o que esta pesagem mede. Empate não vira vantagem nem concessão.
+  function saldo(campeao, usoEscolhido){
+    const ganha = [], perde = [];
+    ORDEM_CRIT.forEach(u => {
+      if (u === usoEscolhido) return;
+      const c = criterios[u], v = c.valor(campeao);
+      const outros = CHAVES.filter(k => k !== campeao).map(k => c.valor(k));
+      const bate = x => c.menorGanha ? v < x : v > x;
+      const apanha = x => c.menorGanha ? v > x : v < x;
+      if (outros.every(bate)) ganha.push(c.curto + " (" + c.medida(campeao) + ")");
+      else if (outros.every(apanha)) perde.push(c.curto + " (" + c.medida(campeao) + ")");
+    });
+    if (!aparelhos[campeao].g5 || !aparelhos[campeao].google) perde.unshift(PERNA.motivo);
+    const junta = l => l.length === 0 ? null : l.length === 1 ? l[0] : l.slice(0, 2).join(" e ");
+    return {mais: junta(ganha) || "nada além do critério escolhido, nesta pesagem",
+            menos: junta(perde) || "nada que esta pesagem meça"};
+  }
 
   function ordena(uso, perna, fonte){
     const c = criterios[uso];
@@ -720,17 +808,40 @@
     quase.textContent = r.estado === "ameacado" && r.segundo ? r.c.quase(r.segundo, r.delta) : "";
     quase.hidden = !quase.textContent;
 
+    // Régua do critério: os três na mesma escala, o campeão na frente.
     const lista = document.getElementById("s-distancias");
     lista.textContent = "";
-    r.resto.forEach(k => {
-      const li = document.createElement("li"), nome = document.createElement("span"), d = document.createElement("span");
-      nome.textContent = aparelhos[k].curto + (k === r.cortado ? " · fora: " + PERNA.motivo : "");
-      const texto = k === r.cortado ? "perna 2" : r.c.dist(Math.abs(r.c.valor(k) - r.c.valor(r.campeao)));
-      d.className = "d" + (/[0-9]/.test(texto) ? "" : " vago");
-      d.textContent = texto;
+    const teto = Math.max.apply(null, CHAVES.filter(k => k !== r.cortado).map(k => Math.abs(r.c.valor(k))));
+    [r.campeao].concat(r.resto).forEach(k => {
+      const li = document.createElement("li"), nome = document.createElement("span"),
+            med = document.createElement("span"), d = document.createElement("span");
+      if (k === r.campeao){ li.className = "lider"; li.style.setProperty("--c", "var(--" + k + ")"); }
+      else if (k === r.cortado){ li.className = "fora"; }
+      nome.className = "nome";
+      nome.textContent = aparelhos[k].curto + (k === r.cortado ? " · " + PERNA.motivo : "");
+      med.className = "med";
+      med.textContent = r.c.medida(k);
+      nome.appendChild(med);
+      const texto = k === r.campeao ? "leva"
+        : k === r.cortado ? "fora na 2ª perna"
+        : r.c.dist(Math.abs(r.c.valor(k) - r.c.valor(r.campeao)));
+      d.className = "d" + (k !== r.campeao && !/[0-9]/.test(texto) ? " vago" : "");
+      d.textContent = texto === med.textContent ? "" : texto;   // não repetir a medida na coluna da distância
       li.append(nome, d);
+      if (r.c.escala && teto > 0 && k !== r.cortado){
+        const b = document.createElement("i");
+        b.className = "b";
+        b.style.setProperty("--p", (Math.abs(r.c.valor(k)) / teto * 100).toFixed(1) + "%");
+        li.appendChild(b);
+      }
       lista.appendChild(li);
     });
+
+    // O que o campeão leva junto e o que ele custa em outro lugar.
+    const s = saldo(r.campeao, uso);
+    document.getElementById("s-mais").textContent = s.mais;
+    document.getElementById("s-menos").textContent = s.menos;
+    document.getElementById("s-saldo").style.setProperty("--c", "var(--" + r.campeao + ")");
 
     const mercado = document.getElementById("s-mercado");
     let texto = "";
@@ -750,11 +861,40 @@
 
     chips.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.uso === uso)));
     chipPerna.setAttribute("aria-pressed", String(perna));
-    if (animar && !matchMedia("(prefers-reduced-motion: reduce)").matches){
-      bilhete.animate([{opacity:.55},{opacity:1}], {duration:180, easing:"cubic-bezier(.25,1,.5,1)"});
+
+    // Barra do campeão, no celular
+    const res = document.getElementById("resumo");
+    if (res){
+      res.style.setProperty("--c", "var(--" + r.campeao + ")");
+      document.getElementById("r-quem").textContent = a.nome;
+      document.getElementById("r-nota").textContent = "Cinturão · " + r.c.titulo + " · " + r.c.medida(r.campeao);
+      document.getElementById("r-comprar").href = link(r.campeao);
+    }
+
+    // A URL guarda a disputa: quem receber o link vê a mesma comparação.
+    try { history.replaceState(null, "", endereco(uso, perna) + location.hash); } catch(e){}
+
+    if (animar){
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches){
+        bilhete.animate([{opacity:.55},{opacity:1}], {duration:180, easing:"cubic-bezier(.25,1,.5,1)"});
+      }
+      focaPalco(r.campeao);
     }
     round(r);
     guarda(r);
+  }
+
+  const endereco = (uso, perna) => location.pathname + "?c=" + uso + (perna ? "&r=1" : "");
+
+  // No celular o palco rola: ao trocar o cinturão, o campeão vem para o centro.
+  const FRACAO = {edge:298.2/1200, pura:508.7/1200, ultra:721.9/1200};
+  // Salto seco de propósito: com scroll-snap ligado, o Chrome cancela o scroll suave
+  // programático e devolve o palco à âncora anterior. Medido em 12/09/2026.
+  function focaPalco(k){
+    const rolo = document.querySelector(".palco-rolo");
+    if (!rolo || rolo.scrollWidth - rolo.clientWidth < 20) return;
+    const alvo = Math.max(0, FRACAO[k] * rolo.scrollWidth - rolo.clientWidth / 2);
+    try { rolo.scrollTo({left:alvo, behavior:"auto"}); } catch(e){ rolo.scrollLeft = alvo; }
   }
 
   function guarda(r){
@@ -767,35 +907,43 @@
   // Conferência do round: o palpite guardado contra a coleta que está no ar.
   function round(r){
     const caixa = document.getElementById("s-round");
+    caixa.textContent = "";
+    const escreve = (t, titulo, corpo) => {
+      caixa.dataset.t = t;
+      const b = document.createElement("b");
+      b.textContent = titulo;
+      caixa.append(b, corpo);
+    };
     const ok = anterior && aparelhos[anterior.campeao] && criterios[anterior.uso];
     if (!ok){
-      caixa.textContent = "Palpite salvo neste navegador. Na próxima coleta ele é conferido aqui.";
-      caixa.dataset.t = "novo";
+      escreve("novo", "Este palpite fica salvo neste navegador.",
+        "Quando entrar uma coleta nova, a conferência aparece aqui: se o preço mexeu e se o cinturão trocou.");
       return;
     }
     const mesmoJogo = anterior.uso === usoAtual && anterior.perna === pernaAtiva;
     const c = criterios[anterior.uso];
     if (anterior.coleta === P.coletado_em){
-      caixa.dataset.t = "aberto";
-      caixa.textContent = "Seu palpite de " + new Date(anterior.em).toLocaleDateString("pt-BR") + ": " + aparelhos[anterior.campeao].curto +
-        " em " + c.titulo + ". A coleta ainda é a de " + dia(P.coletado_em) + ", então o round segue aberto.";
+      escreve("aberto", "Seu campeão continua valendo a pena?",
+        "Round aberto: seu palpite de " + new Date(anterior.em).toLocaleDateString("pt-BR") + " foi " + aparelhos[anterior.campeao].curto +
+        " em " + c.titulo + ", e a coleta no ar ainda é a de " + dia(P.coletado_em) + ". Nada mudou desde então.");
       return;
     }
     const agora = calcula(anterior.uso, anterior.perna);
-    const partes = ["Seu palpite de " + dia(anterior.coleta) + " · " + c.titulo,
+    const partes = ["Palpite de " + dia(anterior.coleta) + " · " + c.titulo,
       "Antes: " + aparelhos[anterior.campeao].curto + (anterior.delta != null ? ", folga " + c.dist(anterior.delta).replace(/^[+−]/, "") : "")];
+    let t;
     if (agora.campeao !== anterior.campeao){
-      caixa.dataset.t = "nocaute";
+      t = "nocaute";
       partes.push("Agora: " + aparelhos[agora.campeao].curto + " leva. O cinturão trocou na coleta de " + dia(P.coletado_em) + ".");
     } else {
       const andou = anterior.delta != null && agora.delta != null ? anterior.delta - agora.delta : 0;
-      caixa.dataset.t = agora.estado === "ameacado" ? "encostou" : "aberto";
+      t = agora.estado === "ameacado" ? "encostou" : "aberto";
       partes.push("Agora: " + aparelhos[agora.campeao].curto + " segue com " + c.dist(agora.delta).replace(/^[+−]/, "") +
         (andou > 0 ? ". O " + aparelhos[agora.segundo].curto + " andou " + c.dist(andou).replace(/^[+−]/, "") + "." :
          andou < 0 ? ". A folga aumentou." : ". Nada se mexeu neste critério."));
     }
     if (!mesmoJogo) partes.push("(Você está vendo " + criterios[usoAtual].titulo + " agora.)");
-    caixa.textContent = partes.join(" · ");
+    escreve(t, "Seu campeão continua valendo a pena?", partes.join(" · "));
   }
 
   function carimbo(){
@@ -824,20 +972,179 @@
       r.segundo ? "Segundo: " + aparelhos[r.segundo].curto + " " + r.c.dist(r.delta) : "",
       r.estado === "nocaute" ? "O cinturão trocou nesta coleta." : r.estado === "ameacado" ? "Título ameaçado." : "",
       r.c.frase[r.campeao],
-      "nocautecel.com"
+      location.origin.indexOf("http") === 0 ? location.origin + endereco(usoAtual, pernaAtiva) : "nocautecel.com"
     ].filter(Boolean);
     try { await navigator.clipboard.writeText(linhas.join("\n")); botao.textContent = "Placar copiado"; }
     catch(e){ botao.textContent = "Não consegui copiar"; }
     setTimeout(() => { botao.textContent = "Copiar placar"; }, 2200);
   });
 
-  function liga(){ carimbo(); aplica("economia", false, false); }
+  // Link recebido (?c=criterio&r=1) reabre a mesma disputa.
+  function liga(){
+    carimbo();
+    const q = new URLSearchParams(location.search);
+    const pedido = q.get("c");
+    aplica(criterios[pedido] ? pedido : "economia", q.get("r") === "1", false);
+    focaPalco(rodada.campeao);   // no celular o palco já abre no campeão, não no vazio
+    const res = document.getElementById("resumo");
+    if (res && "IntersectionObserver" in window){
+      new IntersectionObserver(es => {
+        es.forEach(e => res.classList.toggle("vem", !e.isIntersecting && e.boundingClientRect.top < 0));
+      }, {threshold:0}).observe(bilhete);
+    }
+  }
 
   fetch("pesagem.json", {cache:"no-store"})
     .then(r => r.ok ? r.json() : Promise.reject(new Error(String(r.status))))
     .then(j => { if (j && j.itens && j.coletado_em) P = j; })
     .catch(() => {})
     .finally(liga);
+
+  // ---------- Cartão do campeão: a decisão de alguém, em uma imagem ----------
+  const tinta = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+  function carrega(src){
+    return new Promise(ok => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => ok(null); i.src = src; });
+  }
+
+  // Escreve quebrando na largura dada; devolve o y da linha seguinte.
+  function escreveEm(x, txt, xi, y, larg, alt){
+    const palavras = String(txt).split(" ");
+    let linha = "";
+    for (const p of palavras){
+      const teste = linha ? linha + " " + p : p;
+      if (x.measureText(teste).width > larg && linha){ x.fillText(linha, xi, y); y += alt; linha = p; }
+      else linha = teste;
+    }
+    if (linha){ x.fillText(linha, xi, y); y += alt; }
+    return y;
+  }
+
+  async function desenhaCartao(r){
+    const L = 1080, A = 1350, M = 80;
+    try {
+      await Promise.all([document.fonts.load('900 88px "Big Shoulders Display"'),
+                         document.fonts.load('500 30px "Chivo Mono"'),
+                         document.fonts.load('400 32px "Archivo"')]);
+    } catch(e){}
+    const cv = document.createElement("canvas");
+    cv.width = L; cv.height = A;
+    const x = cv.getContext("2d");
+    const cor = tinta("--" + r.campeao) || "#8CD8FF";
+    const giz = tinta("--giz") || "#E7EDF4", giz2 = tinta("--giz-2") || "#B7C2CE", fum = tinta("--incerteza") || "#8494A5";
+    const poster = '900 88px "Big Shoulders Display", Impact, sans-serif';
+    const dado = n => '500 ' + n + 'px "Chivo Mono", ui-monospace, monospace';
+    const texto = n => '400 ' + n + 'px "Archivo", system-ui, sans-serif';
+    const esp = v => { try { x.letterSpacing = v; } catch(e){} };
+
+    x.fillStyle = tinta("--arena") || "#07090D";
+    x.fillRect(0, 0, L, A);
+    const luz = x.createRadialGradient(L/2, 380, 0, L/2, 380, 720);
+    luz.addColorStop(0, cor + "2E"); luz.addColorStop(1, "#07090D00");
+    x.fillStyle = luz; x.fillRect(0, 0, L, A);
+    x.strokeStyle = cor; x.lineWidth = 3; x.strokeRect(18, 18, L - 36, A - 36);
+
+    x.textBaseline = "alphabetic";
+    esp("10px");
+    x.font = dado(28); x.fillStyle = giz;
+    x.fillText("NOCAUTECEL", M, 108);
+    x.font = dado(20); x.fillStyle = fum;
+    x.fillText("COMPARADOR DE SMARTPHONES", M, 146);
+    esp("0px");
+
+    // Faixa do cinturão: o dourado só aparece aqui.
+    const faixa = x.createLinearGradient(0, 190, 0, 268);
+    faixa.addColorStop(0, tinta("--metal-1") || "#E6D4A3");
+    faixa.addColorStop(.5, tinta("--metal-2") || "#C9B07A");
+    faixa.addColorStop(1, tinta("--metal-3") || "#9C8250");
+    x.fillStyle = faixa; x.fillRect(M, 190, L - M * 2, 78);
+    x.strokeStyle = tinta("--metal-borda") || "#6E5A33"; x.lineWidth = 2; x.strokeRect(M, 190, L - M * 2, 78);
+    esp("6px");
+    x.font = dado(28); x.fillStyle = tinta("--metal-tinta") || "#241C0E";
+    x.fillText(("MEU CAMPEÃO · " + r.c.titulo + (pernaAtiva ? " + " + PERNA.rotulo : "")).toUpperCase(), M + 26, 238);
+    esp("0px");
+
+    const foto = await carrega("fotos/" + r.campeao + ".webp");
+    const fx = M, fy = 312, fw = 288, fh = 384;
+    x.save();
+    x.beginPath(); x.rect(fx, fy, fw, fh); x.clip();
+    x.fillStyle = tinta("--lona-2") || "#131922"; x.fillRect(fx, fy, fw, fh);
+    if (foto){
+      const e = Math.max(fw / foto.width, fh / foto.height);
+      x.drawImage(foto, fx + (fw - foto.width * e) / 2, fy + (fh - foto.height * e) / 2, foto.width * e, foto.height * e);
+    }
+    x.restore();
+    x.strokeStyle = cor; x.lineWidth = 2; x.strokeRect(fx, fy, fw, fh);
+
+    const cx = fx + fw + 44, cl = L - M - cx;
+    x.font = poster; x.fillStyle = cor;
+    let y = escreveEm(x, aparelhos[r.campeao].nome.toUpperCase(), cx, fy + 78, cl, 86);
+    const bolso = brl(preco(r.campeao)) + " · " + P.itens[r.campeao].gb + " GB";
+    const linhas = [{f:dado(30), c:giz, t: usoAtual === "economia" ? bolso : r.c.medida(r.campeao), h:40}];
+    if (usoAtual !== "economia") linhas.push({f:texto(27), c:giz2, t:bolso, h:36});
+    if (r.segundo && r.delta != null && /[0-9]/.test(String(r.c.dist(r.delta))))
+      linhas.push({f:texto(27), c:giz2, t:"Folga para o 2º: " + String(r.c.dist(r.delta)).replace(/^[+−]/, "") + " · " + aparelhos[r.segundo].curto, h:36});
+    let yy = y + 18;
+    linhas.forEach(l => { x.font = l.f; x.fillStyle = l.c; yy = escreveEm(x, l.t, cx, yy, cl, l.h) + 8; });
+
+    const s = saldo(r.campeao, usoAtual);
+    let ly = 786;
+    x.strokeStyle = tinta("--corda") || "#222C3A"; x.lineWidth = 1;
+    x.beginPath(); x.moveTo(M, 740); x.lineTo(L - M, 740); x.stroke();
+    const bloco = (rot, corpo, corRot) => {
+      esp("6px"); x.font = dado(22); x.fillStyle = corRot;
+      x.fillText(rot, M, ly); esp("0px");
+      x.font = texto(32); x.fillStyle = giz;
+      ly = escreveEm(x, corpo, M, ly + 44, L - M * 2, 42) + 34;
+    };
+    bloco("LEVA TAMBÉM", s.mais, cor);
+    bloco("ABRE MÃO DE", s.menos, fum);
+
+    x.beginPath(); x.moveTo(M, A - 268); x.lineTo(L - M, A - 268); x.stroke();
+    esp("4px"); x.font = dado(21); x.fillStyle = fum;
+    x.fillText("NA DISPUTA: " + CHAVES.map(k => aparelhos[k].curto).join("  ·  ").toUpperCase(), M, A - 212);
+    x.fillText("PREÇO DA COLETA DE " + dia(P.coletado_em) + " " + hora(P.coletado_em) + " · AMAZON.COM.BR, CEP SP", M, A - 170);
+    esp("0px");
+    x.font = dado(26); x.fillStyle = cor;
+    x.fillText("nocautecel.com" + endereco(usoAtual, pernaAtiva).replace(/^\/?(index\.html)?/, "/"), M, A - 104);
+    x.font = texto(22); x.fillStyle = fum;
+    x.fillText("Veredito por critério de uso, não nota de qualidade. Confira o preço antes de pagar.", M, A - 62);
+
+    return new Promise((ok, erro) => cv.toBlob(b => b ? ok(b) : erro(new Error("sem blob")), "image/png"));
+  }
+
+  document.getElementById("s-cartao").addEventListener("click", async ev => {
+    const botao = ev.currentTarget, antes = "Cartão do meu campeão";
+    botao.disabled = true; botao.textContent = "Montando o cartão…";
+    try {
+      const blob = await desenhaCartao(rodada);
+      const nome = "nocautecel-" + rodada.campeao + "-" + usoAtual + ".png";
+      const arquivo = new File([blob], nome, {type:"image/png"});
+      const alvo = location.origin + endereco(usoAtual, pernaAtiva);
+      const frase = "Meu campeão no Nocautecel: " + aparelhos[rodada.campeao].nome + " em " + rodada.c.titulo + ". E o seu? " + alvo;
+      if (navigator.canShare && navigator.canShare({files:[arquivo]})){
+        await navigator.share({files:[arquivo], text:frase});
+        botao.textContent = "Cartão enviado";
+      } else {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob); a.download = nome;
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+        botao.textContent = "Cartão salvo (.png)";
+      }
+    } catch(e){
+      botao.textContent = e && e.name === "AbortError" ? antes : "Não consegui montar o cartão";
+    }
+    botao.disabled = false;
+    setTimeout(() => { botao.textContent = antes; }, 2600);
+  });
+
+  document.getElementById("s-link").addEventListener("click", async ev => {
+    const botao = ev.currentTarget;
+    try { await navigator.clipboard.writeText(location.origin + endereco(usoAtual, pernaAtiva)); botao.textContent = "Link copiado"; }
+    catch(e){ botao.textContent = "Não consegui copiar"; }
+    setTimeout(() => { botao.textContent = "Copiar link desta disputa"; }, 2200);
+  });
 
   document.getElementById("baixar").addEventListener("click", () => {
     const linhas = [
