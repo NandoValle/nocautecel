@@ -723,12 +723,13 @@
   const preco = (k, fonte) => (fonte || P).itens[k].preco;
 
   // ---------- Amazon Associados ----------
-  // Cole aqui, entre as aspas, o ID de Associado (ou a ID de rastreamento) do painel
-  // — Amazon Associados > Gerenciar IDs de rastreamento. A Amazon entrega no formato
-  // XXXXX-20, ou outro que ela designar; use exatamente o que estiver lá.
+  // Cole aqui, entre as aspas, o ID de Associado (também chamado de ID de rastreamento ou
+  // store ID) da conta do Amazon Associados, em associados.amazon.com.br. O jeito mais direto
+  // de descobrir: gerar um link pelo SiteStripe e ler o que vem depois de "tag=" na URL.
+  // A Amazon entrega no formato XXXXX-20, ou outro que ela designar; use o que estiver lá.
   // Esta é a ÚNICA linha a mexer: todos os botões da página passam por ela.
   // Enquanto estiver vazia, a página assume que é demonstração e avisa isso ao leitor.
-  const TAG_AMAZON = "";
+  const TAG_AMAZON = "achadospraz01-20";
 
   // Acrescenta ?tag= na URL da Amazon, sem duplicar parâmetro e sem tocar em outro domínio.
   function comTag(url){
