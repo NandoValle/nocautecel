@@ -239,6 +239,11 @@
   .acoes{display:grid; gap:.5rem; margin-top:.9rem}
   .acoes button,.acoes a{min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font:inherit; font-size:.9375rem; color:var(--giz-2); background:transparent; border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio); padding:.6rem 1rem; cursor:pointer; text-decoration:none}
   .acoes button:hover,.acoes a:hover{color:var(--giz); border-color:var(--giz-2)}
+  .round{margin:0 0 .8rem; padding:.6rem .75rem; border-left:2px solid var(--corda-forte); font-family:var(--dado); font-size:.82rem; line-height:1.55; color:var(--giz-2); background:color-mix(in srgb, var(--lona-2) 70%, transparent)}
+  .round[data-t="encostou"]{border-left-color:var(--ouro); color:var(--giz)}
+  .round[data-t="nocaute"]{border-left-color:var(--c,var(--cor-ativa)); color:var(--giz)}
+  .quase{margin:.7rem 0 0; padding:.55rem .75rem; border-left:2px solid var(--ouro); font-family:var(--dado); font-size:.88rem; color:var(--giz); background:color-mix(in srgb, var(--ouro) 7%, transparent)}
+  .bilhete[data-estado="nocaute"] .faixa{color:var(--c,var(--cor-ativa))}
   .mini{margin:.9rem 0 0; font-family:var(--dado); font-size:.75rem; line-height:1.55; color:var(--fumaca)}
   @media (min-width:48rem){
     .acoes{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -266,7 +271,7 @@
       <div class="caixa">Comparador Nocautecel · medidas declaradas
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="#B7C2CE" stroke-width="1.1"><path d="M8 1v10M3 5h10M4 5 2 10h4Zm8 0-2 5h4ZM5 14h6"/></svg>
       </div>
-      <div class="pesagem-hora">ÚLTIMA COLETA 11.09.2026 14h45</div>
+      <div class="pesagem-hora" id="coleta-stamp">ÚLTIMA COLETA 11.09.2026 14h45</div>
       <div class="versoes" aria-label="Versões do design">Versão <a href="./" aria-current="page">A</a><a href="b/">B</a><a href="c/">C</a></div>
     </div>
   </header>
@@ -284,6 +289,7 @@
     </div>
 
     <div class="bilhete" id="bilhete" aria-live="polite">
+      <p class="round" id="s-round"></p>
       <p class="faixa"><span id="s-titulo">Cinturão · gastar menos</span><span class="estado" id="s-estado"></span></p>
       <strong class="campeao" id="s-quem">Galaxy S25 Edge</strong>
       <p class="linha" id="s-linha">R$ 3.799,05 no Pix · 512 GB</p>
@@ -291,8 +297,9 @@
       <!-- AFILIADO: os href saem do objeto "aparelhos" no script. Falta a tag do Amazon Associados. -->
       <a class="comprar" id="s-comprar" href="https://www.amazon.com.br/dp/B0F8PHM63K" target="_blank" rel="noopener sponsored nofollow">Ver na Amazon <span class="num" id="s-preco">R$ 3.799,05</span></a>
       <ul class="distancias" id="s-distancias"></ul>
+      <p class="quase" id="s-quase" hidden></p>
       <p class="mercado" id="s-mercado"></p>
-      <p class="conta" id="s-conta"></p>
+      <p class="mercado" id="s-proxima"></p>
       <div class="acoes">
         <button type="button" id="s-copiar">Copiar placar</button>
         <a href="#pesagem">Ver a pesagem</a>
@@ -579,92 +586,128 @@
     for (let gy = y + h - 22; gy > y; gy -= 22) g.appendChild(el("line", {x1: x, x2: x + w, y1: gy, y2: gy, class: "grade"}));
   });
 
-  // ---------- Bilhete: critério, distância do segundo e palpite salvo ----------
-  const COLETA = "2026-09-11 14:45";
-  const brl = n => "R$ " + n.toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
-  const aparelhos = {
-    edge: {nome:"Galaxy S25 Edge", curto:"S25 Edge", preco:3799.05, cap:"512 GB", peso:163, esp:5.8, zoom:0, bateria:3900, g5:true, google:true, seg:null,
-      href:"https://www.amazon.com.br/dp/B0F8PHM63K"},
-    pura: {nome:"Huawei Pura 80 Pro", curto:"Pura 80 Pro", preco:3999.00, cap:"12 + 512 GB", peso:219, esp:8.3, zoom:4, bateria:5170, g5:false, google:false, seg:null,
-      href:"https://www.amazon.com.br/s?k=huawei+pura+80+pro+512gb"},
-    ultra:{nome:"Galaxy S26 Ultra", curto:"S26 Ultra", preco:6749.10, cap:"256 GB", peso:214, esp:7.9, zoom:5, bateria:5000, g5:true, google:true, seg:"28/02/2033",
-      href:"https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb"}
+  // ---------- Bilhete: palpite, mercado (pesagem.json) e conferência do round ----------
+  // Os preços vivem em pesagem.json e são coletados à mão. O que está aqui é só a cópia de
+  // segurança, usada quando o arquivo não carrega (abrir o HTML direto do disco, por exemplo).
+  const PESAGEM_LOCAL = {
+    coletado_em:"2026-09-11T14:45:00-03:00", proxima:null, fonte:"amazon.com.br, CEP padrão de São Paulo",
+    itens:{
+      edge:{preco:3799.05, asin:"B0F8PHM63K", tipo:"produto", gb:512, condicao:"novo, vendedor Magalu. na Amazon; conferir reputação"},
+      pura:{preco:3999.00, asin:null, tipo:"busca", gb:512, condicao:"preço da busca, vendedor não conferido"},
+      ultra:{preco:6749.10, asin:null, tipo:"busca", gb:256, condicao:"preço da busca, cor branca"}
+    },
+    anterior:{coletado_em:"2026-09-10T00:00:00-03:00", itens:{edge:{preco:3799.05}, pura:{preco:3999.00}, ultra:{preco:10092.90}}}
   };
+
+  const brl = n => "R$ " + n.toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+  const dia = iso => new Date(iso).toLocaleDateString("pt-BR", {day:"2-digit", month:"2-digit"});
+  const hora = iso => new Date(iso).toLocaleTimeString("pt-BR", {hour:"2-digit", minute:"2-digit"}).replace(":", "h");
+
+  // Ficha: não muda entre coletas. Preço entra pela pesagem.
+  const aparelhos = {
+    edge: {nome:"Galaxy S25 Edge", curto:"S25 Edge", peso:163, esp:5.8, zoom:0, bateria:3900, g5:true, google:true, seg:null},
+    pura: {nome:"Huawei Pura 80 Pro", curto:"Pura 80 Pro", peso:219, esp:8.3, zoom:4, bateria:5170, g5:false, google:false, seg:null},
+    ultra:{nome:"Galaxy S26 Ultra", curto:"S26 Ultra", peso:214, esp:7.9, zoom:5, bateria:5000, g5:true, google:true, seg:"28/02/2033"}
+  };
+  const busca = {edge:"https://www.amazon.com.br/s?k=galaxy+s25+edge+512gb", pura:"https://www.amazon.com.br/s?k=huawei+pura+80+pro+512gb", ultra:"https://www.amazon.com.br/s?k=galaxy+s26+ultra+256gb"};
+
+  let P = PESAGEM_LOCAL;
+  const preco = (k, fonte) => (fonte || P).itens[k].preco;
+  const link = k => P.itens[k].asin ? "https://www.amazon.com.br/dp/" + P.itens[k].asin : busca[k];
+
+  // Cada critério: como ordenar, o que mostrar, a distância até o segundo e o limiar da ameaça.
   const criterios = {
-    economia:{titulo:"gastar menos", ordem:["edge","pura","ultra"],
-      linha:k => brl(aparelhos[k].preco) + " no Pix · " + aparelhos[k].cap,
+    economia:{titulo:"gastar menos", limiar:250, unidade:"R$",
+      valor:(k, f) => preco(k, f), menorGanha:true,
+      linha:k => brl(preco(k)) + " no Pix · " + P.itens[k].gb + " GB",
       frase:{edge:"Barato. Sem teleobjetiva e com a bateria mais fraca dos três.", pura:"Preço de entrada. Sem 5G e sem apps do Google.", ultra:"O mais completo. Também o que mais custa."},
-      dist:(a,b) => "+" + brl(aparelhos[b].preco - aparelhos[a].preco),
-      relativo:(a,b) => (aparelhos[b].preco - aparelhos[a].preco) / aparelhos[a].preco},
-    leveza:{titulo:"no bolso", ordem:["edge","ultra","pura"],
+      dist:d => "+" + brl(d), quase:(b,d) => aparelhos[b].curto + " a " + brl(d) + " do nocaute no preço."},
+    leveza:{titulo:"no bolso", limiar:15, unidade:"g",
+      valor:k => aparelhos[k].peso, menorGanha:true,
       linha:k => aparelhos[k].esp.toLocaleString("pt-BR") + " mm · " + aparelhos[k].peso + " g",
       frase:{edge:"5,8 mm e 163 g. Some no bolso; a conta chega na bateria.", ultra:"Grande e pesado, mas entrega o resto todo.", pura:"O mais gordo dos três, com a maior bateria."},
-      dist:(a,b) => "+" + (aparelhos[b].peso - aparelhos[a].peso) + " g",
-      relativo:(a,b) => (aparelhos[b].peso - aparelhos[a].peso) / aparelhos[a].peso},
-    foto:{titulo:"zoom", ordem:["ultra","pura","edge"],
+      dist:d => "+" + d + " g", quase:(b,d) => aparelhos[b].curto + " a " + d + " g de distância."},
+    foto:{titulo:"zoom", limiar:1, unidade:"x",
+      valor:k => aparelhos[k].zoom, menorGanha:false,
       linha:k => aparelhos[k].zoom === 0 ? "sem teleobjetiva · 2x por recorte" : (k === "ultra" ? "3x e 5x ópticos" : aparelhos[k].zoom + "x óptico"),
       frase:{ultra:"Tele de verdade, 3x e 5x. O preço não perdoa.", pura:"4x óptico e sensor de 1 polegada. Sem 5G e sem Google.", edge:"Não entrou neste round: não tem teleobjetiva."},
-      dist:(a,b) => aparelhos[b].zoom === 0 ? "sem tele" : "−" + (aparelhos[a].zoom - aparelhos[b].zoom) + "x",
-      relativo:(a,b) => aparelhos[b].zoom === 0 ? 1 : (aparelhos[a].zoom - aparelhos[b].zoom) / aparelhos[a].zoom},
-    bateria:{titulo:"bateria", ordem:["pura","ultra","edge"],
+      dist:d => "−" + d + "x", quase:(b,d) => aparelhos[b].curto + " a " + d + "x do alcance do líder."},
+    bateria:{titulo:"bateria", limiar:300, unidade:"mAh",
+      valor:k => aparelhos[k].bateria, menorGanha:false,
       linha:k => aparelhos[k].bateria.toLocaleString("pt-BR") + " mAh" + (k === "ultra" ? " típica" : k === "pura" ? " nominal" : ""),
       frase:{pura:"5.170 mAh aguentam o dia. Sem 5G e sem Play Store.", ultra:"5.000 mAh típica, com 5G e Google no pacote.", edge:"3.900 mAh: 12h38 no teste de navegação do Tom's Guide."},
-      dist:(a,b) => "−" + (aparelhos[a].bateria - aparelhos[b].bateria).toLocaleString("pt-BR") + " mAh",
-      relativo:(a,b) => (aparelhos[a].bateria - aparelhos[b].bateria) / aparelhos[a].bateria},
-    anos:{titulo:"durar anos", ordem:["ultra","edge","pura"],
+      dist:d => "−" + d.toLocaleString("pt-BR") + " mAh", quase:(b,d) => aparelhos[b].curto + " a " + d.toLocaleString("pt-BR") + " mAh do topo."},
+    anos:{titulo:"durar anos", limiar:null, unidade:null,
+      valor:k => aparelhos[k].seg ? 1 : 0, menorGanha:false,
       linha:k => aparelhos[k].seg ? "segurança até " + aparelhos[k].seg : "prazo não verificado",
       frase:{ultra:"Segurança garantida até 02/2033. Envelhece melhor, e cobra por isso.", edge:"Prazo de atualização não verificado nesta sessão.", pura:"Prazo de atualização não verificado nesta sessão."},
-      dist:() => "não verificado", relativo:() => null}
+      dist:() => "não verificado", quase:() => null}
   };
   const PERNA = {rotulo:"Google e 5G", passa:k => aparelhos[k].g5 && aparelhos[k].google, motivo:"sem 5G e sem apps do Google"};
+  const CHAVES = ["edge","pura","ultra"];
 
+  function ordena(uso, perna, fonte){
+    const c = criterios[uso];
+    const lista = CHAVES.filter(k => !perna || PERNA.passa(k));
+    return lista.sort((a,b) => c.menorGanha ? c.valor(a, fonte) - c.valor(b, fonte) : c.valor(b, fonte) - c.valor(a, fonte));
+  }
+
+  function calcula(uso, perna){
+    const c = criterios[uso];
+    const ordem = ordena(uso, perna);
+    const campeao = ordem[0], segundo = ordem[1];
+    const cortado = perna ? CHAVES.find(k => !PERNA.passa(k)) : null;
+    const cortadoLiderava = Boolean(cortado) && ordena(uso, false)[0] === cortado;
+    const delta = segundo ? Math.abs(c.valor(segundo) - c.valor(campeao)) : null;
+    const antesCampeao = uso === "economia" && P.anterior ? ordena(uso, perna, P.anterior)[0] : campeao;
+    const virou = antesCampeao !== campeao;
+    const estado = virou ? "nocaute" : c.limiar === null ? "sem-disputa" : (delta < c.limiar ? "ameacado" : "firme");
+    return {c, uso, perna, campeao, segundo, cortado, cortadoLiderava, delta, estado, antesCampeao,
+      resto: ordena(uso, false).filter(k => k !== campeao)};
+  }
+
+  const rotulos = {firme:"título firme", ameacado:"título ameaçado", nocaute:"o cinturão trocou", "sem-disputa":"sem disputa medida"};
   const alturas = {edge:-348, pura:-358.6, ultra:-359.9};
   const raiz = document.documentElement;
   const chips = document.querySelectorAll(".chips button[data-uso]");
   const chipPerna = document.querySelector(".chips .perna");
   const leitura = document.getElementById("leitura");
   const bilhete = document.getElementById("bilhete");
-  let usoAtual = "economia", pernaAtiva = false, estadoAtual = null;
+  let usoAtual = "economia", pernaAtiva = false, rodada = null;
 
-  function calcula(uso, perna){
-    const c = criterios[uso];
-    const elegiveis = perna ? c.ordem.filter(PERNA.passa) : c.ordem.slice();
-    const campeao = elegiveis[0], segundo = elegiveis[1];
-    const cortado = perna ? c.ordem.find(k => !PERNA.passa(k)) : null;
-    const cortadoLiderava = Boolean(cortado) && c.ordem[0] === cortado;
-    const rel = segundo ? c.relativo(campeao, segundo) : null;
-    const estado = rel === null ? "sem disputa medida" : (rel <= 0.08 ? "ameaçado" : "firme");
-    return {c, campeao, segundo, cortado, cortadoLiderava, estado, rel, resto: c.ordem.filter(k => k !== campeao)};
-  }
+  const CHAVE = "nocautecel:palpite";
+  const anterior = (() => { try { return JSON.parse(localStorage.getItem(CHAVE) || "null"); } catch(e){ return null; } })();
 
   function aplica(uso, perna, animar){
-    const r = calcula(uso, perna);
-    const a = aparelhos[r.campeao];
-    usoAtual = uso; pernaAtiva = perna; estadoAtual = r;
+    const r = calcula(uso, perna), a = aparelhos[r.campeao];
+    usoAtual = uso; pernaAtiva = perna; rodada = r;
 
     raiz.dataset.foco = r.campeao;
     raiz.style.setProperty("--cor-ativa", "var(--" + r.campeao + ")");
     bilhete.style.setProperty("--c", "var(--" + r.campeao + ")");
+    bilhete.dataset.estado = r.estado;
     if (leitura) leitura.style.setProperty("--leitura-y", alturas[r.campeao] + "px");
 
     document.getElementById("s-titulo").textContent = "Cinturão · " + r.c.titulo + (perna ? " + " + PERNA.rotulo : "");
     const est = document.getElementById("s-estado");
-    est.textContent = r.estado === "ameaçado" ? "título ameaçado" : r.estado === "firme" ? "título firme" : r.estado;
-    est.dataset.t = r.estado === "ameaçado" ? "ameacado" : "firme";
+    est.textContent = rotulos[r.estado];
+    est.dataset.t = r.estado;
     document.getElementById("s-quem").textContent = a.nome;
     document.getElementById("s-linha").textContent = r.c.linha(r.campeao);
     document.getElementById("s-frase").textContent = r.c.frase[r.campeao];
-    document.getElementById("s-preco").textContent = brl(a.preco);
-    document.getElementById("s-comprar").href = a.href;
+    document.getElementById("s-preco").textContent = brl(preco(r.campeao));
+    document.getElementById("s-comprar").href = link(r.campeao);
+
+    const quase = document.getElementById("s-quase");
+    quase.textContent = r.estado === "ameacado" && r.segundo ? r.c.quase(r.segundo, r.delta) : "";
+    quase.hidden = !quase.textContent;
 
     const lista = document.getElementById("s-distancias");
     lista.textContent = "";
     r.resto.forEach(k => {
-      const li = document.createElement("li");
-      const nome = document.createElement("span");
+      const li = document.createElement("li"), nome = document.createElement("span"), d = document.createElement("span");
       nome.textContent = aparelhos[k].curto + (k === r.cortado ? " · fora: " + PERNA.motivo : "");
-      const d = document.createElement("span");
-      const texto = k === r.cortado ? "perna 2" : r.c.dist(r.campeao, k);
+      const texto = k === r.cortado ? "perna 2" : r.c.dist(Math.abs(r.c.valor(k) - r.c.valor(r.campeao)));
       d.className = "d" + (/[0-9]/.test(texto) ? "" : " vago");
       d.textContent = texto;
       li.append(nome, d);
@@ -672,9 +715,18 @@
     });
 
     const mercado = document.getElementById("s-mercado");
-    let texto = uso === "economia"
-      ? "Movimento medido: na coleta de 10/09 o S26 Ultra 256 GB estava " + brl(10092.90) + " e caiu " + brl(3343.80) + " até a coleta de 11/09. Edge e Pura não mudaram entre as duas."
-      : "Uma coleta por rodada. A próxima entra quando os preços forem conferidos de novo: não há relógio automático nesta demonstração.";
+    let texto = "";
+    if (uso === "economia" && P.anterior){
+      const movimentos = CHAVES.map(k => {
+        const d = preco(k) - preco(k, P.anterior);
+        return d === 0 ? null : aparelhos[k].curto + " " + (d < 0 ? "−" : "+") + brl(Math.abs(d));
+      }).filter(Boolean);
+      const parados = CHAVES.filter(k => preco(k) - preco(k, P.anterior) === 0).map(k => aparelhos[k].curto);
+      texto = "Desde a coleta de " + dia(P.anterior.coletado_em) + ": " + (movimentos.length ? movimentos.join(", ") : "nenhum preço mudou") +
+              (parados.length && movimentos.length ? ". Parados: " + parados.join(", ") + "." : ".");
+    } else {
+      texto = "Ficha oficial: não muda entre coletas. O que se mexe aqui é o preço.";
+    }
     if (r.cortadoLiderava) texto = aparelhos[r.cortado].curto + " ganhava a primeira perna e caiu na segunda, " + PERNA.motivo + ". " + texto;
     mercado.textContent = texto;
 
@@ -683,30 +735,62 @@
     if (animar && !matchMedia("(prefers-reduced-motion: reduce)").matches){
       bilhete.animate([{opacity:.55},{opacity:1}], {duration:180, easing:"cubic-bezier(.25,1,.5,1)"});
     }
-    conta(r);
+    round(r);
     guarda(r);
   }
 
-  const CHAVE = "nocautecel:palpite";
-  const anterior = (() => { try { return JSON.parse(localStorage.getItem(CHAVE) || "null"); } catch(e){ return null; } })();
   function guarda(r){
-    try { localStorage.setItem(CHAVE, JSON.stringify({coleta:COLETA, uso:usoAtual, perna:pernaAtiva, campeao:r.campeao, em:new Date().toISOString()})); } catch(e){}
+    try {
+      localStorage.setItem(CHAVE, JSON.stringify({coleta:P.coletado_em, uso:usoAtual, perna:pernaAtiva,
+        campeao:r.campeao, segundo:r.segundo || null, delta:r.delta, estado:r.estado, em:new Date().toISOString()}));
+    } catch(e){}
   }
-  function conta(r){
-    const p = document.getElementById("s-conta");
-    if (!anterior || !aparelhos[anterior.campeao] || !criterios[anterior.uso]){
-      p.textContent = "Este palpite fica guardado neste navegador. Quando a coleta mudar, você vê se ele se sustentou.";
+
+  // Conferência do round: o palpite guardado contra a coleta que está no ar.
+  function round(r){
+    const caixa = document.getElementById("s-round");
+    const ok = anterior && aparelhos[anterior.campeao] && criterios[anterior.uso];
+    if (!ok){
+      caixa.textContent = "Palpite salvo neste navegador. Na próxima coleta ele é conferido aqui.";
+      caixa.dataset.t = "novo";
       return;
     }
-    const dia = new Date(anterior.em).toLocaleDateString("pt-BR");
-    const nomeAnterior = aparelhos[anterior.campeao].curto;
-    const mesmoCriterio = anterior.uso === usoAtual && anterior.perna === pernaAtiva;
-    if (anterior.coleta === COLETA){
-      p.textContent = "Seu palpite de " + dia + ": " + nomeAnterior + " em " + criterios[anterior.uso].titulo + ". A coleta ainda é a mesma, então continua aberto.";
-    } else if (mesmoCriterio && anterior.campeao === r.campeao){
-      p.textContent = "Seu palpite de " + dia + " era " + nomeAnterior + ". Depois da nova coleta, o cinturão continua nele.";
+    const mesmoJogo = anterior.uso === usoAtual && anterior.perna === pernaAtiva;
+    const c = criterios[anterior.uso];
+    if (anterior.coleta === P.coletado_em){
+      caixa.dataset.t = "aberto";
+      caixa.textContent = "Seu palpite de " + new Date(anterior.em).toLocaleDateString("pt-BR") + ": " + aparelhos[anterior.campeao].curto +
+        " em " + c.titulo + ". A coleta ainda é a de " + dia(P.coletado_em) + ", então o round segue aberto.";
+      return;
+    }
+    const agora = calcula(anterior.uso, anterior.perna);
+    const partes = ["Seu palpite de " + dia(anterior.coleta) + " · " + c.titulo,
+      "Antes: " + aparelhos[anterior.campeao].curto + (anterior.delta != null ? ", folga " + c.dist(anterior.delta).replace(/^[+−]/, "") : "")];
+    if (agora.campeao !== anterior.campeao){
+      caixa.dataset.t = "nocaute";
+      partes.push("Agora: " + aparelhos[agora.campeao].curto + " leva. O cinturão trocou na coleta de " + dia(P.coletado_em) + ".");
     } else {
-      p.textContent = "Seu palpite de " + dia + " era " + nomeAnterior + " em " + criterios[anterior.uso].titulo + ". Nesta coleta, quem leva é " + aparelhos[r.campeao].curto + ".";
+      const andou = anterior.delta != null && agora.delta != null ? anterior.delta - agora.delta : 0;
+      caixa.dataset.t = agora.estado === "ameacado" ? "encostou" : "aberto";
+      partes.push("Agora: " + aparelhos[agora.campeao].curto + " segue com " + c.dist(agora.delta).replace(/^[+−]/, "") +
+        (andou > 0 ? ". O " + aparelhos[agora.segundo].curto + " andou " + c.dist(andou).replace(/^[+−]/, "") + "." :
+         andou < 0 ? ". A folga aumentou." : ". Nada se mexeu neste critério."));
+    }
+    if (!mesmoJogo) partes.push("(Você está vendo " + criterios[usoAtual].titulo + " agora.)");
+    caixa.textContent = partes.join(" · ");
+  }
+
+  function carimbo(){
+    const el = document.getElementById("coleta-stamp");
+    if (el) el.textContent = "PESAGEM " + dia(P.coletado_em) + " " + hora(P.coletado_em);
+    const p = document.getElementById("s-proxima");
+    if (!p) return;
+    if (!P.proxima){
+      p.textContent = "Próxima coleta: sem hora marcada. Os preços acima são os da coleta de " + dia(P.coletado_em) + ".";
+    } else if (new Date(P.proxima) > new Date()){
+      p.textContent = "Próxima coleta: " + dia(P.proxima) + " às " + hora(P.proxima) + ".";
+    } else {
+      p.textContent = "A coleta marcada para " + dia(P.proxima) + " às " + hora(P.proxima) + " ainda não entrou: o que está no ar é a de " + dia(P.coletado_em) + ".";
     }
   }
 
@@ -714,12 +798,13 @@
   chipPerna.addEventListener("click", () => aplica(usoAtual, !pernaAtiva, true));
 
   document.getElementById("s-copiar").addEventListener("click", async (ev) => {
-    const r = estadoAtual, botao = ev.currentTarget;
+    const r = rodada, botao = ev.currentTarget;
     const linhas = [
-      "NOCAUTECEL · coleta " + COLETA,
+      "NOCAUTECEL · coleta " + dia(P.coletado_em) + " " + hora(P.coletado_em),
       "Critério: " + r.c.titulo + (pernaAtiva ? " + " + PERNA.rotulo : ""),
       "Cinturão: " + aparelhos[r.campeao].nome + " — " + r.c.linha(r.campeao),
-      r.segundo ? "Segundo: " + aparelhos[r.segundo].curto + " " + r.c.dist(r.campeao, r.segundo) : "",
+      r.segundo ? "Segundo: " + aparelhos[r.segundo].curto + " " + r.c.dist(r.delta) : "",
+      r.estado === "nocaute" ? "O cinturão trocou nesta coleta." : r.estado === "ameacado" ? "Título ameaçado." : "",
       r.c.frase[r.campeao],
       "nocautecel.com"
     ].filter(Boolean);
@@ -728,7 +813,13 @@
     setTimeout(() => { botao.textContent = "Copiar placar"; }, 2200);
   });
 
-  aplica("economia", false, false);
+  function liga(){ carimbo(); aplica("economia", false, false); }
+
+  fetch("pesagem.json", {cache:"no-store"})
+    .then(r => r.ok ? r.json() : Promise.reject(new Error(String(r.status))))
+    .then(j => { if (j && j.itens && j.coletado_em) P = j; })
+    .catch(() => {})
+    .finally(liga);
 
   document.getElementById("baixar").addEventListener("click", () => {
     const linhas = [

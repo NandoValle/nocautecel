@@ -1,0 +1,19 @@
+{
+  "coletado_em": "2026-09-11T14:45:00-03:00",
+  "proxima": null,
+  "fonte": "amazon.com.br, CEP padrao de Sao Paulo",
+  "observacao": "Coleta manual. Enquanto proxima for null, a pagina diz que nao ha hora marcada em vez de inventar relogio.",
+  "itens": {
+    "edge": { "preco": 3799.05, "asin": "B0F8PHM63K", "tipo": "produto", "gb": 512, "condicao": "novo, vendedor Magalu. na Amazon; conferir reputacao" },
+    "pura": { "preco": 3999.00, "asin": null, "tipo": "busca", "gb": 512, "condicao": "preco da busca, vendedor nao conferido" },
+    "ultra": { "preco": 6749.10, "asin": null, "tipo": "busca", "gb": 256, "condicao": "preco da busca, cor branca" }
+  },
+  "anterior": {
+    "coletado_em": "2026-09-10T00:00:00-03:00",
+    "itens": {
+      "edge": { "preco": 3799.05 },
+      "pura": { "preco": 3999.00 },
+      "ultra": { "preco": 10092.90 }
+    }
+  }
+}
