@@ -240,10 +240,10 @@
   .acoes button,.acoes a{min-height:44px; display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font:inherit; font-size:.9375rem; color:var(--giz-2); background:transparent; border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio); padding:.6rem 1rem; cursor:pointer; text-decoration:none}
   .acoes button:hover,.acoes a:hover{color:var(--giz); border-color:var(--giz-2)}
   .bilhete .topo-cartao{display:grid; grid-template-columns:auto 1fr; gap:.9rem; align-items:center}
-  .bilhete .foto{width:72px; aspect-ratio:3/4; object-fit:cover; border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio); background:var(--lona-2)}
+  .bilhete .foto{width:72px; height:auto; aspect-ratio:3/4; object-fit:cover; border:var(--hairline) solid var(--corda-forte); border-radius:var(--raio); background:var(--lona-2)}
   .retratos{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.75rem; margin-top:1rem}
   .retrato{margin:0}
-  .retrato img{width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border:var(--hairline) solid var(--corda); border-radius:var(--raio); background:var(--lona-2); transition:border-color var(--t-criterio) var(--sai-rapido)}
+  .retrato img{width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; display:block; border:var(--hairline) solid var(--corda); border-radius:var(--raio); background:var(--lona-2); transition:border-color var(--t-criterio) var(--sai-rapido)}
   :root[data-foco="edge"] .retrato.edge img,:root[data-foco="pura"] .retrato.pura img,:root[data-foco="ultra"] .retrato.ultra img{border-color:var(--c)}
   :root[data-foco="edge"] .retrato:not(.edge) img,:root[data-foco="pura"] .retrato:not(.pura) img,:root[data-foco="ultra"] .retrato:not(.ultra) img{opacity:var(--fora-op)}
   .retrato figcaption{margin-top:.4rem; font-family:var(--dado); font-size:.72rem; line-height:1.4; color:var(--fumaca)}
