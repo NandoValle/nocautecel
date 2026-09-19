@@ -451,101 +451,216 @@
       "width": 600,
       "height": 800,
       "bytes": 10988
-    }
-  ],
-  "pending": [
-    {
-      "id": "edge50u",
-      "nome": "Motorola Edge 50 Ultra"
     },
     {
-      "id": "edge50p",
-      "nome": "Motorola Edge 50 Pro"
+      "id": "edge50u",
+      "name": "Motorola Edge 50 Ultra",
+      "file": "fotos/edge50u.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 11900,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Motorola Edge 50 Ultra. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model. Three rear camera lenses including a rectangular periscope, plus a flash, not four cameras. Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "edge50f",
-      "nome": "Motorola Edge 50 Fusion"
+      "name": "Motorola Edge 50 Fusion",
+      "file": "fotos/edge50f.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9022,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Motorola Edge 50 Fusion. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model. Only two rear camera lenses plus flash. Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
-      "id": "edge40n",
-      "nome": "Motorola Edge 40 Neo"
-    },
-    {
-      "id": "razr60",
-      "nome": "Motorola Razr 60"
+      "id": "edge50p",
+      "name": "Motorola Edge 50 Pro",
+      "file": "fotos/edge50p.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 11122,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Motorola Edge 50 Pro. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model. Three rear camera lenses and a flash, not four cameras. Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "razr50u",
-      "nome": "Motorola Razr 50 Ultra"
+      "name": "Motorola Razr 50 Ultra",
+      "file": "fotos/razr50u.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 17172,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Motorola Razr 50 Ultra. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  The folding phone is CLOSED with the exterior cover facing the viewer; preserve its true closed shape. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
+    },
+    {
+      "id": "edge40n",
+      "name": "Motorola Edge 40 Neo",
+      "file": "fotos/edge40n.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9652,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Motorola Edge 40 Neo. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model. Two rear cameras vertically aligned within a rectangular camera island. Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "gmax",
-      "nome": "Moto g max"
+      "name": "Moto g max",
+      "file": "fotos/gmax.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8942,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g max. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "g86",
-      "nome": "Moto g86 5G"
+      "name": "Moto g86 5G",
+      "file": "fotos/g86.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 15976,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g86 5G. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
-      "id": "g84",
-      "nome": "Moto g84 5G"
+      "id": "razr60",
+      "name": "Motorola Razr 60",
+      "file": "fotos/razr60.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 22172,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Motorola Razr 60. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  The folding phone is CLOSED with the exterior cover facing the viewer; preserve its true closed shape. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "g77",
-      "nome": "Moto g77"
+      "name": "Moto g77",
+      "file": "fotos/g77.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9192,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g77. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
+    },
+    {
+      "id": "g84",
+      "name": "Moto g84 5G",
+      "file": "fotos/g84.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 10622,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g84 5G. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model. Two rear cameras, not three or four. Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "g67",
-      "nome": "Moto g67"
-    },
-    {
-      "id": "g54",
-      "nome": "Moto g54 5G"
+      "name": "Moto g67",
+      "file": "fotos/g67.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 10110,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g67. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "g47",
-      "nome": "Moto g47"
+      "name": "Moto g47",
+      "file": "fotos/g47.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 10530,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g47. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
+    },
+    {
+      "id": "g54",
+      "name": "Moto g54 5G",
+      "file": "fotos/g54.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9230,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g54 5G. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model. Two rear cameras, not three or four. Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "g35",
-      "nome": "Moto g35 5G"
+      "name": "Moto g35 5G",
+      "file": "fotos/g35.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8614,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g35 5G. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model. Two rear cameras plus flash. Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "g24",
-      "nome": "Moto g24"
+      "name": "Moto g24",
+      "file": "fotos/g24.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8744,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g24. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model. Two rear cameras plus flash. Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "g17",
-      "nome": "Moto g17"
+      "name": "Moto g17",
+      "file": "fotos/g17.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9254,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g17. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "g15",
-      "nome": "Moto g15"
+      "name": "Moto g15",
+      "file": "fotos/g15.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 46264,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g15. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "g06",
-      "nome": "Moto g06"
-    },
-    {
-      "id": "g05",
-      "nome": "Moto g05"
-    },
-    {
-      "id": "g04",
-      "nome": "Moto g04"
+      "name": "Moto g06",
+      "file": "fotos/g06.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8626,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g06. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "e13",
-      "nome": "Moto e13"
+      "name": "Moto e13",
+      "file": "fotos/e13.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7638,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto e13. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
+    },
+    {
+      "id": "g05",
+      "name": "Moto g05",
+      "file": "fotos/g05.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 30368,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g05. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "mate80p",
-      "nome": "Huawei Mate 80 Pro"
+      "name": "Huawei Mate 80 Pro",
+      "file": "fotos/mate80p.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 14766,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Huawei Mate 80 Pro. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     },
     {
       "id": "matex6",
-      "nome": "Huawei Mate X6"
+      "name": "Huawei Mate X6",
+      "file": "fotos/matex6.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 22574,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Huawei Mate X6. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  The folding phone is CLOSED with the exterior cover facing the viewer; preserve its true closed shape. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
+    },
+    {
+      "id": "g04",
+      "name": "Moto g04",
+      "file": "fotos/g04.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7850,
+      "prompt": "Use case: product-mockup. One photorealistic catalog illustration of Moto g04. Reproduce that real model's own distinctive exterior, rear camera arrangement and manufacturer logo; never substitute another model.  Rear view, upright, full phone visible. A genuine neutral dark factory color. Single device, centered, occupying 82% of frame height, portrait 3:4 canvas, pure white background, soft even studio illumination, subtle contact shadow. No text, dimensions, captions, props or extra objects. It will be explicitly labeled an AI illustration, not an official photograph. Do not add extra cameras."
     }
   ],
-  "limitation": "Ilustrações por IA, sem certificação de fidelidade técnica. Geração das pendentes bloqueada pelo limite de uso."
+  "pending": [],
+  "limitation": "Ilustrações por IA, sem certificação de fidelidade técnica; confira detalhes e cores na fonte oficial.",
+  "updated": "2026-09-19"
 }
