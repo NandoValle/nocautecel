@@ -1,0 +1,551 @@
+{
+  "created": "2026-09-19",
+  "method": "Ferramenta integrada image_gen",
+  "style": "Fotografia de produto",
+  "promptBase": "One photorealistic studio catalog illustration of the named phone, actual distinctive exterior, rear view, folded devices closed, genuine neutral color, centered entire device at 82% frame height, 3:4 white background, soft lighting, no labels or invented features. Explicitly labeled AI illustration.",
+  "items": [
+    {
+      "id": "ip16p",
+      "file": "fotos/ip16p.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 11550,
+      "name": "iPhone 16 Pro"
+    },
+    {
+      "id": "ip13pm",
+      "name": "iPhone 13 Pro Max",
+      "file": "fotos/ip13pm.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9554
+    },
+    {
+      "id": "fold8u",
+      "name": "Galaxy Z Fold8 Ultra",
+      "file": "fotos/fold8u.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7916
+    },
+    {
+      "id": "razr70u",
+      "name": "Motorola Razr 70 Ultra",
+      "file": "fotos/razr70u.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 16836
+    },
+    {
+      "id": "ip12",
+      "name": "iPhone 12",
+      "file": "fotos/ip12.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7304
+    },
+    {
+      "id": "oppox9p",
+      "name": "OPPO Find X9 Pro",
+      "file": "fotos/oppox9p.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 10822
+    },
+    {
+      "id": "ip13",
+      "name": "iPhone 13",
+      "file": "fotos/ip13.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8374
+    },
+    {
+      "id": "ip11",
+      "name": "iPhone 11",
+      "file": "fotos/ip11.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7770
+    },
+    {
+      "id": "ip13mini",
+      "name": "iPhone 13 mini",
+      "file": "fotos/ip13mini.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7162
+    },
+    {
+      "id": "ip13p",
+      "name": "iPhone 13 Pro",
+      "file": "fotos/ip13p.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 10352
+    },
+    {
+      "id": "ip14",
+      "name": "iPhone 14",
+      "file": "fotos/ip14.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8194
+    },
+    {
+      "id": "ip14plus",
+      "name": "iPhone 14 Plus",
+      "file": "fotos/ip14plus.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7662
+    },
+    {
+      "id": "ip15",
+      "name": "iPhone 15",
+      "file": "fotos/ip15.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8088
+    },
+    {
+      "id": "ip15p",
+      "name": "iPhone 15 Pro",
+      "file": "fotos/ip15p.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 10108
+    },
+    {
+      "id": "ip17",
+      "name": "iPhone 17",
+      "file": "fotos/ip17.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8806
+    },
+    {
+      "id": "ip16",
+      "name": "iPhone 16",
+      "file": "fotos/ip16.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7400
+    },
+    {
+      "id": "ip17e",
+      "name": "iPhone 17e",
+      "file": "fotos/ip17e.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7022
+    },
+    {
+      "id": "ip16e",
+      "name": "iPhone 16e",
+      "file": "fotos/ip16e.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 6262
+    },
+    {
+      "id": "ip18p",
+      "name": "iPhone 18 Pro",
+      "file": "fotos/ip18p.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 12038
+    },
+    {
+      "id": "ip18pm",
+      "name": "iPhone 18 Pro Max",
+      "file": "fotos/ip18pm.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9408
+    },
+    {
+      "id": "s26",
+      "name": "Galaxy S26",
+      "file": "fotos/s26.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9484
+    },
+    {
+      "id": "s26plus",
+      "name": "Galaxy S26+",
+      "file": "fotos/s26plus.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8318
+    },
+    {
+      "id": "s25",
+      "name": "Galaxy S25",
+      "file": "fotos/s25.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8610
+    },
+    {
+      "id": "s25u",
+      "name": "Galaxy S25 Ultra",
+      "file": "fotos/s25u.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8884
+    },
+    {
+      "id": "s24",
+      "name": "Galaxy S24",
+      "file": "fotos/s24.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8080
+    },
+    {
+      "id": "s25fe",
+      "name": "Galaxy S25 FE",
+      "file": "fotos/s25fe.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7968
+    },
+    {
+      "id": "s23u",
+      "name": "Galaxy S23 Ultra",
+      "file": "fotos/s23u.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7586
+    },
+    {
+      "id": "s24u",
+      "name": "Galaxy S24 Ultra",
+      "file": "fotos/s24u.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7778
+    },
+    {
+      "id": "s23",
+      "name": "Galaxy S23",
+      "file": "fotos/s23.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9160
+    },
+    {
+      "id": "s23plus",
+      "name": "Galaxy S23+",
+      "file": "fotos/s23plus.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8328
+    },
+    {
+      "id": "fold8",
+      "name": "Galaxy Z Fold8",
+      "file": "fotos/fold8.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7534
+    },
+    {
+      "id": "fold7",
+      "name": "Galaxy Z Fold7",
+      "file": "fotos/fold7.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7224
+    },
+    {
+      "id": "fold6",
+      "name": "Galaxy Z Fold6",
+      "file": "fotos/fold6.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 6644
+    },
+    {
+      "id": "flip7",
+      "name": "Galaxy Z Flip7",
+      "file": "fotos/flip7.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8722
+    },
+    {
+      "id": "flip7fe",
+      "name": "Galaxy Z Flip7 FE",
+      "file": "fotos/flip7fe.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7906
+    },
+    {
+      "id": "a56",
+      "name": "Galaxy A56 5G",
+      "file": "fotos/a56.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7916
+    },
+    {
+      "id": "a55",
+      "name": "Galaxy A55 5G",
+      "file": "fotos/a55.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8200
+    },
+    {
+      "id": "a57",
+      "name": "Galaxy A57 5G",
+      "file": "fotos/a57.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9340
+    },
+    {
+      "id": "a36",
+      "name": "Galaxy A36 5G",
+      "file": "fotos/a36.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7642
+    },
+    {
+      "id": "a37",
+      "name": "Galaxy A37 5G",
+      "file": "fotos/a37.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8580
+    },
+    {
+      "id": "a27",
+      "name": "Galaxy A27 5G",
+      "file": "fotos/a27.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7340
+    },
+    {
+      "id": "a23",
+      "name": "Galaxy A23 5G",
+      "file": "fotos/a23.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7868
+    },
+    {
+      "id": "a17g5",
+      "name": "Galaxy A17 5G",
+      "file": "fotos/a17g5.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8228
+    },
+    {
+      "id": "a16g5",
+      "name": "Galaxy A16 5G",
+      "file": "fotos/a16g5.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8712
+    },
+    {
+      "id": "a17",
+      "name": "Galaxy A17",
+      "file": "fotos/a17.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8298
+    },
+    {
+      "id": "a16",
+      "name": "Galaxy A16",
+      "file": "fotos/a16.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7978
+    },
+    {
+      "id": "a15g5",
+      "name": "Galaxy A15 5G",
+      "file": "fotos/a15g5.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8548
+    },
+    {
+      "id": "edge60",
+      "name": "Motorola Edge 60",
+      "file": "fotos/edge60.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 23828
+    },
+    {
+      "id": "edge60n",
+      "name": "Motorola Edge 60 Neo",
+      "file": "fotos/edge60n.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 20338
+    },
+    {
+      "id": "edge60p",
+      "name": "Motorola Edge 60 Pro",
+      "file": "fotos/edge60p.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 19746
+    },
+    {
+      "id": "a07",
+      "name": "Galaxy A07",
+      "file": "fotos/a07.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 7000
+    },
+    {
+      "id": "edge60f",
+      "name": "Motorola Edge 60 Fusion",
+      "file": "fotos/edge60f.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 18784
+    },
+    {
+      "id": "edge70",
+      "name": "Motorola Edge 70",
+      "file": "fotos/edge70.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9696
+    },
+    {
+      "id": "edge70f",
+      "name": "Motorola Edge 70 Fusion",
+      "file": "fotos/edge70f.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 8748
+    },
+    {
+      "id": "signature",
+      "name": "Motorola Signature",
+      "file": "fotos/signature.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 9300
+    },
+    {
+      "id": "edge70p",
+      "name": "Motorola Edge 70 Pro",
+      "file": "fotos/edge70p.webp",
+      "width": 600,
+      "height": 800,
+      "bytes": 10988
+    }
+  ],
+  "pending": [
+    {
+      "id": "edge50u",
+      "nome": "Motorola Edge 50 Ultra"
+    },
+    {
+      "id": "edge50p",
+      "nome": "Motorola Edge 50 Pro"
+    },
+    {
+      "id": "edge50f",
+      "nome": "Motorola Edge 50 Fusion"
+    },
+    {
+      "id": "edge40n",
+      "nome": "Motorola Edge 40 Neo"
+    },
+    {
+      "id": "razr60",
+      "nome": "Motorola Razr 60"
+    },
+    {
+      "id": "razr50u",
+      "nome": "Motorola Razr 50 Ultra"
+    },
+    {
+      "id": "gmax",
+      "nome": "Moto g max"
+    },
+    {
+      "id": "g86",
+      "nome": "Moto g86 5G"
+    },
+    {
+      "id": "g84",
+      "nome": "Moto g84 5G"
+    },
+    {
+      "id": "g77",
+      "nome": "Moto g77"
+    },
+    {
+      "id": "g67",
+      "nome": "Moto g67"
+    },
+    {
+      "id": "g54",
+      "nome": "Moto g54 5G"
+    },
+    {
+      "id": "g47",
+      "nome": "Moto g47"
+    },
+    {
+      "id": "g35",
+      "nome": "Moto g35 5G"
+    },
+    {
+      "id": "g24",
+      "nome": "Moto g24"
+    },
+    {
+      "id": "g17",
+      "nome": "Moto g17"
+    },
+    {
+      "id": "g15",
+      "nome": "Moto g15"
+    },
+    {
+      "id": "g06",
+      "nome": "Moto g06"
+    },
+    {
+      "id": "g05",
+      "nome": "Moto g05"
+    },
+    {
+      "id": "g04",
+      "nome": "Moto g04"
+    },
+    {
+      "id": "e13",
+      "nome": "Moto e13"
+    },
+    {
+      "id": "mate80p",
+      "nome": "Huawei Mate 80 Pro"
+    },
+    {
+      "id": "matex6",
+      "nome": "Huawei Mate X6"
+    }
+  ],
+  "limitation": "Ilustrações por IA, sem certificação de fidelidade técnica. Geração das pendentes bloqueada pelo limite de uso."
+}

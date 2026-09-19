@@ -7,6 +7,13 @@ function pesoTxt(a){ return a.peso == null ? "peso não consta" : a.peso + " g";
 function capTxt(it){ return it.gb == null ? null : it.gb >= 1024 ? fmt(it.gb / 1024) + " TB" : it.gb + " GB"; }
 const tiraAcento = t => String(t).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
+function creditoFoto(a){
+  const f = a.foto;
+  if (!f) return "sem foto livre · silhueta em escala";
+  if (f.tipo === "ia") return "Ilustração gerada por IA · confira o desenho e a cor na fonte oficial";
+  return "foto " + f.autor + ", " + f.lic + (f.nota ? " · " + f.nota : "");
+}
+
 // Silhueta em escala para quem não tem foto livre: proporção das medidas oficiais.
 function silhueta(k){
   const a = aparelhos[k], w = 60, h = Math.min(80, Math.round(w * a.alt / a.larg));
@@ -27,7 +34,7 @@ function montaCatalogo(aoMudar){
     li.innerHTML = '<label class="opcao"><input type="checkbox" value="' + k + '">' +
       (f ? '<img class="mini-foto" src="' + f + '" alt="" loading="lazy" decoding="async" width="60" height="80">' : '<span class="mini-foto">' + silhueta(k) + '</span>') +
       '<span class="txt">' + htmlEsc(a.nome) + '<small>' + brl(it.preco) + (capTxt(it) ? ' · ' + capTxt(it) : '') +
-      (it.suspeito ? ' · <em>preço suspeito</em>' : '') + '</small></span></label>';
+      (it.suspeito ? ' · <em>preço suspeito</em>' : '') + (a.foto?.tipo === 'ia' ? ' · ilustração IA' : '') + '</small></span></label>';
     li.dataset.marca = a.marca;
     li.dataset.busca = tiraAcento(a.nome + " " + a.curto + " " + a.marca);
     lista.appendChild(li);
@@ -254,8 +261,9 @@ function desenhaLaudo(){
   if (fotos) fotos.innerHTML = CHAVES.map(k => {
     const f = aparelhos[k].foto;
     if (!f) return htmlEsc(aparelhos[k].nome) + ": sem foto de licença livre — silhueta desenhada a partir das medidas oficiais";
+    if (f.tipo === "ia") return htmlEsc(aparelhos[k].nome) + ": ilustração gerada por IA (OpenAI), não é fotografia oficial. Confira o desenho e a cor na fonte do fabricante";
     return htmlEsc(aparelhos[k].nome) + ": " + htmlEsc(f.autor) + ', <a href="https://commons.wikimedia.org/wiki/File:' + encodeURIComponent(f.arquivo) + '" rel="noopener" target="_blank">arquivo</a>, ' + htmlEsc(f.lic) + (f.nota ? " (" + htmlEsc(f.nota) + ")" : "");
-  }).join(" · ") + ". Via Wikimedia Commons; recortes nossos, sob a mesma licença de cada original.";
+  }).join(" · ") + ". Fotografias de terceiros: via Wikimedia Commons, sob a licença indicada em cada original. Ilustrações por IA: identificadas separadamente.";
 }
 
 // ---------- Laudo em texto ----------

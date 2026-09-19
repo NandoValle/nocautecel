@@ -571,7 +571,7 @@
       <dt>Fontes</dt><dd id="laudo-fontes"></dd>
       <dt>Fotos</dt><dd id="laudo-fotos"></dd>
       <dt>Cinturão</dt><dd>Veredito editorial por critério de uso, não nota de qualidade. O cartão do campeão e o link da disputa carregam o critério escolhido e a data da coleta: quem receber consegue refazer a mesma comparação.</dd>
-      <dt>Fotos, limite</dt><dd>As fotos são de loja ou de uso, de autores diferentes, com fundo e luz diferentes. Padronizamos moldura, proporção e tratamento, não a fotografia. Sem foto de licença livre — ou com foto que enganaria, como aparelho embalado com etiqueta de revenda —, o aparelho aparece como silhueta desenhada das medidas oficiais.</dd>
+      <dt>Fotos, limite</dt><dd>As fotos são de loja ou de uso, de autores diferentes, com fundo e luz diferentes. Padronizamos moldura, proporção e tratamento, não a fotografia. As ilustrações geradas por IA são identificadas e podem divergir em detalhes e cor; confira o produto na fonte oficial. Elas não comprovam medidas nem componentes internos. Sem foto ou ilustração disponível, usamos silhuetas das medidas declaradas.</dd>
     </dl>
     </details>
     <div class="laudo-acoes">
@@ -893,7 +893,7 @@
       }
       const cred = document.createElement("p");
       cred.className = "credito";
-      cred.textContent = a.foto ? "foto " + a.foto.autor + ", " + a.foto.lic + (a.foto.nota ? " · " + a.foto.nota : "") : "sem foto livre · silhueta em escala";
+      cred.textContent = creditoFoto(a);
       li.appendChild(cred);
       if (P.itens[k].suspeito){
         const sus = document.createElement("p");
@@ -1224,6 +1224,9 @@
     x.restore();
     x.strokeStyle = cor; x.lineWidth = 2; x.strokeRect(fx, fy, fw, fh);
 
+    if (aparelhos[r.campeao].foto?.tipo === "ia") {
+      x.font = dado(15); x.fillStyle = fum; x.fillText("ILUSTRAÇÃO GERADA POR IA", fx, fy + fh + 24);
+    }
     const cx = fx + fw + 44, cl = L - M - cx;
     x.font = poster; x.fillStyle = cor;
     let y = escreveEm(x, aparelhos[r.campeao].nome.toUpperCase(), cx, fy + 78, cl, 86);
